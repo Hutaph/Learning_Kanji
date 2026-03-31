@@ -1,0 +1,7 @@
+node_modules
+dist
+dist-electron
+*.log
+kanji_learner.db
+coverage
+.DS_Store

@@ -1,0 +1,24 @@
+{
+  "name": "kanji-learning-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ứng dụng web học Kanji: Kanji -> Hán Việt, Kanji <-> Từ vựng, Hiragana -> Kanji/Nghĩa.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "wanakana": "^5.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.13",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  }
+}
