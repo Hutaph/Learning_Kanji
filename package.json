@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "vite"
+    "start": "vite",
+    "import-minna": "python scripts/import_n5_apkg.py --apkg Japanese_Minna_no_Nihongo_1__2_Lessons_1_-_50.apkg"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -5,3 +5,4 @@ dist-electron
 kanji_learner.db
 coverage
 .DS_Store
+*.apkg

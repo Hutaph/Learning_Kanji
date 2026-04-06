@@ -1,0 +1,7998 @@
+{
+  "meta": {
+    "title": "Minna no Nihongo N5 (Lessons 1-25)",
+    "source": "Japanese_Minna_no_Nihongo_1__2_Lessons_1_-_50.apkg",
+    "extractedAt": "2026-04-06T01:39:40",
+    "sourceNote": "998 từ vựng N5."
+  },
+  "words": [
+    {
+      "id": "apkg-1508231335097",
+      "word": "わたし",
+      "reading": "わたし",
+      "meaning": "I",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508231390302",
+      "word": "あなた",
+      "reading": "あなた",
+      "meaning": "You",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508231408108",
+      "word": "あの ひと （あの かた）",
+      "reading": "あの ひと （あの かた）",
+      "meaning": "That person, he, she (あの かた is the polite equivalent of あの ひと）",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508231572923",
+      "word": "～さん",
+      "reading": "~さん",
+      "meaning": "Mr., Ms. (suffix added to a name for expressing politeness)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508231909931",
+      "word": "～ちゃん",
+      "reading": "~ちゃん",
+      "meaning": "(suffix often added to a child:s name instead of ~san)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508231983348",
+      "word": "～人",
+      "reading": "~ 人[じん]",
+      "meaning": "(suffix meaning `a national of`)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232086883",
+      "word": "先生",
+      "reading": "先生[せんせい]",
+      "meaning": "teacher, instructor (not used when referring to one`s own job)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232244046",
+      "word": "教師",
+      "reading": "教師[きょうし]",
+      "meaning": "teacher, instructor",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232314667",
+      "word": "学生",
+      "reading": "学生[がくせい]",
+      "meaning": "student",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232348956",
+      "word": "会社員",
+      "reading": "会社[かいしゃ] 員[いん]",
+      "meaning": "company employee",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232384378",
+      "word": "社員",
+      "reading": "社員[しゃいん]",
+      "meaning": "employee of ~ company (used with a company`s name)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232461797",
+      "word": "銀行員",
+      "reading": "銀行[ぎんこう] 員[いん]",
+      "meaning": "bank employee",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232495659",
+      "word": "医者",
+      "reading": "医者[いしゃ]",
+      "meaning": "[medical] doctor",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232538301",
+      "word": "研究者",
+      "reading": "研究[けんきゅう] 者[しゃ]",
+      "meaning": "researcher, scholar",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232579819",
+      "word": "大学",
+      "reading": "大学[だいがく]",
+      "meaning": "university",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232611475",
+      "word": "病院",
+      "reading": "病院[びょういん]",
+      "meaning": "hospital",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232649435",
+      "word": "だれ（どなた）",
+      "reading": "だれ（どなた）",
+      "meaning": "who (どなた is the polite equivalent)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232712707",
+      "word": "ーさい",
+      "reading": "ーさい",
+      "meaning": "- years old",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232803718",
+      "word": "何歳 （おいくつ）",
+      "reading": "何[なん] 歳[さい] （おいくつ）",
+      "meaning": "how old (おいくつ is the polite equivalent)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232879171",
+      "word": "はい",
+      "reading": "はい",
+      "meaning": "yes",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232893218",
+      "word": "いいえ",
+      "reading": "いいえ",
+      "meaning": "no",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232903011",
+      "word": "初めまして",
+      "reading": "初[はじ]めまして",
+      "meaning": "How do you do it? (lit. I am meeting you for the first time. Usually used as the first phrase when introducing oneself.)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508232954507",
+      "word": "～から 来ました。",
+      "reading": "~から 来[き]ました。",
+      "meaning": "I`m from ~ (country).",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233018611",
+      "word": "［どうぞ］ よろしく ［お願いします］。",
+      "reading": "［どうぞ］ よろしく ［お 願[ねが]いします］。",
+      "meaning": "Pleased to meet you. (lit. Please be nice to me. Usually used at the end of a self-introduction.)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233163663",
+      "word": "失礼ですが",
+      "reading": "失礼[しつれい]ですが",
+      "meaning": "Excuse me, but (used when asking someone for personal information such as their name or address)",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233232058",
+      "word": "お名前は？",
+      "reading": "お 名前[なまえ]は？",
+      "meaning": "May I have your name?",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233295458",
+      "word": "こちらは ～さんです。",
+      "reading": "こちらは ~さんです。",
+      "meaning": "This is Mr./Ms. ~.",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233331066",
+      "word": "アメリカ",
+      "reading": "アメリカ",
+      "meaning": "U.S.A.",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233550028",
+      "word": "イギリス",
+      "reading": "イギリス",
+      "meaning": "U.K.",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233572810",
+      "word": "インド",
+      "reading": "インド",
+      "meaning": "India",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233592338",
+      "word": "インドネシア",
+      "reading": "インドネシア",
+      "meaning": "Indonesia",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233614282",
+      "word": "韓国",
+      "reading": "韓国[かんこく]",
+      "meaning": "South Korea",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233640946",
+      "word": "タイ",
+      "reading": "タイ",
+      "meaning": "Thailand",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233672642",
+      "word": "中国",
+      "reading": "中国[ちゅうごく]",
+      "meaning": "China",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233701034",
+      "word": "ドイツ",
+      "reading": "ドイツ",
+      "meaning": "Germany",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233716186",
+      "word": "日本",
+      "reading": "日本[にっほん]",
+      "meaning": "Japan",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233739491",
+      "word": "ブラジル",
+      "reading": "ブラジル",
+      "meaning": "Brazil",
+      "lesson": 1,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233786069",
+      "word": "これ",
+      "reading": "これ",
+      "meaning": "this (thing here)",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233818778",
+      "word": "それ",
+      "reading": "それ",
+      "meaning": "that (thing near the listener)",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233833258",
+      "word": "あれ",
+      "reading": "あれ",
+      "meaning": "that (thing over there)",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233877955",
+      "word": "この ～",
+      "reading": "この ~",
+      "meaning": "this ~, this ~ here",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233902256",
+      "word": "その ～",
+      "reading": "その ~",
+      "meaning": "that ~, that ~ near the listener",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233919410",
+      "word": "あの ～",
+      "reading": "あの ~",
+      "meaning": "that ~, that ~ over there",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233938234",
+      "word": "本",
+      "reading": "本[ほん]",
+      "meaning": "book",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233966898",
+      "word": "辞書",
+      "reading": "辞書[じしょ]",
+      "meaning": "dictionary",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508233993106",
+      "word": "雑誌",
+      "reading": "雑誌[ざっし]",
+      "meaning": "magazine",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234029530",
+      "word": "新聞",
+      "reading": "新聞[しんぶん]",
+      "meaning": "newspaper",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234053450",
+      "word": "ノート",
+      "reading": "ノート",
+      "meaning": "notebook",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234076017",
+      "word": "手帳",
+      "reading": "手帳[てちょう]",
+      "meaning": "personal organiser",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234106146",
+      "word": "名称",
+      "reading": "名称[めいし]",
+      "meaning": "business card",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234179604",
+      "word": "カード",
+      "reading": "カード",
+      "meaning": "(credit) card",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234197929",
+      "word": "鉛筆",
+      "reading": "鉛筆[えんぴつ]",
+      "meaning": "pencil",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234455482",
+      "word": "ボールペン",
+      "reading": "ボールペン",
+      "meaning": "ballpoint pen",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234492916",
+      "word": "シャープペンシル",
+      "reading": "シャープペンシル",
+      "meaning": "mechanical pencil, propelling pencil",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234547489",
+      "word": "かぎ",
+      "reading": "かぎ",
+      "meaning": "key",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234563434",
+      "word": "時計",
+      "reading": "時計[とけい]",
+      "meaning": "watch, clock",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234585738",
+      "word": "傘",
+      "reading": "傘[かさ]",
+      "meaning": "umbrella",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234603009",
+      "word": "かばん",
+      "reading": "かばん",
+      "meaning": "bag, briefcase",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234623873",
+      "word": "CD",
+      "reading": "CD",
+      "meaning": "CD, compact disc",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234644745",
+      "word": "テルビ",
+      "reading": "テルビ",
+      "meaning": "television",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234665410",
+      "word": "ラジオ",
+      "reading": "ラジオ",
+      "meaning": "radio",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234682042",
+      "word": "カメラ",
+      "reading": "カメラ",
+      "meaning": "camera",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234692242",
+      "word": "コンピューター",
+      "reading": "コンピューター",
+      "meaning": "computer",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234715249",
+      "word": "車",
+      "reading": "車[くるま]",
+      "meaning": "car, vehicle",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234736497",
+      "word": "机",
+      "reading": "机[つくえ]",
+      "meaning": "desk",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234759209",
+      "word": "いす",
+      "reading": "いす",
+      "meaning": "chair",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234769361",
+      "word": "チョコレート",
+      "reading": "チョコレート",
+      "meaning": "chocolate",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234789825",
+      "word": "コーヒー",
+      "reading": "コーヒー",
+      "meaning": "coffee",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234803164",
+      "word": "［お］土産",
+      "reading": "［お］ 土産[みやげ]",
+      "meaning": "souvenir, present",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234860226",
+      "word": "英語",
+      "reading": "英語[えいご]",
+      "meaning": "the English language",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234881828",
+      "word": "日本語",
+      "reading": "日本語[にほんご]",
+      "meaning": "the Japanese language",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234916521",
+      "word": "何",
+      "reading": "何[なん]",
+      "meaning": "what",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234936545",
+      "word": "そう",
+      "reading": "そう",
+      "meaning": "so",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234948313",
+      "word": "あのう。。。",
+      "reading": "あのう。。。",
+      "meaning": "Er...(used to show hesitation)",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508234976281",
+      "word": "えっ",
+      "reading": "えっ",
+      "meaning": "Oh? What! (used when hearing something unexpected)",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235017233",
+      "word": "どうぞ。",
+      "reading": "どうぞ。",
+      "meaning": "Here you are. (used when offering someone something)",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235045586",
+      "word": "［どうも］ ありがとう ［ございます］。",
+      "reading": "［どうも］ ありがとう ［ございます］。",
+      "meaning": "Thank you [very much].",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235093801",
+      "word": "そうですか。",
+      "reading": "そうですか。",
+      "meaning": "I see.",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235119925",
+      "word": "違います。",
+      "reading": "違[ちが]います。",
+      "meaning": "No, it isn`t./You are wrong.",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235164449",
+      "word": "あ",
+      "reading": "あ",
+      "meaning": "Oh! (used when becoming aware of something)",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235186817",
+      "word": "これから お世話に なります。",
+      "reading": "これから お 世話[せわ]に なります。",
+      "meaning": "Thank you in advance for your kindness.",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235257489",
+      "word": "こちらこそ ［どうぞ］ よろしく ［お願いします］",
+      "reading": "こちらこそ ［どうぞ］ よろしく ［お 願[ねが]いします］",
+      "meaning": "Pleased to meet you, too. (response to ［どうぞ］ よろしく ［お願いします］）",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235368769",
+      "word": "ここ",
+      "reading": "ここ",
+      "meaning": "here, this place",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235391529",
+      "word": "そこ",
+      "reading": "そこ",
+      "meaning": "there, that place near the listener",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235410169",
+      "word": "あそこ",
+      "reading": "あそこ",
+      "meaning": "that place over there",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235422180",
+      "word": "どこ",
+      "reading": "どこ",
+      "meaning": "where, what place",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235438097",
+      "word": "こちら",
+      "reading": "こちら",
+      "meaning": "this way, this place (polite equivalent of ここ）",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235468754",
+      "word": "そちら",
+      "reading": "そちら",
+      "meaning": "That way, that place near the listener (polite equivalent of そこ）",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235507314",
+      "word": "あちら",
+      "reading": "あちら",
+      "meaning": "that way, that place over there (polite equivalent of あそこ）",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235539457",
+      "word": "どちら",
+      "reading": "どちら",
+      "meaning": "which way, where (polite equivalent of どこ）",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235562105",
+      "word": "教室",
+      "reading": "教室[きょうしつ]",
+      "meaning": "classroom",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235583088",
+      "word": "食堂",
+      "reading": "食堂[しょくどう]",
+      "meaning": "dining hall, canteen",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235609921",
+      "word": "事務所",
+      "reading": "事務所[じむしょ]",
+      "meaning": "office",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235632585",
+      "word": "会議室",
+      "reading": "会議[かいぎ] 室[しつ]",
+      "meaning": "conference room, meeting room",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235659497",
+      "word": "受付",
+      "reading": "受付[うけつけ]",
+      "meaning": "reception desk",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235706745",
+      "word": "ロビー",
+      "reading": "ロビー",
+      "meaning": "lobby",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235717674",
+      "word": "部屋",
+      "reading": "部屋[へや]",
+      "meaning": "room",
+      "lesson": 2,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235732468",
+      "word": "トイレ（お手洗い）",
+      "reading": "トイレ（お 手洗[てあら]い）",
+      "meaning": "toilet, rest room",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235777817",
+      "word": "かいだん",
+      "reading": "かいだん",
+      "meaning": "staircase",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235830336",
+      "word": "エレベーター",
+      "reading": "エレベーター",
+      "meaning": "lift, elevator",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235844433",
+      "word": "エスカレーター",
+      "reading": "エスカレーター",
+      "meaning": "escalator",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235859625",
+      "word": "自動販売機",
+      "reading": "自動[じどう] 販売[はんばい] 機[き]",
+      "meaning": "vending machine",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508235899233",
+      "word": "電話",
+      "reading": "電話[でんわ]",
+      "meaning": "telephone handset, telephone call",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237027023",
+      "word": "［お］国",
+      "reading": "［お］ 国[こく]",
+      "meaning": "country",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237084408",
+      "word": "会社",
+      "reading": "会社[かいしゃ]",
+      "meaning": "company",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237109314",
+      "word": "うち",
+      "reading": "うち",
+      "meaning": "house, home",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237124442",
+      "word": "靴",
+      "reading": "靴[くつ]",
+      "meaning": "shoes",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237189025",
+      "word": "ネクタイ",
+      "reading": "ネクタイ",
+      "meaning": "tie, necktie",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237208746",
+      "word": "ワイン",
+      "reading": "ワイン",
+      "meaning": "wine",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237222089",
+      "word": "売り場",
+      "reading": "売り場[うりば]",
+      "meaning": "department, counter (in a department store, etc.)",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237259953",
+      "word": "地下",
+      "reading": "地下[ちか]",
+      "meaning": "basement",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237281793",
+      "word": "ーかい （がい）",
+      "reading": "ーかい （がい）",
+      "meaning": "-th floor",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237337298",
+      "word": "なんがい",
+      "reading": "なんがい",
+      "meaning": "what floor",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237372345",
+      "word": "ーえん",
+      "reading": "ーえん",
+      "meaning": "- yen",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237387585",
+      "word": "いくら",
+      "reading": "いくら",
+      "meaning": "how much",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237403785",
+      "word": "百",
+      "reading": "百[ひゃく]",
+      "meaning": "hundred",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237424258",
+      "word": "千",
+      "reading": "千[せん]",
+      "meaning": "thousand",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237449505",
+      "word": "万",
+      "reading": "万[まん]",
+      "meaning": "ten thousand",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237469993",
+      "word": "すみません。",
+      "reading": "すみません。",
+      "meaning": "Excuse me.",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237490322",
+      "word": "どうも。",
+      "reading": "どうも。",
+      "meaning": "Thanks.",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237502889",
+      "word": "いらっしゃいませ。",
+      "reading": "いらっしゃいませ。",
+      "meaning": "Welcome./May I help you? (a greeting to a customer or a guest entering a shop, etc.)",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237554612",
+      "word": "［～を］みせて ください。",
+      "reading": "［~を］みせて ください。",
+      "meaning": "Please show me [~].",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237632417",
+      "word": "じゃ",
+      "reading": "じゃ",
+      "meaning": "well, then, in that case.",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237648026",
+      "word": "［～を］ください。",
+      "reading": "［~を］ください。",
+      "meaning": "Give me [~], please.",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237675457",
+      "word": "イタリア",
+      "reading": "イタリア",
+      "meaning": "Italy",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237692233",
+      "word": "スイス",
+      "reading": "スイス",
+      "meaning": "Switzerland",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237707386",
+      "word": "フランス",
+      "reading": "フランス",
+      "meaning": "France",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237719521",
+      "word": "ジャカルタ",
+      "reading": "ジャカルタ",
+      "meaning": "Jakarta",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237740553",
+      "word": "バンコク",
+      "reading": "バンコク",
+      "meaning": "Bangkok",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237754753",
+      "word": "ベルリン",
+      "reading": "ベルリン",
+      "meaning": "Berlin",
+      "lesson": 3,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237817878",
+      "word": "起きます",
+      "reading": "起[お]きます",
+      "meaning": "get up, wake up",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237852329",
+      "word": "寝ます",
+      "reading": "寝[ね]ます",
+      "meaning": "sleep, go to bed",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237870034",
+      "word": "働きます",
+      "reading": "働[はたら]きます",
+      "meaning": "To work",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237887961",
+      "word": "休みます",
+      "reading": "休[やす]みます",
+      "meaning": "To take a rest, take a holiday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237915865",
+      "word": "べんきょうします",
+      "reading": "べんきょうします",
+      "meaning": "To study",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237960105",
+      "word": "終わります",
+      "reading": "終[お]わります",
+      "meaning": "To finish",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237986416",
+      "word": "デパート",
+      "reading": "デパート",
+      "meaning": "department store",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508237999137",
+      "word": "銀行",
+      "reading": "銀行[ぎんこう]",
+      "meaning": "bank",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238022289",
+      "word": "郵便局",
+      "reading": "郵便[ゆうびん] 局[きょく]",
+      "meaning": "post office",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238050577",
+      "word": "図書館",
+      "reading": "図書館[としょかん]",
+      "meaning": "library",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238078264",
+      "word": "美術館",
+      "reading": "美術館[びじゅつかん]",
+      "meaning": "art museum, art gallery",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238117561",
+      "word": "今",
+      "reading": "今[いま]",
+      "meaning": "now",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238139241",
+      "word": "ーじ",
+      "reading": "ーじ",
+      "meaning": "- o`clock",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238199732",
+      "word": "（－分）（－ぷん）",
+      "reading": "（ ー分[ふん]）（ーぷん）",
+      "meaning": "- minute",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238250201",
+      "word": "半",
+      "reading": "半[はん]",
+      "meaning": "half",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238276448",
+      "word": "何時",
+      "reading": "何時[なんじ]",
+      "meaning": "what time",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238309304",
+      "word": "何分",
+      "reading": "何分[なんぷん]",
+      "meaning": "what minute",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238336449",
+      "word": "午前",
+      "reading": "午前[ごぜん]",
+      "meaning": "a.m., morning",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238363360",
+      "word": "午後",
+      "reading": "午後[ごご]",
+      "meaning": "p.m., afternoon",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238388320",
+      "word": "朝",
+      "reading": "朝[あさ]",
+      "meaning": "morning",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238410497",
+      "word": "昼",
+      "reading": "昼[ひる]",
+      "meaning": "daytime, noon",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238429441",
+      "word": "ばん （よる）",
+      "reading": "ばん （よる）",
+      "meaning": "night, evening",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238456600",
+      "word": "おととい",
+      "reading": "おととい",
+      "meaning": "the day before yesterday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238483064",
+      "word": "きのう",
+      "reading": "きのう",
+      "meaning": "yesterday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238496256",
+      "word": "きょう",
+      "reading": "きょう",
+      "meaning": "today",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238505019",
+      "word": "あした",
+      "reading": "あした",
+      "meaning": "tomorrow",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238515544",
+      "word": "あさって",
+      "reading": "あさって",
+      "meaning": "the day after tomorrow",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238535952",
+      "word": "けさ",
+      "reading": "けさ",
+      "meaning": "this morning",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238557696",
+      "word": "今晩",
+      "reading": "今晩[こんばん]",
+      "meaning": "this evening, tonight",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508238580936",
+      "word": "やすみ",
+      "reading": "やすみ",
+      "meaning": "A rest, a holiday, a day off",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239690018",
+      "word": "昼休み",
+      "reading": "昼休[ひるやす]み",
+      "meaning": "lunchtime (lit. noon/afternoon break)",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239741214",
+      "word": "試験",
+      "reading": "試験[しけん]",
+      "meaning": "examination, test",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239779927",
+      "word": "会議",
+      "reading": "会議[かいぎ]",
+      "meaning": "meeting, conference (～を します：hold a meeting)",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239839807",
+      "word": "映画",
+      "reading": "映画[えいが]",
+      "meaning": "film, movie",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239861184",
+      "word": "毎朝",
+      "reading": "毎朝[まいあさ]",
+      "meaning": "every morning",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239880888",
+      "word": "毎晩",
+      "reading": "毎晩[まいばん]",
+      "meaning": "every night",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239903719",
+      "word": "毎日",
+      "reading": "毎日[まいにち]",
+      "meaning": "every day",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239920976",
+      "word": "月曜日",
+      "reading": "月曜日[げつようび]",
+      "meaning": "Monday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239946199",
+      "word": "火曜日",
+      "reading": "火曜日[かようび]",
+      "meaning": "Tuesday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239964367",
+      "word": "水曜日",
+      "reading": "水曜日[すいようび]",
+      "meaning": "Wednesday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508239986640",
+      "word": "木曜日",
+      "reading": "木曜日[もくようび]",
+      "meaning": "Thursday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240010275",
+      "word": "金曜日",
+      "reading": "金曜日[きんようび]",
+      "meaning": "Friday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240064615",
+      "word": "土曜日",
+      "reading": "土曜日[どようび]",
+      "meaning": "Saturday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240190919",
+      "word": "日曜日",
+      "reading": "日曜日[にちようび]",
+      "meaning": "Sunday",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240211455",
+      "word": "何曜日",
+      "reading": "何[なん] 曜日[ようび]",
+      "meaning": "what day of the week",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240243272",
+      "word": "～から",
+      "reading": "〜から",
+      "meaning": "from ~",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240260062",
+      "word": "～まで",
+      "reading": "~まで",
+      "meaning": "up to ~, until ~",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240272960",
+      "word": "～と～",
+      "reading": "~と~",
+      "meaning": "and (used to connect nouns)",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240294072",
+      "word": "たいへんですね。",
+      "reading": "たいへんですね。",
+      "meaning": "That's tough isn't it? (used when expressing sympathy)",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240356730",
+      "word": "ばんごう",
+      "reading": "ばんごう",
+      "meaning": "number",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240369759",
+      "word": "なんばん",
+      "reading": "なんばん",
+      "meaning": "what number",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240391982",
+      "word": "ニューヨーク",
+      "reading": "ニューヨーク",
+      "meaning": "New York",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240434702",
+      "word": "ペキン （北京）",
+      "reading": "ペキン （ 北京[ぺきん]）",
+      "meaning": "Beijing",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240489350",
+      "word": "ロサンゼルス",
+      "reading": "ロサンゼルス",
+      "meaning": "Los Angeles",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240519622",
+      "word": "ロンドン",
+      "reading": "ロンドン",
+      "meaning": "London",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240574650",
+      "word": "行きます",
+      "reading": "行[い]きます",
+      "meaning": "To go",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240605218",
+      "word": "来ます",
+      "reading": "来[き]ます",
+      "meaning": "To come",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240620830",
+      "word": "帰ります",
+      "reading": "帰[かえ]ります",
+      "meaning": "To go home, return",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240639902",
+      "word": "学校",
+      "reading": "学校[がっこう]",
+      "meaning": "school",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240671354",
+      "word": "スーパー",
+      "reading": "スーパー",
+      "meaning": "supermarket",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240693519",
+      "word": "駅",
+      "reading": "駅[えき]",
+      "meaning": "station",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240715526",
+      "word": "飛行機",
+      "reading": "飛行機[ひこうき]",
+      "meaning": "airplane",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508240736247",
+      "word": "船",
+      "reading": "船[ふね]",
+      "meaning": "ship",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242334023",
+      "word": "電車",
+      "reading": "電車[でんしゃ]",
+      "meaning": "electric train",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242355409",
+      "word": "地下鉄",
+      "reading": "地下鉄[ちかてつ]",
+      "meaning": "underground, subway",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242383237",
+      "word": "新幹線",
+      "reading": "新幹線[しんかんせん]",
+      "meaning": "the Shinkansen, the bullet train",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242411649",
+      "word": "バス",
+      "reading": "バス",
+      "meaning": "bus",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242443521",
+      "word": "タクシー",
+      "reading": "タクシー",
+      "meaning": "taxi",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242454673",
+      "word": "自転車",
+      "reading": "自転車[じてんしゃ]",
+      "meaning": "bicycle",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242478056",
+      "word": "歩いて",
+      "reading": "歩[ある]いて",
+      "meaning": "on foot",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242497873",
+      "word": "人",
+      "reading": "人[ひと]",
+      "meaning": "person, people",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242519137",
+      "word": "友達",
+      "reading": "友達[ともだち]",
+      "meaning": "friend",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242537498",
+      "word": "彼",
+      "reading": "彼[かれ]",
+      "meaning": "he, boyfriend, lover",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242569952",
+      "word": "彼女",
+      "reading": "彼女[かのじょ]",
+      "meaning": "she, girlfriend, lover",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242592361",
+      "word": "家族",
+      "reading": "家族[かぞく]",
+      "meaning": "family",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242642317",
+      "word": "一人で",
+      "reading": "一 人[ひとり]で",
+      "meaning": "alone, by oneself",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508242665488",
+      "word": "先週",
+      "reading": "先週[せんしゅう]",
+      "meaning": "Last week",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508245995245",
+      "word": "今週",
+      "reading": "今週[こんしゅう]",
+      "meaning": "this week",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246044502",
+      "word": "来週",
+      "reading": "来週[らいしゅう]",
+      "meaning": "next week",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246073504",
+      "word": "先月",
+      "reading": "先月[せんげつ]",
+      "meaning": "last month",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246105655",
+      "word": "今月",
+      "reading": "今月[こんげつ]",
+      "meaning": "this month",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246127406",
+      "word": "来月",
+      "reading": "来月[らいげつ]",
+      "meaning": "next month",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246147351",
+      "word": "去年",
+      "reading": "去年[きょねん]",
+      "meaning": "last year",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246181846",
+      "word": "ことし",
+      "reading": "ことし",
+      "meaning": "this year",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246194558",
+      "word": "来年",
+      "reading": "来年[らいねん]",
+      "meaning": "next year",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246213511",
+      "word": "ー寝",
+      "reading": "ー 寝[ねん]",
+      "meaning": "-th year",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246238398",
+      "word": "何年",
+      "reading": "何[なん] 年[ねん]",
+      "meaning": "what year",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246256877",
+      "word": "－月",
+      "reading": "月[がつ]",
+      "meaning": "-th month of the year",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246298514",
+      "word": "何月",
+      "reading": "何[なん] 月[がつ]",
+      "meaning": "what month",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246322382",
+      "word": "ついたち （1日）",
+      "reading": "ついたち （ 1 日）",
+      "meaning": "first day of the month",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246357614",
+      "word": "二日",
+      "reading": "二[ふつ]日[か]",
+      "meaning": "The second, two days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246385422",
+      "word": "三日",
+      "reading": "三[みっ] 日[か]",
+      "meaning": "third, three days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246410478",
+      "word": "四日",
+      "reading": "四[よっ] 日[か]",
+      "meaning": "fourth, four days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246430254",
+      "word": "五日",
+      "reading": "五[いつ]日[か]",
+      "meaning": "fifth, five days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246461278",
+      "word": "六日",
+      "reading": "六[むい]日[か]",
+      "meaning": "six, six days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246483136",
+      "word": "七日",
+      "reading": "七[なの]日[か]",
+      "meaning": "seventh, seven days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246507391",
+      "word": "八日",
+      "reading": "八[よう] 日[か]",
+      "meaning": "eigth, eight days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246539039",
+      "word": "九日",
+      "reading": "九[ここの]日[か]",
+      "meaning": "ninth, nine days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246559550",
+      "word": "十日",
+      "reading": "十[とう]日[か]",
+      "meaning": "tenth, ten days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246579126",
+      "word": "十四日",
+      "reading": "十[じゅう]四[よっ]日[か]",
+      "meaning": "fourteenth, fourteen days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246607730",
+      "word": "廿日",
+      "reading": "廿[はつ] 日[か]",
+      "meaning": "twentieth, twenty days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246644446",
+      "word": "二十四日",
+      "reading": "二[に]十[じゅう]四[よっ]日[か]",
+      "meaning": "twenty-fourth, twenty-four days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246678766",
+      "word": "－日",
+      "reading": "日[にち]",
+      "meaning": "-th day of the month, - day(s)",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246712886",
+      "word": "何日",
+      "reading": "何[なん] 日[にち]",
+      "meaning": "which day of the month, how many days",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246746190",
+      "word": "いつ",
+      "reading": "いつ",
+      "meaning": "when",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246757782",
+      "word": "誕生日",
+      "reading": "誕生[たんじょう] 日[び]",
+      "meaning": "birthday",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246778527",
+      "word": "そうですね。",
+      "reading": "そうですね。",
+      "meaning": "Yes, it is.",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246805117",
+      "word": "［どうも］ありがとう ございました。",
+      "reading": "［どうも］ありがとう ございました。",
+      "meaning": "Thank you very much for what you did.",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246856734",
+      "word": "どう いたしまして。",
+      "reading": "どう いたしまして。",
+      "meaning": "You're welcome. / Don't mention it.",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246891567",
+      "word": "ー番線",
+      "reading": "ー 番線[ばんせん]",
+      "meaning": "platform -, -th platform",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246920008",
+      "word": "次の",
+      "reading": "次[つぎ]の",
+      "meaning": "next",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246940374",
+      "word": "普通",
+      "reading": "普通[ふつう]",
+      "meaning": "local (train)",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508246967381",
+      "word": "急行",
+      "reading": "急行[きゅうこう]",
+      "meaning": "rapid",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247010158",
+      "word": "特急",
+      "reading": "特急[とっきゅう]",
+      "meaning": "express",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247038053",
+      "word": "大阪城",
+      "reading": "大阪城[おおさかじょう]",
+      "meaning": "Osaka Castle, a famous castle in Osaka",
+      "lesson": 5,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247130547",
+      "word": "食べます",
+      "reading": "食[た]べます",
+      "meaning": "To eat",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247155581",
+      "word": "飲みます",
+      "reading": "飲[の]みます",
+      "meaning": "to drink",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247171654",
+      "word": "吸います［たばこを～］",
+      "reading": "吸[す]います［たばこを~］",
+      "meaning": "To smoke [a cigarette]",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247213638",
+      "word": "見ます",
+      "reading": "見[み]ます",
+      "meaning": "To see, look at, watch",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247232489",
+      "word": "聞きます",
+      "reading": "聞[き]きます",
+      "meaning": "To hear, listen",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247252854",
+      "word": "読みます",
+      "reading": "読[よ]みます",
+      "meaning": "To read",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247275877",
+      "word": "書きます",
+      "reading": "書[か]きます",
+      "meaning": "To write (かきます can also mean to draw or paint, but in this case it is written with hirigana in this book)",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247332678",
+      "word": "買います",
+      "reading": "買[か]います",
+      "meaning": "To buy",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247351630",
+      "word": "取ります ［写真を～］",
+      "reading": "取[と]ります ［ 写真[しゃしん]を~］",
+      "meaning": "To take [a photograph]",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247440102",
+      "word": "します",
+      "reading": "します",
+      "meaning": "To do, play",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247892472",
+      "word": "会います ［友達に〜］",
+      "reading": "会[あ]います ［ 友達[ともだち]に〜］",
+      "meaning": "To meet [a friend]",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508247976909",
+      "word": "ごはん",
+      "reading": "ごはん",
+      "meaning": "a meal, cooked rice",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248000460",
+      "word": "朝ごはん",
+      "reading": "朝[あさ]ごはん",
+      "meaning": "breakfast",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248024957",
+      "word": "昼ごはん",
+      "reading": "昼[ひる]ごはん",
+      "meaning": "lunch",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248054150",
+      "word": "晩ごはん",
+      "reading": "晩[ばん]ごはん",
+      "meaning": "dinner, supper",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248081310",
+      "word": "パン",
+      "reading": "パン",
+      "meaning": "bread",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248104660",
+      "word": "卵",
+      "reading": "卵[たまご]",
+      "meaning": "egg",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248122621",
+      "word": "肉",
+      "reading": "肉[にく]",
+      "meaning": "meat",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248143741",
+      "word": "魚",
+      "reading": "魚[さかな]",
+      "meaning": "fish",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248157190",
+      "word": "野菜",
+      "reading": "野菜[やさい]",
+      "meaning": "vegetable",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248178181",
+      "word": "果物",
+      "reading": "果物[くだもの]",
+      "meaning": "fruit",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248197696",
+      "word": "[お] 水",
+      "reading": "[お] 水[みず]",
+      "meaning": "water",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248221660",
+      "word": "お茶",
+      "reading": "お 茶[ちゃ]",
+      "meaning": "tea, green tea",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248239396",
+      "word": "紅茶",
+      "reading": "紅茶[こうちゃ]",
+      "meaning": "black tea",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248262669",
+      "word": "牛乳（ミルク）",
+      "reading": "牛乳[ぎゅうにゅう]（ミルク）",
+      "meaning": "milk",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248298597",
+      "word": "ジュース",
+      "reading": "ジュース",
+      "meaning": "juice",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248320389",
+      "word": "ビール",
+      "reading": "ビール",
+      "meaning": "beer",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248336533",
+      "word": "［お］酒",
+      "reading": "［お］ 酒[さけ]",
+      "meaning": "alcohol, Japanese rice wine",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248388383",
+      "word": "たばこ",
+      "reading": "たばこ",
+      "meaning": "tobacco, cigarette",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248408102",
+      "word": "手紙",
+      "reading": "手紙[てがみ]",
+      "meaning": "letter",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248432917",
+      "word": "レポート",
+      "reading": "レポート",
+      "meaning": "report",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248453573",
+      "word": "写真",
+      "reading": "写真[しゃしん]",
+      "meaning": "photograph",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248483260",
+      "word": "ビデオ",
+      "reading": "ビデオ",
+      "meaning": "video [tape], video deck",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248504208",
+      "word": "店",
+      "reading": "店[みせ]",
+      "meaning": "shop, store",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248534717",
+      "word": "庭",
+      "reading": "庭[にわ]",
+      "meaning": "garden",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248563509",
+      "word": "宿題",
+      "reading": "宿題[しゅくだい]",
+      "meaning": "homework (～を します：do homework)",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248619221",
+      "word": "テニス",
+      "reading": "テニス",
+      "meaning": "tennis (～を します：play tennis)",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248651373",
+      "word": "サッカー",
+      "reading": "サッカー",
+      "meaning": "soccer, football (～を します：play soccer)",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248686268",
+      "word": "［お］花見",
+      "reading": "［お］ 花見[はなみ]",
+      "meaning": "cherry-blossom viewing (～を します：view the cherry blossoms)",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248750917",
+      "word": "いっしょに",
+      "reading": "いっしょに",
+      "meaning": "together",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248771973",
+      "word": "ちょっと",
+      "reading": "ちょっと",
+      "meaning": "a little while, a little bit",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248790269",
+      "word": "いつも",
+      "reading": "いつも",
+      "meaning": "always, usually",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248802644",
+      "word": "時々",
+      "reading": "時々[ときどき]",
+      "meaning": "sometimes",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248819929",
+      "word": "それから",
+      "reading": "それから",
+      "meaning": "after then, and then",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248845461",
+      "word": "いいですね。",
+      "reading": "いいですね。",
+      "meaning": "That's good.",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248859933",
+      "word": "わかりました。",
+      "reading": "わかりました。",
+      "meaning": "I see, I understood.",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248891877",
+      "word": "何ですか。",
+      "reading": "何[なん]ですか。",
+      "meaning": "Yes? (lit. What is it?)",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248924325",
+      "word": "じゃ、また［あした］。",
+      "reading": "じゃ、また［あした］。",
+      "meaning": "See you [tomorrow].",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248954756",
+      "word": "メキシコ",
+      "reading": "メキシコ",
+      "meaning": "Mexico",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508248972381",
+      "word": "切ります",
+      "reading": "切[き]ります",
+      "meaning": "To cut, slice",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249001285",
+      "word": "送ります",
+      "reading": "送[おく]ります",
+      "meaning": "To send",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249022589",
+      "word": "あげます",
+      "reading": "あげます",
+      "meaning": "To give",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249035549",
+      "word": "もらいます",
+      "reading": "もらいます",
+      "meaning": "To receive",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249049949",
+      "word": "貸します",
+      "reading": "貸[か]します",
+      "meaning": "To lend",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249066676",
+      "word": "借ります",
+      "reading": "借[か]ります",
+      "meaning": "To borrow",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249082373",
+      "word": "教えます",
+      "reading": "教[おし]えます",
+      "meaning": "To teach",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249113013",
+      "word": "習います",
+      "reading": "習[なら]います",
+      "meaning": "To learn",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249131910",
+      "word": "かけます［電話を～］",
+      "reading": "かけます［ 電話[でんわ]を~］",
+      "meaning": "make [a phone call]",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249187589",
+      "word": "手",
+      "reading": "手[て]",
+      "meaning": "hand, arm",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249204853",
+      "word": "はし",
+      "reading": "はし",
+      "meaning": "chopsticks",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249214548",
+      "word": "スプーン",
+      "reading": "スプーン",
+      "meaning": "spoon",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249232036",
+      "word": "ナイフ",
+      "reading": "ナイフ",
+      "meaning": "knife",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249242228",
+      "word": "フォーク",
+      "reading": "フォーク",
+      "meaning": "fork",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249265477",
+      "word": "はさみ",
+      "reading": "はさみ",
+      "meaning": "scissors",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249280141",
+      "word": "パソコン",
+      "reading": "パソコン",
+      "meaning": "personal computer",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249333284",
+      "word": "ケータイ （でんわ）",
+      "reading": "ケータイ（でんわ）",
+      "meaning": "mobile phone, cell phone",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249360885",
+      "word": "メール",
+      "reading": "メール",
+      "meaning": "e-mail",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249381004",
+      "word": "年賀状",
+      "reading": "年賀状[ねんがじょう]",
+      "meaning": "New Year's greeting card",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249423949",
+      "word": "パンチ",
+      "reading": "パンチ",
+      "meaning": "punch",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249608839",
+      "word": "ホッチキス",
+      "reading": "ホッチキス",
+      "meaning": "stapler",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249645995",
+      "word": "セロテープ",
+      "reading": "セロテープ",
+      "meaning": "Sellotape, Scotch tap, clear adhesive tap",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249674315",
+      "word": "消しゴム",
+      "reading": "消しゴム[けしごむ]",
+      "meaning": "rubber, eraser",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249726908",
+      "word": "紙",
+      "reading": "紙[かみ]",
+      "meaning": "paper",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249758300",
+      "word": "花",
+      "reading": "花[はな]",
+      "meaning": "flower, blossom",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249777796",
+      "word": "シャツ",
+      "reading": "シャツ",
+      "meaning": "shirt",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249798420",
+      "word": "プレゼント",
+      "reading": "プレゼント",
+      "meaning": "present, gift",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249812117",
+      "word": "荷物",
+      "reading": "荷物[にもつ]",
+      "meaning": "luggage, baggage, parcel",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249834732",
+      "word": "お金",
+      "reading": "お 金[かね]",
+      "meaning": "money",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249852436",
+      "word": "きっぷ",
+      "reading": "きっぷ",
+      "meaning": "ticket",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249888964",
+      "word": "クリスマス",
+      "reading": "クリスマス",
+      "meaning": "Christmas",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249900756",
+      "word": "父",
+      "reading": "父[ちち]",
+      "meaning": "(my) father",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249924135",
+      "word": "母",
+      "reading": "母[はは]",
+      "meaning": "(my) mother",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249939548",
+      "word": "お父さん",
+      "reading": "お 父[とう]さん",
+      "meaning": "(someone else's) father (also used to address one's own father)",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508249983124",
+      "word": "お母さん",
+      "reading": "お 母[かあ]さん",
+      "meaning": "(someone else's) mother (also used to address one's own mother)",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250023635",
+      "word": "もう",
+      "reading": "もう",
+      "meaning": "already",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250035725",
+      "word": "まだ",
+      "reading": "まだ",
+      "meaning": "not yet",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250045596",
+      "word": "これから",
+      "reading": "これから",
+      "meaning": "from now on, soon",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250063468",
+      "word": "［～、］すてきですね。",
+      "reading": "［~、］すてきですね。",
+      "meaning": "What a nice [~]!",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250102956",
+      "word": "いらっしゃい。",
+      "reading": "いらっしゃい。",
+      "meaning": "How nice of you to come. (lit. Welcome.)",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250141860",
+      "word": "どうぞ お上がり ください",
+      "reading": "どうぞ お 上[あ]がり ください",
+      "meaning": "Do come in.",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250193308",
+      "word": "失礼します。",
+      "reading": "失礼[しつれい]します。",
+      "meaning": "May I? (lit. I commit an incivility.)",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250238757",
+      "word": "［～は］いかがですか。",
+      "reading": "［~は］いかがですか。",
+      "meaning": "Won't you have [~]?/Would you like to have [~]? (used when offering something)",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250290963",
+      "word": "いただきます",
+      "reading": "いただきます",
+      "meaning": "Thank you./I accept. (said before starting to eat or drink)",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250317836",
+      "word": "ごちそうさま［でした］。",
+      "reading": "ごちそうさま［でした］。",
+      "meaning": "That was delicious. (said after eating or drinking)",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508250396503",
+      "word": "スパイン",
+      "reading": "スパイン",
+      "meaning": "Spain",
+      "lesson": 7,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508299952300",
+      "word": "ハンサム［な］",
+      "reading": "ハンサム［な］",
+      "meaning": "handsome",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508299986801",
+      "word": "きれい［な］",
+      "reading": "きれい［な］",
+      "meaning": "beautiful, clean",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300008735",
+      "word": "静かに［な］",
+      "reading": "静[しず]かに［な］",
+      "meaning": "quiet",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300044084",
+      "word": "にぎやか［な］",
+      "reading": "にぎやか［な］",
+      "meaning": "lively",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300067904",
+      "word": "有名［な］",
+      "reading": "有名[ゆうめい]［な］",
+      "meaning": "famous",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300103151",
+      "word": "親切［な］",
+      "reading": "親切[しんせつ]［な］",
+      "meaning": "helpful, kind, considerate (not used about one's own family members)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300150595",
+      "word": "元気［な］",
+      "reading": "元気[げんき]［な］",
+      "meaning": "healthy, energetic, cheerful",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300210116",
+      "word": "暇［な］",
+      "reading": "暇[ひま]［な］",
+      "meaning": "free (time)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300247695",
+      "word": "便利［な］",
+      "reading": "便利[べんり]［な］",
+      "meaning": "convenient",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300269662",
+      "word": "すてき［な］",
+      "reading": "すてき［な］",
+      "meaning": "fine, nice, wonderful",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300289138",
+      "word": "大きく［な］",
+      "reading": "大[おお]きく［な］",
+      "meaning": "big, large",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300328755",
+      "word": "小さい",
+      "reading": "小[ちい]さい",
+      "meaning": "small, little",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300366301",
+      "word": "新しい",
+      "reading": "新[あたら]しい",
+      "meaning": "new, fresh",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300392574",
+      "word": "古い",
+      "reading": "古[ふる]い",
+      "meaning": "old (not used to describe a person's age)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300421181",
+      "word": "いい （よい）",
+      "reading": "いい （よい）",
+      "meaning": "good",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300441221",
+      "word": "悪い",
+      "reading": "悪[わる]い",
+      "meaning": "bad",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300457635",
+      "word": "暑い、熱い",
+      "reading": "暑[あつ]い、 熱[あつ]い",
+      "meaning": "hot",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300482269",
+      "word": "寒い",
+      "reading": "寒[さむ]い",
+      "meaning": "cold (referring to temperature)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300503540",
+      "word": "冷たい",
+      "reading": "冷[つめ]たい",
+      "meaning": "cold (referring to touch)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300524820",
+      "word": "難しい",
+      "reading": "難[むずか]しい",
+      "meaning": "difficult",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300550733",
+      "word": "易しい",
+      "reading": "易[やさ]しい",
+      "meaning": "easy, tender, kind, gentle, graceful, affectionate, amiable",
+      "lesson": 8,
+      "tags": [
+        "CheckError"
+      ]
+    },
+    {
+      "id": "apkg-1508300585598",
+      "word": "高い",
+      "reading": "高[たか]い",
+      "meaning": "expensive, tall, high",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300605863",
+      "word": "安い",
+      "reading": "安[やす]い",
+      "meaning": "inexpensive, cheap",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300638979",
+      "word": "低い",
+      "reading": "低[ひく]い",
+      "meaning": "low",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300657920",
+      "word": "おもしろい",
+      "reading": "おもしろい",
+      "meaning": "interesting",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300671864",
+      "word": "おいしい",
+      "reading": "おいしい",
+      "meaning": "delicious",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300690239",
+      "word": "忙しい",
+      "reading": "忙[いそが]しい",
+      "meaning": "busy",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300708923",
+      "word": "楽しい",
+      "reading": "楽[たの]しい",
+      "meaning": "enjoyable",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300727400",
+      "word": "白い",
+      "reading": "白[しろ]い",
+      "meaning": "white",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300742010",
+      "word": "黒い",
+      "reading": "黒[くろ]い",
+      "meaning": "black",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300755605",
+      "word": "赤い",
+      "reading": "赤[あか]い",
+      "meaning": "red",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300766766",
+      "word": "青い",
+      "reading": "青[あお]い",
+      "meaning": "blue",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300783588",
+      "word": "桜",
+      "reading": "桜[さくら]",
+      "meaning": "cherry (blossom)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300802878",
+      "word": "山",
+      "reading": "山[やま]",
+      "meaning": "mountain",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300819932",
+      "word": "町",
+      "reading": "町[まち]",
+      "meaning": "town, city",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300844027",
+      "word": "食べ物",
+      "reading": "食べ物[たべもの]",
+      "meaning": "food",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300864022",
+      "word": "所",
+      "reading": "所[ところ]",
+      "meaning": "place",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300885086",
+      "word": "寮",
+      "reading": "寮[りょう]",
+      "meaning": "dormitory",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300941705",
+      "word": "レストラン",
+      "reading": "レストラン",
+      "meaning": "restaurant",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300957722",
+      "word": "生活",
+      "reading": "生活[せいかつ]",
+      "meaning": "Everyday life",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508300976197",
+      "word": "［お］仕事",
+      "reading": "［お］ 仕事[しごと]",
+      "meaning": "work, business (～を します：do one's job, work)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301039618",
+      "word": "どう",
+      "reading": "どう",
+      "meaning": "how",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301050533",
+      "word": "どんな～",
+      "reading": "どんな~",
+      "meaning": "what kind of ~",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301066906",
+      "word": "とても",
+      "reading": "とても",
+      "meaning": "very",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301077170",
+      "word": "あまり",
+      "reading": "あまり",
+      "meaning": "not so (used with negatives)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301089646",
+      "word": "そして",
+      "reading": "そして",
+      "meaning": "and (used to connect sentences)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301104864",
+      "word": "～が、～",
+      "reading": "~が、~",
+      "meaning": "~, but ~",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301123908",
+      "word": "おげんきですか。",
+      "reading": "おげんきですか。",
+      "meaning": "How are you?",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301168196",
+      "word": "［〜、］もう 一杯 いかがですか。",
+      "reading": "［〜、］もう 一杯[いっぱい] いかがですか。",
+      "meaning": "Won't you have another cup of [~]?",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301256105",
+      "word": "［いいえ、］けっこうです。",
+      "reading": "［いいえ、］けっこうです。",
+      "meaning": "No, thank you.",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301298574",
+      "word": "もう ～です［ね］。",
+      "reading": "もう ~です［ね］。",
+      "meaning": "It's already ~ [,isn't it?]",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301335820",
+      "word": "そろそろ 失礼します。",
+      "reading": "そろそろ 失礼[しつれい]します。",
+      "meaning": "It's time I was going.",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301415058",
+      "word": "いいえ。",
+      "reading": "いいえ。",
+      "meaning": "Not at all.",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301430268",
+      "word": "また いらっしゃって ください。",
+      "reading": "また いらっしゃって ください。",
+      "meaning": "Please come again.",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301457216",
+      "word": "シャンハイ 上海",
+      "reading": "シャンハイ 上海[しゃんはい]",
+      "meaning": "Shanghai",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301499938",
+      "word": "金閣寺",
+      "reading": "金閣寺[きんかくじ]",
+      "meaning": "Kinkakuji Temple (the Golden Pavilion)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301532177",
+      "word": "なら こえん",
+      "reading": "なら こえん",
+      "meaning": "Nara Park",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508301600562",
+      "word": "富士山",
+      "reading": "富士山[ふじさん]",
+      "meaning": "Mt. Fuji",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303337029",
+      "word": "わかります",
+      "reading": "わかります",
+      "meaning": "To understand",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303437158",
+      "word": "好き［な］",
+      "reading": "好[す]き［な］",
+      "meaning": "like",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303463713",
+      "word": "嫌い［な］",
+      "reading": "嫌[きら]い［な］",
+      "meaning": "dislike",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303489625",
+      "word": "上手です［な］",
+      "reading": "上手[じょうず]です［な］",
+      "meaning": "good at",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303530565",
+      "word": "下手［な］",
+      "reading": "下手[へた]［な］",
+      "meaning": "poor at",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303558642",
+      "word": "飲み物",
+      "reading": "飲み物[のみもの]",
+      "meaning": "drinks",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303581780",
+      "word": "りょうり",
+      "reading": "りょうり",
+      "meaning": "dish (cooked food), cooking (～を します：to cook)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303624087",
+      "word": "スポーツ",
+      "reading": "スポーツ",
+      "meaning": "sport (～を します：play sports)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303658401",
+      "word": "野球",
+      "reading": "野球[やきゅう]",
+      "meaning": "baseball (～を します：to play baseball)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303713437",
+      "word": "ダンス",
+      "reading": "ダンス",
+      "meaning": "Dance (～を します：to dance)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303742470",
+      "word": "旅行",
+      "reading": "旅行[りょこう]",
+      "meaning": "trip, tour (～［を］ します：to travel, make a trip)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303813839",
+      "word": "音楽",
+      "reading": "音楽[おんがく]",
+      "meaning": "music",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303835643",
+      "word": "歌",
+      "reading": "歌[うた]",
+      "meaning": "song",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303854414",
+      "word": "クラシック",
+      "reading": "クラシック",
+      "meaning": "classical music",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303867038",
+      "word": "ジャズ",
+      "reading": "ジャズ",
+      "meaning": "jazz",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303878686",
+      "word": "コンサート",
+      "reading": "コンサート",
+      "meaning": "concert",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303891380",
+      "word": "カラオケ",
+      "reading": "カラオケ",
+      "meaning": "karaoke",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303903716",
+      "word": "歌舞伎",
+      "reading": "歌舞伎[かぶき]",
+      "meaning": "Kabuki (traditional Japanese musical drama)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303928930",
+      "word": "絵",
+      "reading": "絵[え]",
+      "meaning": "picture, drawing",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303966948",
+      "word": "字",
+      "reading": "字[じ]",
+      "meaning": "letter, character",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508303992099",
+      "word": "漢字",
+      "reading": "漢字[かんじ]",
+      "meaning": "Chinese character",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304019009",
+      "word": "ひらがな",
+      "reading": "ひらがな",
+      "meaning": "hiragana script",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304032766",
+      "word": "かたかな",
+      "reading": "かたかな",
+      "meaning": "katakana script",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304045702",
+      "word": "ローマ字",
+      "reading": "ローマ字[ろーまじ]",
+      "meaning": "the Roman alphabet",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304090467",
+      "word": "細かい お金",
+      "reading": "細[こま]かい お 金[かね]",
+      "meaning": "small change",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304133226",
+      "word": "時間",
+      "reading": "時間[じかん]",
+      "meaning": "time",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304154445",
+      "word": "用事",
+      "reading": "用事[ようじ]",
+      "meaning": "something to do, errand",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304173718",
+      "word": "約束",
+      "reading": "約束[やくそく]",
+      "meaning": "appointment, promise (～［を］ します：to promise)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304214517",
+      "word": "アルバイト",
+      "reading": "アルバイト",
+      "meaning": "side job (～を します：to work part-time)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304240744",
+      "word": "ご主人",
+      "reading": "ご 主人[しゅじん]",
+      "meaning": "(someone else's) husband",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304617028",
+      "word": "夫／主人",
+      "reading": "夫[おっと]／ 主人[しゅじん]",
+      "meaning": "(my) husband",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304659599",
+      "word": "奥さん",
+      "reading": "奥[おく]さん",
+      "meaning": "(someone else's) wife",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304684202",
+      "word": "妻／家内",
+      "reading": "妻[つま]／ 家内[かない]",
+      "meaning": "(my) wife",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304728726",
+      "word": "子ども",
+      "reading": "子[こ]ども",
+      "meaning": "child",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304763390",
+      "word": "だいたい",
+      "reading": "だいたい",
+      "meaning": "mostly, roughly",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304776065",
+      "word": "たくさん",
+      "reading": "たくさん",
+      "meaning": "many, much",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304791529",
+      "word": "少し",
+      "reading": "少[すこ]し",
+      "meaning": "a little, a few",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304853398",
+      "word": "ぜんぜん",
+      "reading": "ぜんぜん",
+      "meaning": "not at all (used with negatives)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304938908",
+      "word": "早く、速く",
+      "reading": "早[はや]く、 速[はや]く",
+      "meaning": "early, quickly, fast",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508304994614",
+      "word": "どうして",
+      "reading": "どうして",
+      "meaning": "why",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508305010923",
+      "word": "貸して ください。",
+      "reading": "貸[か]して ください。",
+      "meaning": "Please lend (it to me).",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508305063648",
+      "word": "いいですよ。",
+      "reading": "いいですよ。",
+      "meaning": "Sure./Certainly.",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508305085134",
+      "word": "ざんねんです［が］",
+      "reading": "ざんねんです［が］",
+      "meaning": "I'm sorry [,but], unfortunately",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508305137614",
+      "word": "ああ",
+      "reading": "ああ",
+      "meaning": "oh",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508305147990",
+      "word": "いっしょに いかがですか。",
+      "reading": "いっしょに いかがですか。",
+      "meaning": "Won't you join me (us)?",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508305174650",
+      "word": "［～は］ ちょっと",
+      "reading": "［~は］ ちょっと",
+      "meaning": "[~] is a bit difficult. (a euphemism used when declining an invitation)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508305217814",
+      "word": "だめですか。",
+      "reading": "だめですか。",
+      "meaning": "So you can't (come)?",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508305370063",
+      "word": "また 今度 お願いします。",
+      "reading": "また 今度[こんど] お 願[ねが]いします。",
+      "meaning": "Please ask me again some other time. (used when refusing an invitation indirectly, considering someone's feelings)",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308299816",
+      "word": "あります",
+      "reading": "あります",
+      "meaning": "to exist, be (referring to inanimate things)",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308330453",
+      "word": "います",
+      "reading": "います",
+      "meaning": "to exist, be (referring to animate things)",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308358054",
+      "word": "いろいろ［な］",
+      "reading": "いろいろ［な］",
+      "meaning": "various",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308386410",
+      "word": "男の 人",
+      "reading": "男[おとこ]の 人[ひと]",
+      "meaning": "man",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308421806",
+      "word": "女の 人",
+      "reading": "女[おんな]の 人[ひと]",
+      "meaning": "woman",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308453752",
+      "word": "男の 子",
+      "reading": "男[おとこ]の 子[こ]",
+      "meaning": "boy",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308481468",
+      "word": "女の 子",
+      "reading": "女[おんな]の 子[こ]",
+      "meaning": "girl",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308509816",
+      "word": "犬",
+      "reading": "犬[いぬ]",
+      "meaning": "dog",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308528722",
+      "word": "猫",
+      "reading": "猫[ねこ]",
+      "meaning": "cat",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308540963",
+      "word": "パンダ",
+      "reading": "パンダ",
+      "meaning": "panda",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308557261",
+      "word": "象",
+      "reading": "象[ぞう]",
+      "meaning": "elephant",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308603742",
+      "word": "木",
+      "reading": "木[き]",
+      "meaning": "tree, wood",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308656056",
+      "word": "物",
+      "reading": "物[もの]",
+      "meaning": "thing",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308679700",
+      "word": "電池",
+      "reading": "電池[でんち]",
+      "meaning": "battery",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308698296",
+      "word": "箱",
+      "reading": "箱[はこ]",
+      "meaning": "box",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308718556",
+      "word": "スイッチ",
+      "reading": "スイッチ",
+      "meaning": "switch",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308746346",
+      "word": "冷蔵庫",
+      "reading": "冷蔵庫[れいぞうこ]",
+      "meaning": "refrigerator",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308781736",
+      "word": "テーブル",
+      "reading": "テーブル",
+      "meaning": "table",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308794048",
+      "word": "ベッド",
+      "reading": "ベッド",
+      "meaning": "bed",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308808460",
+      "word": "棚",
+      "reading": "棚[たな]",
+      "meaning": "shelf",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308827598",
+      "word": "ドア",
+      "reading": "ドア",
+      "meaning": "door",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308843988",
+      "word": "窓",
+      "reading": "窓[まど]",
+      "meaning": "window",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308870526",
+      "word": "ポスト",
+      "reading": "ポスト",
+      "meaning": "postbox, mailbox",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308887940",
+      "word": "ビル",
+      "reading": "ビル",
+      "meaning": "building",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308900042",
+      "word": "ATM",
+      "reading": "ATM",
+      "meaning": "cash machine, ATM (Automatic Teller Machine)",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308923110",
+      "word": "コンビニ",
+      "reading": "コンビニ",
+      "meaning": "convenience store",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308937259",
+      "word": "公園",
+      "reading": "公園[こうえん]",
+      "meaning": "park",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508308957752",
+      "word": "喫茶店",
+      "reading": "喫茶店[きっさてん]",
+      "meaning": "cafe, coffee shop",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309004122",
+      "word": "～屋",
+      "reading": "~ 屋[や]",
+      "meaning": "~ shop, ~ store",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309045032",
+      "word": "乗り場",
+      "reading": "乗り場[のりば]",
+      "meaning": "a fixed place to catch taxis, trains, etc.",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309071074",
+      "word": "県",
+      "reading": "県[けん]",
+      "meaning": "prefecture",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309098880",
+      "word": "上",
+      "reading": "上[うえ]",
+      "meaning": "on, above, over",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309131475",
+      "word": "下",
+      "reading": "下[した]",
+      "meaning": "under, below, beneath",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309152296",
+      "word": "前",
+      "reading": "前[まえ]",
+      "meaning": "front, before",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309171458",
+      "word": "うしろ",
+      "reading": "うしろ",
+      "meaning": "back, behind",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309183468",
+      "word": "右",
+      "reading": "右[みぎ]",
+      "meaning": "right [side]",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309202362",
+      "word": "左",
+      "reading": "左[ひだり]",
+      "meaning": "left [side]",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309215752",
+      "word": "中",
+      "reading": "中[なか]",
+      "meaning": "in, inside",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309233490",
+      "word": "外",
+      "reading": "外[そと]",
+      "meaning": "outside",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309258244",
+      "word": "隣",
+      "reading": "隣[となり]",
+      "meaning": "next, next door",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309278992",
+      "word": "近く",
+      "reading": "近[ちか]く",
+      "meaning": "near, vicinity",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309303365",
+      "word": "間",
+      "reading": "間[あいだ]",
+      "meaning": "between, among",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309323859",
+      "word": "～や ～［など］",
+      "reading": "~や ~［など］",
+      "meaning": "~, ~, and so on",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309351168",
+      "word": "［どうも］ すみません。",
+      "reading": "［どうも］ すみません。",
+      "meaning": "Thank you.",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309378806",
+      "word": "ナンプラー",
+      "reading": "ナンプラー",
+      "meaning": "nam pla (fish sauce)",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309426794",
+      "word": "コーナー",
+      "reading": "コーナー",
+      "meaning": "corner, section",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309450138",
+      "word": "いちばん 下",
+      "reading": "いちばん 下[した]",
+      "meaning": "the bottom",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508309486867",
+      "word": "とうきょう デズニーランド",
+      "reading": "とうきょう デズニーランド",
+      "meaning": "Tokyo Disneyland",
+      "lesson": 10,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508310776660",
+      "word": "います ［子どもが〜］",
+      "reading": "います ［ 子[こ]どもが〜］",
+      "meaning": "to have [a child]",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508310853030",
+      "word": "います［日本に～］",
+      "reading": "います［ 日本[にっほん]に~］",
+      "meaning": "to stay, be [in Japan]",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508310905484",
+      "word": "かかります",
+      "reading": "かかります",
+      "meaning": "to take, cost (referring to time or money)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508310934809",
+      "word": "休みます ［会社を～］",
+      "reading": "休[やす]みます ［ 会社[かいしゃ]を~］",
+      "meaning": "to take a day off [work]",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508310997758",
+      "word": "一つ",
+      "reading": "一[ひと]つ",
+      "meaning": "one (used when counting things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311031420",
+      "word": "二つ",
+      "reading": "二[ふた]つ",
+      "meaning": "two (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311059007",
+      "word": "三つ",
+      "reading": "三[みっ]つ",
+      "meaning": "three (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311080853",
+      "word": "四つ",
+      "reading": "四[よっ]つ",
+      "meaning": "four (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311104534",
+      "word": "五つ",
+      "reading": "五[いつ]つ",
+      "meaning": "five (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311125566",
+      "word": "六つ",
+      "reading": "六[むっ]つ",
+      "meaning": "six (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311143247",
+      "word": "七つ",
+      "reading": "七[なな]つ",
+      "meaning": "seven (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311157594",
+      "word": "八つ",
+      "reading": "八[やっ]つ",
+      "meaning": "eight things",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311177113",
+      "word": "九つ",
+      "reading": "九[ここの]つ",
+      "meaning": "nine (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311194325",
+      "word": "とう",
+      "reading": "とう",
+      "meaning": "ten (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311225235",
+      "word": "いくつ",
+      "reading": "いくつ",
+      "meaning": "how many (things)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311240649",
+      "word": "一人",
+      "reading": "一人[ひとり]",
+      "meaning": "one person",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311262714",
+      "word": "二人",
+      "reading": "二人[ふたり]",
+      "meaning": "two people",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311277463",
+      "word": "ー人",
+      "reading": "ー人[にん]",
+      "meaning": "- people",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311332486",
+      "word": "－台",
+      "reading": "ー台[だい]",
+      "meaning": "counter for machines, cars, etc.",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311372333",
+      "word": "－枚",
+      "reading": "ー枚[まい]",
+      "meaning": "counter for paper, stamps, etc.",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311408610",
+      "word": "－回",
+      "reading": "ー回[かい]",
+      "meaning": "- times",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311438143",
+      "word": "りんご",
+      "reading": "りんご",
+      "meaning": "apple",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311448909",
+      "word": "みかん",
+      "reading": "みかん",
+      "meaning": "mandarin orange",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311460509",
+      "word": "サンドイッチ",
+      "reading": "サンドイッチ",
+      "meaning": "sandwich",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311475583",
+      "word": "かれー［ライス］",
+      "reading": "かれー［ライス］",
+      "meaning": "curry [with rice]",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311499003",
+      "word": "アイスクリーム",
+      "reading": "アイスクリーム",
+      "meaning": "ice cream",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311514871",
+      "word": "切手",
+      "reading": "切手[きって]",
+      "meaning": "postage stamp",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311533139",
+      "word": "はがき",
+      "reading": "はがき",
+      "meaning": "postcard",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311550763",
+      "word": "封筒",
+      "reading": "封筒[ふうとう]",
+      "meaning": "envelope",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311583359",
+      "word": "両親",
+      "reading": "両親[りょうしん]",
+      "meaning": "parents",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311611468",
+      "word": "兄弟",
+      "reading": "兄弟[きょうだい]",
+      "meaning": "brothers and sisters, siblings",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311639831",
+      "word": "兄",
+      "reading": "兄[あに]",
+      "meaning": "(my) elder brother",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311669556",
+      "word": "お兄さん",
+      "reading": "お 兄[にい]さん",
+      "meaning": "(someone else's) elder brother",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311696693",
+      "word": "姉",
+      "reading": "姉[あね]",
+      "meaning": "(my) elder sister",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311721292",
+      "word": "お姉さん",
+      "reading": "お 姉[ねえ]さん",
+      "meaning": "(someone else's) elder sister",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311757175",
+      "word": "弟",
+      "reading": "弟[おとうと]",
+      "meaning": "(my) younger brother",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311780179",
+      "word": "弟さん",
+      "reading": "弟[おとうと]さん",
+      "meaning": "(someone else's) younger brother",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311816771",
+      "word": "妹",
+      "reading": "妹[いもうと]",
+      "meaning": "(my) younger sister",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311836341",
+      "word": "妹さん",
+      "reading": "妹[いもうと]さん",
+      "meaning": "(someone else's) younger sister",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311868667",
+      "word": "外国",
+      "reading": "外国[がいこく]",
+      "meaning": "foreign country",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311891629",
+      "word": "りゅうがくせい",
+      "reading": "りゅうがくせい",
+      "meaning": "foreign student",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311924613",
+      "word": "クラス",
+      "reading": "クラス",
+      "meaning": "class",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311936178",
+      "word": "－時間",
+      "reading": "ー時間[じかん]",
+      "meaning": "- hours(s)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311959595",
+      "word": "ーしゅうかん",
+      "reading": "ーしゅうかん",
+      "meaning": "- week(s)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508311984891",
+      "word": "ーか月",
+      "reading": "ーか 月[げつ]",
+      "meaning": "- month(s)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312008843",
+      "word": "－年",
+      "reading": "ー年[ねん]",
+      "meaning": "- year(s)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312026949",
+      "word": "～ぐらい",
+      "reading": "~ぐらい",
+      "meaning": "about ~",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312045538",
+      "word": "どのくらい",
+      "reading": "どのくらい",
+      "meaning": "how long",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312064687",
+      "word": "全部で",
+      "reading": "全部[ぜんぶ]で",
+      "meaning": "in total",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312086733",
+      "word": "みんな",
+      "reading": "みんな",
+      "meaning": "all, everything, everyone",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312102669",
+      "word": "ーだけ",
+      "reading": "ーだけ",
+      "meaning": "only ~",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312112661",
+      "word": "かしこまりました。",
+      "reading": "かしこまりました。",
+      "meaning": "Certainly, (Sir/Madam).",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312144693",
+      "word": "いい ［お］天気ですね。",
+      "reading": "いい ［お］ 天気[てんき]ですね。",
+      "meaning": "Nice weather, isn't it?",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312216086",
+      "word": "お出かけですか。",
+      "reading": "お 出[で]かけですか。",
+      "meaning": "Are you going out?",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312256143",
+      "word": "ちょっと ～まで。",
+      "reading": "ちょっと ~まで。",
+      "meaning": "I'm just going to ~.",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312282163",
+      "word": "行ってらっしゃい。",
+      "reading": "行[い]ってらっしゃい。",
+      "meaning": "See you later./So long. (lit. Go and come back.)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312324863",
+      "word": "行って きます。",
+      "reading": "行[い]って きます。",
+      "meaning": "See you later./So long. (lit. I'm going and coming back.)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312369332",
+      "word": "船便",
+      "reading": "船便[ふなびん]",
+      "meaning": "sea mail",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312390993",
+      "word": "航空便 （エアマール）",
+      "reading": "航空[こうくう] 便[びん] （エアマール）",
+      "meaning": "airmail",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312427273",
+      "word": "お願いします。",
+      "reading": "お 願[ねが]いします。",
+      "meaning": "Please. (lit. ask for a favor)",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312463584",
+      "word": "オーストラリア",
+      "reading": "オーストラリア",
+      "meaning": "Australia",
+      "lesson": 11,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312512481",
+      "word": "簡単［な］",
+      "reading": "簡単[かんたん]［な］",
+      "meaning": "easy, simple",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312664785",
+      "word": "近い",
+      "reading": "近[ちか]い",
+      "meaning": "near",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312682371",
+      "word": "遠い",
+      "reading": "遠[とお]い",
+      "meaning": "far",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312705868",
+      "word": "早い、速い",
+      "reading": "早[はや]い、 速[はや]い",
+      "meaning": "fast, early",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312734064",
+      "word": "遅い",
+      "reading": "遅[おそ]い",
+      "meaning": "slow, late",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312752715",
+      "word": "多い ［人が～］",
+      "reading": "多[おお]い ［ 人[ひと]が~］",
+      "meaning": "many [people], much",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312804934",
+      "word": "少ない［人が～］",
+      "reading": "少[すく]ない［ 人[ひと]が~］",
+      "meaning": "few [people], a little",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312867452",
+      "word": "暖かい、温かい",
+      "reading": "暖[あたた]かい、 温[あたた]かい",
+      "meaning": "warm",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312890618",
+      "word": "涼しい",
+      "reading": "涼[すず]しい",
+      "meaning": "cool",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312912361",
+      "word": "甘い",
+      "reading": "甘[あま]い",
+      "meaning": "sweet",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312925383",
+      "word": "辛い",
+      "reading": "辛[から]い",
+      "meaning": "hot (taste), spicy",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312941748",
+      "word": "重い",
+      "reading": "重[おも]い",
+      "meaning": "heavy",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312977047",
+      "word": "軽い",
+      "reading": "軽[かる]い",
+      "meaning": "light",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508312991168",
+      "word": "いい［コーヒーが～］",
+      "reading": "いい［コーヒーが~］",
+      "meaning": "prefer [coffee]",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313018596",
+      "word": "季節",
+      "reading": "季節[きせつ]",
+      "meaning": "season",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313039150",
+      "word": "春",
+      "reading": "春[はる]",
+      "meaning": "spring",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313063930",
+      "word": "夏",
+      "reading": "夏[なつ]",
+      "meaning": "summer",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313089471",
+      "word": "秋",
+      "reading": "秋[あき]",
+      "meaning": "autumn, fall",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313110638",
+      "word": "冬",
+      "reading": "冬[ふゆ]",
+      "meaning": "winter",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313126810",
+      "word": "天気",
+      "reading": "天気[てんき]",
+      "meaning": "weather",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313150404",
+      "word": "雨",
+      "reading": "雨[あめ]",
+      "meaning": "rain, rainy",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313181308",
+      "word": "雪",
+      "reading": "雪[ゆき]",
+      "meaning": "snow, snowy",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313200421",
+      "word": "曇り",
+      "reading": "曇[くも]り",
+      "meaning": "cloudy",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313215484",
+      "word": "ホテル",
+      "reading": "ホテル",
+      "meaning": "hotel",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313238500",
+      "word": "空港",
+      "reading": "空港[くうこう]",
+      "meaning": "airport",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313258720",
+      "word": "海",
+      "reading": "海[うみ]",
+      "meaning": "sea, ocean",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313281792",
+      "word": "世界",
+      "reading": "世界[せかい]",
+      "meaning": "world",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313295868",
+      "word": "パーティー",
+      "reading": "パーティー",
+      "meaning": "party (～を します：to give a party)",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313322448",
+      "word": "［お］祭り",
+      "reading": "［お］ 祭[まつ]り",
+      "meaning": "festival",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313364500",
+      "word": "すき焼き",
+      "reading": "すき 焼[や]き",
+      "meaning": "sukiyaki (beef and vegetable hot pot)",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313393056",
+      "word": "刺身",
+      "reading": "刺身[さしみ]",
+      "meaning": "sashimi (sliced raw fish)",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313415698",
+      "word": "［お］すし",
+      "reading": "［お］すし",
+      "meaning": "sushi (vinegared rice topped with raw rish)",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313467244",
+      "word": "てんぷら",
+      "reading": "てんぷら",
+      "meaning": "tempura (seafood and vegetables deep fried in batter)",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313491652",
+      "word": "豚肉",
+      "reading": "豚肉[ぶたにく]",
+      "meaning": "pork",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313519695",
+      "word": "鶏肉",
+      "reading": "鶏肉[けいにく]",
+      "meaning": "chicken",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313550828",
+      "word": "牛肉",
+      "reading": "牛肉[ぎゅうにく]",
+      "meaning": "beef",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313576123",
+      "word": "レモン",
+      "reading": "レモン",
+      "meaning": "lemon",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313588869",
+      "word": "生け花",
+      "reading": "生け花[いけばな]",
+      "meaning": "flower arrangement (～を します：to practice flower arrangement)",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313638419",
+      "word": "紅葉",
+      "reading": "紅葉[もみじ]",
+      "meaning": "maple, red leaves of autumn",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313675771",
+      "word": "どちらも",
+      "reading": "どちらも",
+      "meaning": "both",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313687803",
+      "word": "いちばん",
+      "reading": "いちばん",
+      "meaning": "the most",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313698880",
+      "word": "ずっと",
+      "reading": "ずっと",
+      "meaning": "by far",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313720534",
+      "word": "初めて",
+      "reading": "初[はじ]めて",
+      "meaning": "for the first time",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313738360",
+      "word": "ただいま。",
+      "reading": "ただいま。",
+      "meaning": "I'm home.",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313757110",
+      "word": "お帰りなさい。",
+      "reading": "お 帰[かえ]りなさい。",
+      "meaning": "Welcome home.",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313781154",
+      "word": "わあ、すごい ひとですね。",
+      "reading": "わあ、すごい ひとですね。",
+      "meaning": "Wow! Look at all those people!",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313816368",
+      "word": "疲れました。",
+      "reading": "疲[つか]れました。",
+      "meaning": "I'm tired",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313841886",
+      "word": "祇園祭",
+      "reading": "祇園祭[ぎおんまつり]",
+      "meaning": "the Gion Festival (the most famous festival in Kyoto)",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313875950",
+      "word": "ホンコン （香港）",
+      "reading": "ホンコン （ 香港[ほんこん]）",
+      "meaning": "Hong Kong",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313903890",
+      "word": "シンガポール",
+      "reading": "シンガポール",
+      "meaning": "Singapore",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313958219",
+      "word": "遊びます",
+      "reading": "遊[あそ]びます",
+      "meaning": "to enjoy oneself, play",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313979089",
+      "word": "泳ぎます",
+      "reading": "泳[およ]ぎます",
+      "meaning": "to swim",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508313996276",
+      "word": "迎えます",
+      "reading": "迎[むか]えます",
+      "meaning": "to go to meet, welcome",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508314013636",
+      "word": "つかれます",
+      "reading": "つかれます",
+      "meaning": "to get tired (when expressing the condition of being tired, つかれました is used)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508314054534",
+      "word": "結婚します",
+      "reading": "結婚[けっこん]します",
+      "meaning": "to marry, get married",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508314080210",
+      "word": "買い物します",
+      "reading": "買い物[かいもの]します",
+      "meaning": "to do shopping",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508314106806",
+      "word": "食事します",
+      "reading": "食事[しょくじ]します",
+      "meaning": "to have a meal, dine",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508314127082",
+      "word": "散歩します ［公園を～］",
+      "reading": "散歩[さんぽ]します ［ 公園[こうえん]を~］",
+      "meaning": "to take a walk [in a park]",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508314178787",
+      "word": "大変［な］",
+      "reading": "大変[たいへん]［な］",
+      "meaning": "hard, tough, severe, awful",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316150222",
+      "word": "欲しい",
+      "reading": "欲[ほ]しい",
+      "meaning": "want (something)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316171614",
+      "word": "広い",
+      "reading": "広[ひろ]い",
+      "meaning": "wide, spacious",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316201422",
+      "word": "狭い",
+      "reading": "狭[せま]い",
+      "meaning": "narrow, small (room, etc.)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316222999",
+      "word": "プール",
+      "reading": "プール",
+      "meaning": "swimming pool",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316234367",
+      "word": "川",
+      "reading": "川[かわ]",
+      "meaning": "river",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316251343",
+      "word": "美術",
+      "reading": "美術[びじゅつ]",
+      "meaning": "fine arts",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316272823",
+      "word": "釣り",
+      "reading": "釣[つ]り",
+      "meaning": "fishing (～を します：to fish, anble)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316309446",
+      "word": "スキー",
+      "reading": "スキー",
+      "meaning": "skiing (～を します：to ski)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316336672",
+      "word": "週末",
+      "reading": "週末[しゅうまつ]",
+      "meaning": "weekend",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316357801",
+      "word": "［お］正月",
+      "reading": "［お］ 正月[しょうがつ]",
+      "meaning": "New Year's Day",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316403861",
+      "word": "～ごろ",
+      "reading": "~ごろ",
+      "meaning": "about ~ (time)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316417977",
+      "word": "何か",
+      "reading": "何[なに]か",
+      "meaning": "something",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316432039",
+      "word": "どこか",
+      "reading": "どこか",
+      "meaning": "somewhere, some place",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316445935",
+      "word": "のどが かわきます",
+      "reading": "のどが かわきます",
+      "meaning": "to get thirsty (when expressing the condition of being thirsty, のどが かわきました is used)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316502062",
+      "word": "おなかが すきます",
+      "reading": "おなかが すきます",
+      "meaning": "to get hungry (when expressing the condition of being hungry, おなかが すきました is used)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316546377",
+      "word": "そう しましょう。",
+      "reading": "そう しましょう。",
+      "meaning": "Let's do that. (used when agreeing with someone's suggestion)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316572526",
+      "word": "ご 注 もんは？",
+      "reading": "ご 注[ちゅう] もんは？",
+      "meaning": "May I take your order?",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316643029",
+      "word": "定食",
+      "reading": "定食[ていしょく]",
+      "meaning": "set meal, table d'hote",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316669306",
+      "word": "牛どん",
+      "reading": "牛[ぎゅう]どん",
+      "meaning": "bowl of rice topped with beef",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316705609",
+      "word": "［少々］お待ちください",
+      "reading": "［ 少々[しょうしょう]］お 待[ま]ちください",
+      "meaning": "Please wait [a moment]. (polite equivalent of です)",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316778210",
+      "word": "別々に",
+      "reading": "別々[べつべつ]に",
+      "meaning": "separately",
+      "lesson": 13,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316822126",
+      "word": "つけます",
+      "reading": "つけます",
+      "meaning": "to turn on",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316885415",
+      "word": "消します",
+      "reading": "消[け]します",
+      "meaning": "to turn off",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316900003",
+      "word": "開けます",
+      "reading": "開[あ]けます",
+      "meaning": "to open",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316915587",
+      "word": "閉めます",
+      "reading": "閉[し]めます",
+      "meaning": "to close, shut",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316932563",
+      "word": "急ぎます",
+      "reading": "急[いそ]ぎます",
+      "meaning": "to hurry",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316953405",
+      "word": "待ちます",
+      "reading": "待[ま]ちます",
+      "meaning": "to wait",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316973280",
+      "word": "持ちます",
+      "reading": "持[も]ちます",
+      "meaning": "to hold",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508316988630",
+      "word": "取ります",
+      "reading": "取[と]ります",
+      "meaning": "to take, pass",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317010820",
+      "word": "手伝います",
+      "reading": "手伝[てつだ]います",
+      "meaning": "To help (with a task)",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317029683",
+      "word": "呼びます",
+      "reading": "呼[よ]びます",
+      "meaning": "To call",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317043746",
+      "word": "話します",
+      "reading": "話[はな]します",
+      "meaning": "to speak, talk",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317060358",
+      "word": "使います",
+      "reading": "使[つか]います",
+      "meaning": "To use",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317098154",
+      "word": "止めます",
+      "reading": "止[と]めます",
+      "meaning": "to stop, park",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317115745",
+      "word": "見せます",
+      "reading": "見[み]せます",
+      "meaning": "to show",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317134427",
+      "word": "教えます ［住所を～］",
+      "reading": "教[おし]えます ［ 住所[じゅうしょ]を~］",
+      "meaning": "to tell [an address]",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317207698",
+      "word": "座ります",
+      "reading": "座[すわ]ります",
+      "meaning": "to sit down",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317236527",
+      "word": "立ちます",
+      "reading": "立[た]ちます",
+      "meaning": "To stand up",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317256272",
+      "word": "入ります ［喫茶店に～］",
+      "reading": "入[はい]ります ［ 喫茶店[きっさてん]に~］",
+      "meaning": "to enter [a cafe]",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317330403",
+      "word": "出ます［喫茶店を～］",
+      "reading": "出[で]ます［ 喫茶店[きっさてん]を~］",
+      "meaning": "to go out [of a cafe]",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317389265",
+      "word": "降ります［雨が～］",
+      "reading": "降[ふり]ります［ 雨[あめ]が~］",
+      "meaning": "to rain",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317436042",
+      "word": "コピーします",
+      "reading": "コピーします",
+      "meaning": "to copy",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317454563",
+      "word": "電気",
+      "reading": "電気[でんき]",
+      "meaning": "electricity, light",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317473678",
+      "word": "エアコン",
+      "reading": "エアコン",
+      "meaning": "air conditioner",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317486942",
+      "word": "パスポート",
+      "reading": "パスポート",
+      "meaning": "passport",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317501990",
+      "word": "名前",
+      "reading": "名前[なまえ]",
+      "meaning": "name",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317516192",
+      "word": "住所",
+      "reading": "住所[じゅうしょ]",
+      "meaning": "address",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317533498",
+      "word": "地図",
+      "reading": "地図[ちず]",
+      "meaning": "map",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317550330",
+      "word": "塩",
+      "reading": "塩[しお]",
+      "meaning": "salt",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317574012",
+      "word": "砂糖",
+      "reading": "砂糖[さとう]",
+      "meaning": "sugar",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508317600250",
+      "word": "問題",
+      "reading": "問題[もんだい]",
+      "meaning": "question, problem, trouble",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318184747",
+      "word": "答え",
+      "reading": "答[こた]え",
+      "meaning": "answer",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318208186",
+      "word": "読み方",
+      "reading": "読み方[よみかた]",
+      "meaning": "how to read, way of reading",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318232139",
+      "word": "～方",
+      "reading": "~ 方[かた]",
+      "meaning": "how to ~, way of ~ing",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318259752",
+      "word": "まっすぐ",
+      "reading": "まっすぐ",
+      "meaning": "straight",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318281916",
+      "word": "ゆっくり",
+      "reading": "ゆっくり",
+      "meaning": "slowly, leisurely",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318301086",
+      "word": "すぐ",
+      "reading": "すぐ",
+      "meaning": "immediately",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318312874",
+      "word": "また",
+      "reading": "また",
+      "meaning": "again",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318321850",
+      "word": "あとで",
+      "reading": "あとで",
+      "meaning": "later",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318333577",
+      "word": "もう 少し",
+      "reading": "もう 少[すこ]し",
+      "meaning": "a little more",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318362235",
+      "word": "もう ～",
+      "reading": "もう ~",
+      "meaning": "~ more, another ~",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318383212",
+      "word": "さあ",
+      "reading": "さあ",
+      "meaning": "right (used when encouraging some course of action)",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318402485",
+      "word": "あれ？",
+      "reading": "あれ？",
+      "meaning": "Oh! Eh? (in surprise or wonder)",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318422362",
+      "word": "信号を 右へ 曲がって ください。",
+      "reading": "信号[しんごう]を 右[みぎ]へ 曲[ま]がって ください。",
+      "meaning": "Turn right at the traffic lights.",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318488377",
+      "word": "これで お願いします。",
+      "reading": "これで お 願[ねが]いします。",
+      "meaning": "I'd like to pay with this.",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508318519877",
+      "word": "お釣り",
+      "reading": "お 釣[つ]り",
+      "meaning": "change",
+      "lesson": 14,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335584426",
+      "word": "置きます",
+      "reading": "置[お]きます",
+      "meaning": "to put",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335612198",
+      "word": "作ります、造ります",
+      "reading": "作[つく]ります、 造[つく]ります",
+      "meaning": "to make, produce",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335648897",
+      "word": "売ります",
+      "reading": "売[う]ります",
+      "meaning": "to sell",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335666502",
+      "word": "知ります",
+      "reading": "知[し]ります",
+      "meaning": "to get to know",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335688083",
+      "word": "済みます",
+      "reading": "済[す]みます",
+      "meaning": "to live, dwell, reside, etc.",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335707433",
+      "word": "研究します",
+      "reading": "研究[けんきゅう]します",
+      "meaning": "to do research",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335734055",
+      "word": "資料",
+      "reading": "資料[しりょう]",
+      "meaning": "materials, data",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335773942",
+      "word": "カタログ",
+      "reading": "カタログ",
+      "meaning": "catalogue",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335788045",
+      "word": "時刻表",
+      "reading": "時刻[じこく] 表[ひょう]",
+      "meaning": "timetable",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335820671",
+      "word": "服",
+      "reading": "服[ふく]",
+      "meaning": "clothes",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335876948",
+      "word": "製品",
+      "reading": "製品[せいひん]",
+      "meaning": "products",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335896306",
+      "word": "ソフト",
+      "reading": "ソフト",
+      "meaning": "software",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335908865",
+      "word": "電子辞書",
+      "reading": "電子[でんし] 辞書[じしょ]",
+      "meaning": "electric dictionary",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335933183",
+      "word": "経済",
+      "reading": "経済[けいざい]",
+      "meaning": "economy",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508335956055",
+      "word": "市役所",
+      "reading": "市役所[しやくしょ]",
+      "meaning": "municipal office, city hall",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508336001620",
+      "word": "高校",
+      "reading": "高校[こうこう]",
+      "meaning": "senior high school",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508336024515",
+      "word": "歯医者",
+      "reading": "歯医者[はいしゃ]",
+      "meaning": "dentist, dentist's",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508336053881",
+      "word": "独身",
+      "reading": "独身[どくしん]",
+      "meaning": "single, unmarried",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508336091832",
+      "word": "すみません",
+      "reading": "すみません",
+      "meaning": "I'm sorry.",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508336105386",
+      "word": "みなさん",
+      "reading": "みなさん",
+      "meaning": "Ladies and Gentlemen, everybody",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508336124673",
+      "word": "思い出します",
+      "reading": "思い出[おもいだ]します",
+      "meaning": "to remember, recollect",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1508336157916",
+      "word": "いらっしゃいます",
+      "reading": "いらっしゃいます",
+      "meaning": "to be (honorific equivalent of います)",
+      "lesson": 15,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510042809557",
+      "word": "乗ります ［電車に～］",
+      "reading": "乗[の]ります ［ 電車[でんしゃ]に~］",
+      "meaning": "to ride, get on [a train]",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510042917861",
+      "word": "降ります ［電車を～］",
+      "reading": "降[お]ります ［ 電車[でんしゃ]を~］",
+      "meaning": "to get off [a train]",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043000548",
+      "word": "乗り換えます",
+      "reading": "乗り換[のりか]えます",
+      "meaning": "to change (train, etc.)",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043032748",
+      "word": "あびます ［シャワーを～］",
+      "reading": "あびます ［シャワーを~］",
+      "meaning": "to take [a shower]",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043093723",
+      "word": "入れます",
+      "reading": "入[い]れます",
+      "meaning": "to put in, insert",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043120276",
+      "word": "出します",
+      "reading": "出[だ]します",
+      "meaning": "to take out, hand in, send",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043156100",
+      "word": "おろします ［お金を～］",
+      "reading": "おろします ［お 金[かね]を~］",
+      "meaning": "to withdraw",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043218861",
+      "word": "入ります ［大学に～］",
+      "reading": "入[はい]ります ［ 大学[だいがく]に~］",
+      "meaning": "to enter [university]",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043281364",
+      "word": "出ます ［大学を～］",
+      "reading": "出[で]ます ［ 大学[だいがく]を~］",
+      "meaning": "to graduate from [university]",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043336051",
+      "word": "押します",
+      "reading": "押[お]します",
+      "meaning": "to push, press",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043381779",
+      "word": "始めます",
+      "reading": "始[はじ]めます",
+      "meaning": "to start, begin",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043409635",
+      "word": "見学します",
+      "reading": "見学[けんがく]します",
+      "meaning": "to tour, visit a place to study it",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043478276",
+      "word": "電話します",
+      "reading": "電話[でんわ]します",
+      "meaning": "to phone",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043500411",
+      "word": "若い",
+      "reading": "若[わか]い",
+      "meaning": "young",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043518115",
+      "word": "長い",
+      "reading": "長[なが]い",
+      "meaning": "long",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043534424",
+      "word": "短い",
+      "reading": "短[みじか]い",
+      "meaning": "short",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043626243",
+      "word": "明るい",
+      "reading": "明[あか]るい",
+      "meaning": "bright, light",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043648219",
+      "word": "暗い",
+      "reading": "暗[くら]い",
+      "meaning": "dark",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043665620",
+      "word": "体",
+      "reading": "体[からだ]",
+      "meaning": "body, health",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043743580",
+      "word": "頭",
+      "reading": "頭[あたま]",
+      "meaning": "head, brain",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043767740",
+      "word": "髪",
+      "reading": "髪[かみ]",
+      "meaning": "hair",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043788650",
+      "word": "顔",
+      "reading": "顔[かお]",
+      "meaning": "face",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043808212",
+      "word": "目",
+      "reading": "目[め]",
+      "meaning": "eye",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043830244",
+      "word": "耳",
+      "reading": "耳[みみ]",
+      "meaning": "ear",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043848070",
+      "word": "鼻",
+      "reading": "鼻[はな]",
+      "meaning": "nose",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043903404",
+      "word": "口",
+      "reading": "口[くち]",
+      "meaning": "mouth",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043924364",
+      "word": "歯",
+      "reading": "歯[は]",
+      "meaning": "tooth",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043947115",
+      "word": "おなか",
+      "reading": "おなか",
+      "meaning": "stomach",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043969003",
+      "word": "足",
+      "reading": "足[あし]",
+      "meaning": "leg, foot",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510043998635",
+      "word": "脊",
+      "reading": "脊",
+      "meaning": "height",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044032644",
+      "word": "サービス",
+      "reading": "サービス",
+      "meaning": "service",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044046692",
+      "word": "ジョギング",
+      "reading": "ジョギング",
+      "meaning": "jogging (~を します：to jog)",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044090059",
+      "word": "シャワー",
+      "reading": "シャワー",
+      "meaning": "shower",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044101907",
+      "word": "緑",
+      "reading": "緑[みどり]",
+      "meaning": "green, greenery",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044124883",
+      "word": "［お］寺",
+      "reading": "［お］ 寺[てら]",
+      "meaning": "Buddhist temple",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044170869",
+      "word": "神社",
+      "reading": "神社[じんじゃ]",
+      "meaning": "Shinto shrine",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044202155",
+      "word": "－番",
+      "reading": "番[ばん]",
+      "meaning": "number -",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044234203",
+      "word": "どうやって",
+      "reading": "どうやって",
+      "meaning": "in what way, how",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044253396",
+      "word": "どの～",
+      "reading": "どの~",
+      "meaning": "which ~ (used for three or more)",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044273860",
+      "word": "どれ",
+      "reading": "どれ",
+      "meaning": "which one (of three or more things)",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044296347",
+      "word": "すごいですね。",
+      "reading": "すごいですね。",
+      "meaning": "That's amazing!",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044326076",
+      "word": "［いいえ、］ まだまだです。",
+      "reading": "［いいえ、］ まだまだです。",
+      "meaning": "[No,] I still have a long way to go.",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044363507",
+      "word": "おひきだしですか。",
+      "reading": "おひきだしですか。",
+      "meaning": "Are you making a withdrawal?",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044392029",
+      "word": "まず",
+      "reading": "まず",
+      "meaning": "first of all",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044407637",
+      "word": "つぎに",
+      "reading": "つぎに",
+      "meaning": "next, as a next step",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044427059",
+      "word": "キャッシュカード",
+      "reading": "キャッシュカード",
+      "meaning": "cash dispensing card",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044464084",
+      "word": "安保番号",
+      "reading": "安保[あんぽ] 番号[ばんごう]",
+      "meaning": "personal identification number, PIN",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044511295",
+      "word": "金額",
+      "reading": "金額[きんがく]",
+      "meaning": "amount of money",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044535844",
+      "word": "確認",
+      "reading": "確認[かくにん]",
+      "meaning": "confirmation (～します：to confirm)",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044575996",
+      "word": "ボタン",
+      "reading": "ボタン",
+      "meaning": "button",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044592748",
+      "word": "雪祭り",
+      "reading": "雪[ゆき] 祭[まつ]り",
+      "meaning": "Snow Festival",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044623260",
+      "word": "バンドン",
+      "reading": "バンドン",
+      "meaning": "Bandung (in Indonesia)",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044646571",
+      "word": "フランケン",
+      "reading": "フランケン",
+      "meaning": "Franken (in Germany)",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510044667957",
+      "word": "ベラクルス",
+      "reading": "ベラクルス",
+      "meaning": "Veracruz (in Mexico)",
+      "lesson": 16,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122389570",
+      "word": "覚えます",
+      "reading": "覚[おぼ]えます",
+      "meaning": "to memorize",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122416426",
+      "word": "忘れます",
+      "reading": "忘[わす]れます",
+      "meaning": "to forget",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122433153",
+      "word": "なくします",
+      "reading": "なくします",
+      "meaning": "to lose",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122450304",
+      "word": "払います",
+      "reading": "払[はら]います",
+      "meaning": "to pay",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122469479",
+      "word": "返します",
+      "reading": "返[かえ]します",
+      "meaning": "to give back, return",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122491640",
+      "word": "出かけます",
+      "reading": "出[で]かけます",
+      "meaning": "to go out",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122510697",
+      "word": "脱ぎます",
+      "reading": "脱[ぬ]ぎます",
+      "meaning": "to take off (clothes, shoes, etc.)",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122537300",
+      "word": "持って 行きます",
+      "reading": "持[も]って 行[い]きます",
+      "meaning": "to take (something)",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122623144",
+      "word": "持って 来ます",
+      "reading": "持[も]って 来[き]ます",
+      "meaning": "to bring (something)",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122652976",
+      "word": "心配します",
+      "reading": "心配[しんぱい]します",
+      "meaning": "to worry",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122690248",
+      "word": "残業します",
+      "reading": "残業[ざんぎょう]します",
+      "meaning": "to work overtime",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122743712",
+      "word": "出張します",
+      "reading": "出張[しゅっちょう]します",
+      "meaning": "to go on a business trip",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122783984",
+      "word": "飲みます ［薬を〜］",
+      "reading": "飲[の]みます ［ 薬[くすり]を〜］",
+      "meaning": "to take [medicine] (literally to drink medicine)",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122840578",
+      "word": "入ります ［おふろに〜］",
+      "reading": "入[はい]ります ［おふろに〜］",
+      "meaning": "to take [a bath]",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122892265",
+      "word": "大切［な］",
+      "reading": "大切[たいせつ]［な］",
+      "meaning": "important, precious",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122932216",
+      "word": "大丈夫［な］",
+      "reading": "大丈夫[だいじょうぶ]［な］",
+      "meaning": "all right",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122962041",
+      "word": "危ない",
+      "reading": "危[あぶ]ない",
+      "meaning": "dangerous",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510122984431",
+      "word": "禁煙",
+      "reading": "禁煙[きんえん]",
+      "meaning": "no smoking",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123013504",
+      "word": "［健康］ 保険証",
+      "reading": "［ 健康[けんこう]］ 保険[ほけん] 証[しょう]",
+      "meaning": "[health] insurance card",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123072632",
+      "word": "熱",
+      "reading": "熱[ねつ]",
+      "meaning": "temperature, fever",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123095816",
+      "word": "病気",
+      "reading": "病気[びょうき]",
+      "meaning": "illness, disease",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123117881",
+      "word": "薬",
+      "reading": "薬[くすり]",
+      "meaning": "medicine",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123138336",
+      "word": "［お］ふろ",
+      "reading": "［お］ふろ",
+      "meaning": "bath",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123189508",
+      "word": "上着",
+      "reading": "上着[うわぎ]",
+      "meaning": "jacket, outerwear",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123211975",
+      "word": "下着",
+      "reading": "下着[したぎ]",
+      "meaning": "underwear",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123231441",
+      "word": "２，３ 日",
+      "reading": "２，３ 日[にち]",
+      "meaning": "two or three days",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123266848",
+      "word": "２，３～",
+      "reading": "２，３~",
+      "meaning": "two or three ~ (where ~ is a counter suffix)",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123288745",
+      "word": "～までに",
+      "reading": "~までに",
+      "meaning": "before ~, by ~ (indicating time limit)",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123312136",
+      "word": "ですから",
+      "reading": "ですから",
+      "meaning": "therefore, so",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123322832",
+      "word": "どう しましたか。",
+      "reading": "どう しましたか。",
+      "meaning": "What's the matter?",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123348367",
+      "word": "のど",
+      "reading": "のど",
+      "meaning": "throat",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123359816",
+      "word": "［～が］ 痛いです。",
+      "reading": "［~が］ 痛[いた]いです。",
+      "meaning": "(I) have a pain [in my ~].",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123428872",
+      "word": "かぜ",
+      "reading": "かぜ",
+      "meaning": "cold, flu",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510123456487",
+      "word": "お大事に。",
+      "reading": "お 大事[だいじ]に。",
+      "meaning": "Take care of yourself. (said to people who are ill)",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656185268",
+      "word": "できます",
+      "reading": "できます",
+      "meaning": "to be able to, can",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656299073",
+      "word": "洗います",
+      "reading": "洗[あら]います",
+      "meaning": "to wash",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656323150",
+      "word": "弾きます",
+      "reading": "弾[ひ]きます",
+      "meaning": "to play (stringed instrument, piano, etc.)",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656354548",
+      "word": "歌います",
+      "reading": "歌[うた]います",
+      "meaning": "to sing",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656376384",
+      "word": "集めます",
+      "reading": "集[あつ]めます",
+      "meaning": "to collect, gather",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656411630",
+      "word": "捨てます",
+      "reading": "捨[す]てます",
+      "meaning": "to throw away",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656437069",
+      "word": "換えます",
+      "reading": "換[か]えます",
+      "meaning": "to exchange, change",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656458874",
+      "word": "運転します",
+      "reading": "運転[うんてん]します",
+      "meaning": "to drive",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656495242",
+      "word": "予約します",
+      "reading": "予約[よやく]します",
+      "meaning": "to reserve, book",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656521173",
+      "word": "ピアノ",
+      "reading": "ピアノ",
+      "meaning": "piano",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656532415",
+      "word": "メートル",
+      "reading": "メートル",
+      "meaning": "meter",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656559356",
+      "word": "現金",
+      "reading": "現金[げんきん]",
+      "meaning": "cash",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656587440",
+      "word": "趣味",
+      "reading": "趣味[しゅみ]",
+      "meaning": "hobby",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656607088",
+      "word": "日記",
+      "reading": "日記[にっき]",
+      "meaning": "diary",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656628767",
+      "word": "お祈り",
+      "reading": "お 祈[いの]り",
+      "meaning": "prayer (～を します：to pray)",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656682397",
+      "word": "課長",
+      "reading": "課長[かちょう]",
+      "meaning": "section head",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656708603",
+      "word": "部長",
+      "reading": "部長[ぶちょう]",
+      "meaning": "department head",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656731433",
+      "word": "社長",
+      "reading": "社長[しゃちょう]",
+      "meaning": "company president",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656755261",
+      "word": "動物",
+      "reading": "動物[どうぶつ]",
+      "meaning": "animal",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656924524",
+      "word": "馬",
+      "reading": "馬[うま]",
+      "meaning": "horse",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656946702",
+      "word": "インターネット",
+      "reading": "インターネット",
+      "meaning": "the Internet",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510656960982",
+      "word": "特に",
+      "reading": "特[とく]に",
+      "meaning": "especially",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510657021747",
+      "word": "へえ",
+      "reading": "へえ",
+      "meaning": "What! Really! (used when expressing surprise)",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510657044777",
+      "word": "それは おもしろいですね。",
+      "reading": "それは おもしろいですね。",
+      "meaning": "That's interesting, isn't it?",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510657087587",
+      "word": "なかなか",
+      "reading": "なかなか",
+      "meaning": "not easily (used with negatives)",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510657106555",
+      "word": "ほんとうですか。",
+      "reading": "ほんとうですか。",
+      "meaning": "Really?",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510657124187",
+      "word": "ぜひ",
+      "reading": "ぜひ",
+      "meaning": "by all means, really",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1510657141980",
+      "word": "故郷",
+      "reading": "故郷[ふるさと]",
+      "meaning": "Furusato (a song title meaning 'Home Town')",
+      "lesson": 18,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156091789",
+      "word": "登ります、上ります",
+      "reading": "登[のぼ]ります、 上[のぼ]ります",
+      "meaning": "to climb, go up",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156184869",
+      "word": "泊まります［ホテルに～］",
+      "reading": "泊[と]まります［ホテルに~］",
+      "meaning": "to stay [at a hotel]",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156239872",
+      "word": "掃除します",
+      "reading": "掃除[そうじ]します",
+      "meaning": "to clean (a room)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156312146",
+      "word": "洗濯します",
+      "reading": "洗濯[せんたく]します",
+      "meaning": "to wash (clothes)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156449314",
+      "word": "なります",
+      "reading": "なります",
+      "meaning": "to become",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156476059",
+      "word": "眠い",
+      "reading": "眠[ねむ]い",
+      "meaning": "sleepy",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156513539",
+      "word": "強い",
+      "reading": "強[つよ]い",
+      "meaning": "strong",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156529584",
+      "word": "弱い",
+      "reading": "弱[よわ]い",
+      "meaning": "weak",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156552495",
+      "word": "練習",
+      "reading": "練習[れんしゅう]",
+      "meaning": "practice (~[を] します: to practice)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156663178",
+      "word": "ゴルフ",
+      "reading": "ゴルフ",
+      "meaning": "golf (~を します: to play golf)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156719760",
+      "word": "相撲",
+      "reading": "相撲[すもう]",
+      "meaning": "sumo wrestling (～を します: to wrestle)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156789137",
+      "word": "日",
+      "reading": "日[ひ]",
+      "meaning": "day, date",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156810186",
+      "word": "調子",
+      "reading": "調子[ちょうし]",
+      "meaning": "condition",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156840892",
+      "word": "一度",
+      "reading": "一度[いちど]",
+      "meaning": "once",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525156859344",
+      "word": "一度も",
+      "reading": "一度[いちで]も",
+      "meaning": "not once, never (used with negatives)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157001811",
+      "word": "だんだん",
+      "reading": "だんだん",
+      "meaning": "gradually",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157039449",
+      "word": "もうすぐ",
+      "reading": "もうすぐ",
+      "meaning": "soon",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157190546",
+      "word": "おかげさまで",
+      "reading": "おかげさまで",
+      "meaning": "Thank you. (used when expressing gratitude for help received)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157229022",
+      "word": "でも",
+      "reading": "でも",
+      "meaning": "but",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157263623",
+      "word": "かんぱい",
+      "reading": "かんぱい",
+      "meaning": "Cheers!",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157287308",
+      "word": "ダイエット",
+      "reading": "ダイエット",
+      "meaning": "diet (～を します: to go on a diet)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157357315",
+      "word": "無理［な］",
+      "reading": "無理[むり]［な］",
+      "meaning": "excessive, impossible",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157429854",
+      "word": "体に いい",
+      "reading": "体[からだ]に いい",
+      "meaning": "good for one's health",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157622828",
+      "word": "葛飾北斉 (FIX)",
+      "reading": "葛飾[かつしか] 北[きた] 斉[ひとし]",
+      "meaning": "a famous Edo-period woodblock artist and painter (1760-1849)",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525157938395",
+      "word": "要ります［ビザが～］",
+      "reading": "要[い]ります［ビザが~］",
+      "meaning": "to need, require [a visa]",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158206920",
+      "word": "調べます",
+      "reading": "調[しら]べます",
+      "meaning": "to check, investigate",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158244264",
+      "word": "修理します",
+      "reading": "修理[しゅうり]します",
+      "meaning": "to repair",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158293082",
+      "word": "僕",
+      "reading": "僕[ぼく]",
+      "meaning": "I (an informal equivalent of わたし used by men)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158348812",
+      "word": "君",
+      "reading": "君[きみ]",
+      "meaning": "you (an informal equivalent of あなた used to address people of equal or lower status)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158392649",
+      "word": "～君",
+      "reading": "~ 君[くん]",
+      "meaning": "Mr. (an informal equivalent of ～さん used to address people of equal or lower status; also often appended to boys' names)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158477142",
+      "word": "うん",
+      "reading": "うん",
+      "meaning": "yes (an informal equivalent of はい)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158509821",
+      "word": "ううん",
+      "reading": "ううん",
+      "meaning": "no (an informal equivalent of いいえ)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158532180",
+      "word": "ことば",
+      "reading": "ことば",
+      "meaning": "word, language",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158549764",
+      "word": "着物",
+      "reading": "着物[きもの]",
+      "meaning": "kimono (traditional Japanese attire)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158573665",
+      "word": "ビザ",
+      "reading": "ビザ",
+      "meaning": "visa",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158589764",
+      "word": "初め",
+      "reading": "初[はじ]め",
+      "meaning": "the beginning",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158626771",
+      "word": "終わり",
+      "reading": "終[お]わり",
+      "meaning": "the end of ~, The End",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158658690",
+      "word": "こっち",
+      "reading": "こっち",
+      "meaning": "this way, this place (an informal equivalent of こちら)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158753939",
+      "word": "そっち",
+      "reading": "そっち",
+      "meaning": "that way, that place near the listener (an informal equivalent of そちら)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158781161",
+      "word": "あっち",
+      "reading": "あっち",
+      "meaning": "that way, that place over there (an informal equivalent of あちら)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158811619",
+      "word": "どっち",
+      "reading": "どっち",
+      "meaning": "which one (of two things), which way, where (an informal equivalent of どちら)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158839761",
+      "word": "みんあで",
+      "reading": "みんあで",
+      "meaning": "all together",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158871285",
+      "word": "～けど",
+      "reading": "~けど",
+      "meaning": "~, but (an informal equivalent of が)",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158908251",
+      "word": "おなかが いっぱいです",
+      "reading": "おなかが いっぱいです",
+      "meaning": "(I'm) full",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525158936512",
+      "word": "よかったら",
+      "reading": "よかったら",
+      "meaning": "if you like",
+      "lesson": 20,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159205512",
+      "word": "思います",
+      "reading": "思[おも]います",
+      "meaning": "to think",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159245232",
+      "word": "言います",
+      "reading": "言[い]います",
+      "meaning": "to say",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159271763",
+      "word": "勝ちます",
+      "reading": "勝[か]ちます",
+      "meaning": "to win",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159288947",
+      "word": "負けます",
+      "reading": "負[ま]けます",
+      "meaning": "to lose, be beaten",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159316912",
+      "word": "あります ［おまつりが～］",
+      "reading": "あります ［おまつりが~］",
+      "meaning": "[a festival] to be held, take place",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159388714",
+      "word": "役に 立ちます",
+      "reading": "役[やく]に 立[た]ちます",
+      "meaning": "to be useful",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159430965",
+      "word": "動きます",
+      "reading": "動[うご]きます",
+      "meaning": "to move, work",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159457274",
+      "word": "やめます ［かいしゃを～］",
+      "reading": "やめます ［かいしゃを~］",
+      "meaning": "to quit or retire from work [a company], stop, give up",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159516320",
+      "word": "気を つけます",
+      "reading": "気[き]を つけます",
+      "meaning": "to pay attention, take care",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159582087",
+      "word": "留学します",
+      "reading": "留学[りゅうがく]します",
+      "meaning": "to study abroad",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159629064",
+      "word": "むだ［な］",
+      "reading": "むだ［な］",
+      "meaning": "wasteful",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159665937",
+      "word": "不便［な］",
+      "reading": "不便[ふべん]［な］",
+      "meaning": "inconvenient",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159711611",
+      "word": "すごい",
+      "reading": "すごい",
+      "meaning": "awful, great (express astonishment or admiration)",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159738324",
+      "word": "ほんとう",
+      "reading": "ほんとう",
+      "meaning": "true",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159766903",
+      "word": "うそ",
+      "reading": "うそ",
+      "meaning": "lie",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159796908",
+      "word": "自動車",
+      "reading": "自動車[じどうしゃ]",
+      "meaning": "car, automobile",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159842633",
+      "word": "交通",
+      "reading": "交通[こうつう]",
+      "meaning": "transport, traffic",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159878045",
+      "word": "物価",
+      "reading": "物価[ぶっか]",
+      "meaning": "[commodity] prices",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159911391",
+      "word": "放送",
+      "reading": "放送[ほうそう]",
+      "meaning": "announcement, broadcast",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159946383",
+      "word": "ニュース",
+      "reading": "ニュース",
+      "meaning": "news",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159968682",
+      "word": "アニメ",
+      "reading": "アニメ",
+      "meaning": "anime (Japanese animation)",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525159987524",
+      "word": "マンガ",
+      "reading": "マンガ",
+      "meaning": "comic book",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160009656",
+      "word": "デザイン",
+      "reading": "デザイン",
+      "meaning": "design, artwork",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160036751",
+      "word": "夢",
+      "reading": "夢[ゆめ]",
+      "meaning": "dream",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160068908",
+      "word": "天才",
+      "reading": "天才[てんさい]",
+      "meaning": "genius",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160117939",
+      "word": "試合",
+      "reading": "試合[しあい]",
+      "meaning": "game, match (～を します: to play a game/match)",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160158876",
+      "word": "意見",
+      "reading": "意見[いけん]",
+      "meaning": "opinion",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160200940",
+      "word": "話",
+      "reading": "話[はなし]",
+      "meaning": "talk, speech, what one says, story (～を します: to talk, tell a story)",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160238562",
+      "word": "地球",
+      "reading": "地球[ちきゅう]",
+      "meaning": "earth",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160298110",
+      "word": "月",
+      "reading": "月[つき]",
+      "meaning": "moon",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160320360",
+      "word": "最近",
+      "reading": "最近[さいきん]",
+      "meaning": "recently, these days",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160360372",
+      "word": "たぶん",
+      "reading": "たぶん",
+      "meaning": "probably, perhaps, maybe",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160386111",
+      "word": "きっと",
+      "reading": "きっと",
+      "meaning": "surely, definitely",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525160968712",
+      "word": "ほんとうに",
+      "reading": "ほんとうに",
+      "meaning": "really",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161016802",
+      "word": "～に ついて",
+      "reading": "~に ついて",
+      "meaning": "about ~, concerning ~",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161046190",
+      "word": "久しぶりでしね。",
+      "reading": "久[ひさ]しぶりでしね。",
+      "meaning": "It's been a long time [since we last met].",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161098664",
+      "word": "～でも 飲みませんか。",
+      "reading": "~でも 飲[の]みませんか。",
+      "meaning": "How about drinking ~ or something?",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161138068",
+      "word": "もちろん",
+      "reading": "もちろん",
+      "meaning": "of course",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161152004",
+      "word": "もう 帰らないと。。。",
+      "reading": "もう 帰[かえ]らないと。。。",
+      "meaning": "I have to get home now...",
+      "lesson": 21,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161251271",
+      "word": "着ます",
+      "reading": "着[き]ます",
+      "meaning": "to put on (a shirt, etc.)",
+      "lesson": 22,
+      "tags": [
+        "Ⅱ"
+      ]
+    },
+    {
+      "id": "apkg-1525161296334",
+      "word": "はきます",
+      "reading": "はきます",
+      "meaning": "to put on (shoes, trousers, etc.)",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161328707",
+      "word": "かぶります",
+      "reading": "かぶります",
+      "meaning": "to put on (a hat, etc.)",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161350705",
+      "word": "かけます ［めがねを～］",
+      "reading": "かけます ［めがねを~］",
+      "meaning": "to put on [glasses]",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161388689",
+      "word": "します ［ネクタイを～］",
+      "reading": "します ［ネクタイを~］",
+      "meaning": "to put on [a tie]",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161425859",
+      "word": "生まれます",
+      "reading": "生[う]まれます",
+      "meaning": "to be born",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161452548",
+      "word": "わたしたち",
+      "reading": "わたしたち",
+      "meaning": "we",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161482643",
+      "word": "コート",
+      "reading": "コート",
+      "meaning": "coat",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161498949",
+      "word": "セーター",
+      "reading": "セーター",
+      "meaning": "sweater",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161519613",
+      "word": "スーツ",
+      "reading": "スーツ",
+      "meaning": "suit",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161532863",
+      "word": "帽子",
+      "reading": "帽子[ぼうし]",
+      "meaning": "hat, cap",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161554331",
+      "word": "眼鏡",
+      "reading": "眼鏡[めがね]",
+      "meaning": "glasses",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161570417",
+      "word": "ケーキ",
+      "reading": "ケーキ",
+      "meaning": "cake",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161583878",
+      "word": "［お］弁当",
+      "reading": "［お］ 弁当[べんとう]",
+      "meaning": "box lunch",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161620343",
+      "word": "ロボット",
+      "reading": "ロボット",
+      "meaning": "robot",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161635042",
+      "word": "ユーモア",
+      "reading": "ユーモア",
+      "meaning": "humor",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161651154",
+      "word": "都合",
+      "reading": "都合[つごう]",
+      "meaning": "convenience",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161671074",
+      "word": "よく",
+      "reading": "よく",
+      "meaning": "often",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161702766",
+      "word": "えーと",
+      "reading": "えーと",
+      "meaning": "well, let me see",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161729290",
+      "word": "おめでとう ［ございます］。",
+      "reading": "おめでとう ［ございます］。",
+      "meaning": "Congratulations. (used on birthdays, at weddings, etc.)",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161772599",
+      "word": "お探しですか。",
+      "reading": "お 探[さが]しですか。",
+      "meaning": "Are you looking for ~?",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161816331",
+      "word": "でわ",
+      "reading": "でわ",
+      "meaning": "well then,",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161829973",
+      "word": "家賃",
+      "reading": "家賃[やちん]",
+      "meaning": "rent",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161882201",
+      "word": "ダイニングキッチン",
+      "reading": "ダイニングキッチン",
+      "meaning": "kitching with a dining area",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161932380",
+      "word": "和室",
+      "reading": "和室[わしつ]",
+      "meaning": "Japanese-style room",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161959026",
+      "word": "押入れ",
+      "reading": "押入[おしい]れ",
+      "meaning": "Japanese-style closet",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525161984382",
+      "word": "布団",
+      "reading": "布団[ふとん]",
+      "meaning": "Japanese-style mattress and quilt",
+      "lesson": 22,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162051692",
+      "word": "聞きます［先生に～］",
+      "reading": "聞[き]きます［ 先生[せんせい]に~］",
+      "meaning": "to ask [the teacher]",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162280474",
+      "word": "回します",
+      "reading": "回[まわ]します",
+      "meaning": "to turn",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162392517",
+      "word": "（障ります）［ドアに～］",
+      "reading": "（ 障[さわ]ります）［ドアに~］",
+      "meaning": "to touch [a door]",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162462686",
+      "word": "出ます［お釣りが～］",
+      "reading": "出[で]ます［お 釣[つ]りが~］",
+      "meaning": "[change] to come out",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162528501",
+      "word": "歩きます",
+      "reading": "歩[ある]きます",
+      "meaning": "to walk",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162553946",
+      "word": "渡ります［橋を～］",
+      "reading": "渡[わた]ります［ 橋[はし]を~］",
+      "meaning": "to cross [a bridge]",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162624134",
+      "word": "曲がります［右へ～］",
+      "reading": "曲[ま]がります［ 右[みぎ]へ~］",
+      "meaning": "to turn [to the right]",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162678053",
+      "word": "寂しい",
+      "reading": "寂[さび]しい",
+      "meaning": "lonely",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162719140",
+      "word": "［お］湯",
+      "reading": "［お］ 湯[ゆ]",
+      "meaning": "hot water",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162774163",
+      "word": "音",
+      "reading": "音[おと]",
+      "meaning": "sound",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162803009",
+      "word": "サイズ",
+      "reading": "サイズ",
+      "meaning": "size",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162814530",
+      "word": "故障",
+      "reading": "故障[こしょう]",
+      "meaning": "breakdown (～します: to break down)",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162856597",
+      "word": "道",
+      "reading": "道[みち]",
+      "meaning": "road, way",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162882475",
+      "word": "交差点",
+      "reading": "交差点[こうさてん]",
+      "meaning": "crossroads",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162914021",
+      "word": "信号",
+      "reading": "信号[しんごう]",
+      "meaning": "traffic lights",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162935594",
+      "word": "角",
+      "reading": "角[かど]",
+      "meaning": "corner",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162962033",
+      "word": "橋",
+      "reading": "橋[はし]",
+      "meaning": "bridge",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525162980445",
+      "word": "駐車場",
+      "reading": "駐車[ちゅうしゃ] 場[じょう]",
+      "meaning": "car park, parking lot",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163047805",
+      "word": "なんかいも",
+      "reading": "なんかいも",
+      "meaning": "many times",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163076607",
+      "word": "～目",
+      "reading": "~ 目[め]",
+      "meaning": "the -th (indicating order)",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163143986",
+      "word": "くれます",
+      "reading": "くれます",
+      "meaning": "to give (me)",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163166274",
+      "word": "直します",
+      "reading": "直[なお]します",
+      "meaning": "to repair, correct",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163188914",
+      "word": "連れて 行きます",
+      "reading": "連[つ]れて 行[い]きます",
+      "meaning": "to take (someone)",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163225896",
+      "word": "連れて 来ます",
+      "reading": "連[つ]れて 来[き]ます",
+      "meaning": "to bring (someone)",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163264383",
+      "word": "送ります［人を～］",
+      "reading": "送[おく]ります［ 人[ひと]を~］",
+      "meaning": "to escort [someone], go with",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163343972",
+      "word": "紹介します",
+      "reading": "紹介[しょうかい]します",
+      "meaning": "to introduce",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163379260",
+      "word": "案内します",
+      "reading": "案内[あんない]します",
+      "meaning": "to show around, show the way",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163410264",
+      "word": "説明します",
+      "reading": "説明[せつめい]します",
+      "meaning": "to explain",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163435114",
+      "word": "おじいさん／おじちゃん",
+      "reading": "おじいさん／おじちゃん",
+      "meaning": "grandfather, old man",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163477932",
+      "word": "おばあさん／おばあちゃん",
+      "reading": "おばあさん／おばあちゃん",
+      "meaning": "grandmother, old woman",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163502777",
+      "word": "準備",
+      "reading": "準備[じゅんび]",
+      "meaning": "preparation (～［を］ します: to prepare)",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163588622",
+      "word": "引っ越し",
+      "reading": "引っ越[ひっこ]し",
+      "meaning": "moving out (～［を］ します: to move out)",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163635505",
+      "word": "［お］菓子",
+      "reading": "［お］ 菓子[かし]",
+      "meaning": "sweets, snacks",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163682419",
+      "word": "ホームステイ",
+      "reading": "ホームステイ",
+      "meaning": "homestay",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163720462",
+      "word": "全部",
+      "reading": "全部[ぜんぶ]",
+      "meaning": "all",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163755182",
+      "word": "自分で",
+      "reading": "自分[じぶん]で",
+      "meaning": "by oneself",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163808130",
+      "word": "ほかに",
+      "reading": "ほかに",
+      "meaning": "besides",
+      "lesson": 24,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163862230",
+      "word": "考えます",
+      "reading": "考[かんが]えます",
+      "meaning": "To think, consider",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163925164",
+      "word": "着きます",
+      "reading": "着[つ]きます",
+      "meaning": "To arrive",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525163950026",
+      "word": "取ります［年を～］",
+      "reading": "取[と]ります［ 年[とし]を~］",
+      "meaning": "To grow [old]",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164019400",
+      "word": "足ります",
+      "reading": "足[た]ります",
+      "meaning": "to be enough, be sufficient",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164043646",
+      "word": "田舎",
+      "reading": "田舎[いなか]",
+      "meaning": "countryside, hometown",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164067834",
+      "word": "チャンス",
+      "reading": "チャンス",
+      "meaning": "chance",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164082082",
+      "word": "億",
+      "reading": "億[おく]",
+      "meaning": "hundred million",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164114006",
+      "word": "もし［～たら］",
+      "reading": "もし［~たら］",
+      "meaning": "if",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164142874",
+      "word": "意味",
+      "reading": "意味[いみ]",
+      "meaning": "meaning",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164171688",
+      "word": "もしもし",
+      "reading": "もしもし",
+      "meaning": "hello (used on the phone)",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164192221",
+      "word": "転勤",
+      "reading": "転勤[てんきん]",
+      "meaning": "transfer (～します: to be transferred to another office)",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164245496",
+      "word": "こと",
+      "reading": "こと",
+      "meaning": "thing, matter (～の こと: to thing about ~)",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164285921",
+      "word": "暇",
+      "reading": "暇[ひま]",
+      "meaning": "free time",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164303861",
+      "word": "［いろいろ］お世話に なりました。",
+      "reading": "［いろいろ］お 世話[せわ]に なりました。",
+      "meaning": "Thank you for everything you've done for me.",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164381271",
+      "word": "頑張ります",
+      "reading": "頑張[がんば]ります",
+      "meaning": "do one's best",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164414970",
+      "word": "どうぞ お元気で。",
+      "reading": "どうぞ お 元気[げんき]で。",
+      "meaning": "Please take care of yourself. (said when expecting a long separation)",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1525164475355",
+      "word": "ベトナム",
+      "reading": "ベトナム",
+      "meaning": "Vietnam",
+      "lesson": 25,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550629701835",
+      "word": "そちら",
+      "reading": "そちら",
+      "meaning": "your place",
+      "lesson": 4,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550630200179",
+      "word": "どちら",
+      "reading": "どちら",
+      "meaning": "which one (of two things)",
+      "lesson": 12,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550630335519",
+      "word": "〜から",
+      "reading": "〜から",
+      "meaning": "because ~",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550630516768",
+      "word": "そうですね。",
+      "reading": "そうですね。",
+      "meaning": "Well let me see. (pausing)",
+      "lesson": 8,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550630673401",
+      "word": "飲みます",
+      "reading": "飲[の]みます",
+      "meaning": "to drink alcohol",
+      "lesson": null,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550630826527",
+      "word": "お茶",
+      "reading": "お 茶[ちゃ]",
+      "meaning": "tea ceremony",
+      "lesson": 19,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550631008263",
+      "word": "それから",
+      "reading": "それから",
+      "meaning": "and, furthermore",
+      "lesson": 17,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550631515893",
+      "word": "あります",
+      "reading": "あります",
+      "meaning": "to have",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550632157445",
+      "word": "引きます",
+      "reading": "引[ひ]きます",
+      "meaning": "to pull",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550632246720",
+      "word": "変えます",
+      "reading": "変[か]えます",
+      "meaning": "to change",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550632519133",
+      "word": "よく",
+      "reading": "よく",
+      "meaning": "well, much",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550634457644",
+      "word": "チケット",
+      "reading": "チケット",
+      "meaning": "ticket",
+      "lesson": 9,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550634572195",
+      "word": "何",
+      "reading": "何[なに]",
+      "meaning": "what",
+      "lesson": 6,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550635172469",
+      "word": "建物",
+      "reading": "建物[たてもの]",
+      "meaning": "building",
+      "lesson": 23,
+      "tags": []
+    },
+    {
+      "id": "apkg-1550809922869",
+      "word": "ええ",
+      "reading": "ええ",
+      "meaning": "yes",
+      "lesson": 6,
+      "tags": []
+    }
+  ]
+}
