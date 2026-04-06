@@ -47,7 +47,7 @@ def sanitize_file_name(file_name: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Convert Anki APKG into app-owned JSON/media database.")
-    parser.add_argument("--apkg", default="2136_Kanji_Vit.apkg")
+    parser.add_argument("--apkg", default="apkg/2136_Kanji_Vit.apkg")
     parser.add_argument("--out-json", default="src/data/kanjiImported.json")
     parser.add_argument("--out-media-dir", default="public/kanji-media")
     args = parser.parse_args()

@@ -549,7 +549,7 @@ export function JlptVocabularyPage() {
               <h2>Từ vựng JLPT {activeLevel}</h2>
               <p className="muted">
                 {(n5Data.meta?.sourceNote && activeLevel === "N5") || (n4Data.meta?.sourceNote && activeLevel === "N4") ? (
-                  <span>{activeLevel === "N5" ? n5Data.meta.sourceNote : n4Data.meta.sourceNote} </span>
+                  <span>{activeLevel === "N5" ? n5Data.meta?.sourceNote : n4Data.meta?.sourceNote} </span>
                 ) : null}
                 {activeLevel !== "N5" && activeLevel !== "N4"
                   ? PLACEHOLDER_LEVELS[activeLevel as Exclude<JlptLevel, "N5" | "N4">]

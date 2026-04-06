@@ -63,7 +63,7 @@ def normalize_lesson(text: str) -> int | None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--apkg", default="Japanese_Minna_no_Nihongo_1__2_Lessons_1_-_50.apkg")
+    parser.add_argument("--apkg", default="apkg/Japanese_Minna_no_Nihongo_1__2_Lessons_1_-_50.apkg")
     parser.add_argument("--out-n5", default="src/data/n5Vocabulary.json")
     parser.add_argument("--out-n4", default="src/data/n4Vocabulary.json")
     args = parser.parse_args()
