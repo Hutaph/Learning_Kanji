@@ -43,11 +43,14 @@ export interface InspirationItem {
 }
 
 export interface VerbLesson {
+  id: string;
   dictionary: string;
   kana: string;
   meaningVi: string;
   jlpt: VerbLevel;
   type: VerbType;
+  image?: string;
+  conjugations?: VerbConjugation[];
 }
 
 export interface VerbConjugation {

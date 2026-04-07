@@ -11836,5 +11836,761 @@
     "kanji": "齢",
     "hanViet": "Linh",
     "image": "/kanji-media/images__485_.jpg"
+  },
+  {
+    "id": "manual-35211",
+    "kanji": "見",
+    "hanViet": "Kiến",
+    "image": ""
+  },
+  {
+    "id": "manual-26178",
+    "kanji": "時",
+    "hanViet": "Thời",
+    "image": ""
+  },
+  {
+    "id": "manual-23665",
+    "kanji": "山",
+    "hanViet": "Sơn",
+    "image": ""
+  },
+  {
+    "id": "manual-38750",
+    "kanji": "非",
+    "hanViet": "Phi",
+    "image": ""
+  },
+  {
+    "id": "manual-25144",
+    "kanji": "戸",
+    "hanViet": "Hộ",
+    "image": ""
+  },
+  {
+    "id": "manual-30446",
+    "kanji": "目",
+    "hanViet": "Mục",
+    "image": ""
+  },
+  {
+    "id": "manual-19968",
+    "kanji": "一",
+    "hanViet": "Nhất",
+    "image": ""
+  },
+  {
+    "id": "manual-19971",
+    "kanji": "七",
+    "hanViet": "Thất",
+    "image": ""
+  },
+  {
+    "id": "manual-19975",
+    "kanji": "万",
+    "hanViet": "Vạn",
+    "image": ""
+  },
+  {
+    "id": "manual-19977",
+    "kanji": "三",
+    "hanViet": "Tam",
+    "image": ""
+  },
+  {
+    "id": "manual-19978",
+    "kanji": "上",
+    "hanViet": "Thượng",
+    "image": ""
+  },
+  {
+    "id": "manual-19979",
+    "kanji": "下",
+    "hanViet": "Hạ",
+    "image": ""
+  },
+  {
+    "id": "manual-20013",
+    "kanji": "中",
+    "hanViet": "Trung",
+    "image": ""
+  },
+  {
+    "id": "manual-20027",
+    "kanji": "主",
+    "hanViet": "Chủ",
+    "image": ""
+  },
+  {
+    "id": "manual-20061",
+    "kanji": "九",
+    "hanViet": "Cửu",
+    "image": ""
+  },
+  {
+    "id": "manual-20108",
+    "kanji": "二",
+    "hanViet": "Nhị",
+    "image": ""
+  },
+  {
+    "id": "manual-20116",
+    "kanji": "五",
+    "hanViet": "Ngũ",
+    "image": ""
+  },
+  {
+    "id": "manual-20154",
+    "kanji": "人",
+    "hanViet": "Nhân",
+    "image": ""
+  },
+  {
+    "id": "manual-20170",
+    "kanji": "今",
+    "hanViet": "Kim",
+    "image": ""
+  },
+  {
+    "id": "manual-20250",
+    "kanji": "会",
+    "hanViet": "Hội",
+    "image": ""
+  },
+  {
+    "id": "manual-26371",
+    "kanji": "會",
+    "hanViet": "Hội",
+    "image": ""
+  },
+  {
+    "id": "manual-20837",
+    "kanji": "入",
+    "hanViet": "Nhập",
+    "image": ""
+  },
+  {
+    "id": "manual-20840",
+    "kanji": "全",
+    "hanViet": "Toàn",
+    "image": ""
+  },
+  {
+    "id": "manual-20843",
+    "kanji": "八",
+    "hanViet": "Bát",
+    "image": ""
+  },
+  {
+    "id": "manual-20870",
+    "kanji": "円",
+    "hanViet": "Viên",
+    "image": ""
+  },
+  {
+    "id": "manual-20986",
+    "kanji": "出",
+    "hanViet": "Xuất",
+    "image": ""
+  },
+  {
+    "id": "manual-20998",
+    "kanji": "分",
+    "hanViet": "Phân",
+    "image": ""
+  },
+  {
+    "id": "manual-21069",
+    "kanji": "前",
+    "hanViet": "Tiền",
+    "image": ""
+  },
+  {
+    "id": "manual-21313",
+    "kanji": "十",
+    "hanViet": "Thập",
+    "image": ""
+  },
+  {
+    "id": "manual-21315",
+    "kanji": "千",
+    "hanViet": "Thiên",
+    "image": ""
+  },
+  {
+    "id": "manual-21517",
+    "kanji": "名",
+    "hanViet": "Danh",
+    "image": ""
+  },
+  {
+    "id": "manual-22269",
+    "kanji": "国",
+    "hanViet": "Quốc",
+    "image": ""
+  },
+  {
+    "id": "manual-22303",
+    "kanji": "土",
+    "hanViet": "Thổ",
+    "image": ""
+  },
+  {
+    "id": "manual-22806",
+    "kanji": "外",
+    "hanViet": "Ngoại",
+    "image": ""
+  },
+  {
+    "id": "manual-22810",
+    "kanji": "多",
+    "hanViet": "Đa",
+    "image": ""
+  },
+  {
+    "id": "manual-22823",
+    "kanji": "大",
+    "hanViet": "Đại",
+    "image": ""
+  },
+  {
+    "id": "manual-22825",
+    "kanji": "天",
+    "hanViet": "Thiên",
+    "image": ""
+  },
+  {
+    "id": "manual-22826",
+    "kanji": "太",
+    "hanViet": "Thái",
+    "image": ""
+  },
+  {
+    "id": "manual-22899",
+    "kanji": "女",
+    "hanViet": "Nữ",
+    "image": ""
+  },
+  {
+    "id": "manual-23376",
+    "kanji": "子",
+    "hanViet": "Tử",
+    "image": ""
+  },
+  {
+    "id": "manual-23567",
+    "kanji": "小",
+    "hanViet": "Tiểu",
+    "image": ""
+  },
+  {
+    "id": "manual-23569",
+    "kanji": "少",
+    "hanViet": "Thiểu",
+    "image": ""
+  },
+  {
+    "id": "manual-24029",
+    "kanji": "川",
+    "hanViet": "Xuyên",
+    "image": ""
+  },
+  {
+    "id": "manual-24319",
+    "kanji": "廿",
+    "hanViet": "Niệm",
+    "image": ""
+  },
+  {
+    "id": "manual-24403",
+    "kanji": "当",
+    "hanViet": "Đương",
+    "image": ""
+  },
+  {
+    "id": "manual-24515",
+    "kanji": "心",
+    "hanViet": "Tâm",
+    "image": ""
+  },
+  {
+    "id": "manual-24801",
+    "kanji": "惡",
+    "hanViet": "Ác",
+    "image": ""
+  },
+  {
+    "id": "manual-25163",
+    "kanji": "手",
+    "hanViet": "Thủ",
+    "image": ""
+  },
+  {
+    "id": "manual-25991",
+    "kanji": "文",
+    "hanViet": "Văn",
+    "image": ""
+  },
+  {
+    "id": "manual-26041",
+    "kanji": "方",
+    "hanViet": "Phương",
+    "image": ""
+  },
+  {
+    "id": "manual-26085",
+    "kanji": "日",
+    "hanViet": "Nhật",
+    "image": ""
+  },
+  {
+    "id": "manual-26376",
+    "kanji": "月",
+    "hanViet": "Nguyệt",
+    "image": ""
+  },
+  {
+    "id": "manual-26408",
+    "kanji": "木",
+    "hanViet": "Mộc",
+    "image": ""
+  },
+  {
+    "id": "manual-26412",
+    "kanji": "本",
+    "hanViet": "Bản",
+    "image": ""
+  },
+  {
+    "id": "manual-27597",
+    "kanji": "母",
+    "hanViet": "Mẫu",
+    "image": ""
+  },
+  {
+    "id": "manual-27598",
+    "kanji": "毎",
+    "hanViet": "Mỗi",
+    "image": ""
+  },
+  {
+    "id": "manual-27700",
+    "kanji": "水",
+    "hanViet": "Thủy",
+    "image": ""
+  },
+  {
+    "id": "manual-28779",
+    "kanji": "火",
+    "hanViet": "Hỏa",
+    "image": ""
+  },
+  {
+    "id": "manual-29238",
+    "kanji": "父",
+    "hanViet": "Phụ",
+    "image": ""
+  },
+  {
+    "id": "manual-29275",
+    "kanji": "牛",
+    "hanViet": "Ngưu",
+    "image": ""
+  },
+  {
+    "id": "manual-29356",
+    "kanji": "犬",
+    "hanViet": "Khuyển",
+    "image": ""
+  },
+  {
+    "id": "manual-29579",
+    "kanji": "王",
+    "hanViet": "Vương",
+    "image": ""
+  },
+  {
+    "id": "manual-29983",
+    "kanji": "生",
+    "hanViet": "Sinh",
+    "image": ""
+  },
+  {
+    "id": "manual-30000",
+    "kanji": "田",
+    "hanViet": "Điền",
+    "image": ""
+  },
+  {
+    "id": "manual-30333",
+    "kanji": "白",
+    "hanViet": "Bạch",
+    "image": ""
+  },
+  {
+    "id": "manual-35328",
+    "kanji": "言",
+    "hanViet": "Ngôn",
+    "image": ""
+  },
+  {
+    "id": "manual-36554",
+    "kanji": "車",
+    "hanViet": "Xa",
+    "image": ""
+  },
+  {
+    "id": "manual-37329",
+    "kanji": "金",
+    "hanViet": "Kim",
+    "image": ""
+  },
+  {
+    "id": "manual-38263",
+    "kanji": "長",
+    "hanViet": "Trường",
+    "image": ""
+  },
+  {
+    "id": "manual-39135",
+    "kanji": "食",
+    "hanViet": "Thực",
+    "image": ""
+  },
+  {
+    "id": "manual-39640",
+    "kanji": "高",
+    "hanViet": "Cao",
+    "image": ""
+  },
+  {
+    "id": "manual-40658",
+    "kanji": "黒",
+    "hanViet": "Hắc",
+    "image": ""
+  },
+  {
+    "id": "manual-38738",
+    "kanji": "青",
+    "hanViet": "Thanh",
+    "image": ""
+  },
+  {
+    "id": "manual-36196",
+    "kanji": "赤",
+    "hanViet": "Xích",
+    "image": ""
+  },
+  {
+    "id": "manual-38899",
+    "kanji": "音",
+    "hanViet": "Âm",
+    "image": ""
+  },
+  {
+    "id": "manual-38632",
+    "kanji": "雨",
+    "hanViet": "Vũ",
+    "image": ""
+  },
+  {
+    "id": "manual-39080",
+    "kanji": "風",
+    "hanViet": "Phong",
+    "image": ""
+  },
+  {
+    "id": "manual-39131",
+    "kanji": "飛",
+    "hanViet": "Phi",
+    "image": ""
+  },
+  {
+    "id": "manual-27497",
+    "kanji": "歩",
+    "hanViet": "Bộ",
+    "image": ""
+  },
+  {
+    "id": "manual-21475",
+    "kanji": "口",
+    "hanViet": "Khẩu",
+    "image": ""
+  },
+  {
+    "id": "manual-20869",
+    "kanji": "内",
+    "hanViet": "Nội",
+    "image": ""
+  },
+  {
+    "id": "manual-35199",
+    "kanji": "西",
+    "hanViet": "Tây",
+    "image": ""
+  },
+  {
+    "id": "manual-36523",
+    "kanji": "身",
+    "hanViet": "Thân",
+    "image": ""
+  },
+  {
+    "id": "manual-27503",
+    "kanji": "歯",
+    "hanViet": "Xỉ",
+    "image": ""
+  },
+  {
+    "id": "manual-32566",
+    "kanji": "缶",
+    "hanViet": "Phẫu",
+    "image": ""
+  },
+  {
+    "id": "manual-33394",
+    "kanji": "色",
+    "hanViet": "Sắc",
+    "image": ""
+  },
+  {
+    "id": "manual-29992",
+    "kanji": "用",
+    "hanViet": "Dụng",
+    "image": ""
+  },
+  {
+    "id": "manual-32905",
+    "kanji": "肉",
+    "hanViet": "Nhục",
+    "image": ""
+  },
+  {
+    "id": "manual-27490",
+    "kanji": "止",
+    "hanViet": "Chỉ",
+    "image": ""
+  },
+  {
+    "id": "manual-20107",
+    "kanji": "事",
+    "hanViet": "Sự",
+    "image": ""
+  },
+  {
+    "id": "manual-36275",
+    "kanji": "足",
+    "hanViet": "Túc",
+    "image": ""
+  },
+  {
+    "id": "manual-29255",
+    "kanji": "片",
+    "hanViet": "Phiến",
+    "image": ""
+  },
+  {
+    "id": "manual-21147",
+    "kanji": "力",
+    "hanViet": "Lực",
+    "image": ""
+  },
+  {
+    "id": "manual-21152",
+    "kanji": "加",
+    "hanViet": "Gia",
+    "image": ""
+  },
+  {
+    "id": "manual-22805",
+    "kanji": "夕",
+    "hanViet": "Tịch",
+    "image": ""
+  },
+  {
+    "id": "manual-30707",
+    "kanji": "石",
+    "hanViet": "Thạch",
+    "image": ""
+  },
+  {
+    "id": "manual-39770",
+    "kanji": "魚",
+    "hanViet": "Ngư",
+    "image": ""
+  },
+  {
+    "id": "manual-29976",
+    "kanji": "甘",
+    "hanViet": "Cam",
+    "image": ""
+  },
+  {
+    "id": "manual-36763",
+    "kanji": "辛",
+    "hanViet": "Tân",
+    "image": ""
+  },
+  {
+    "id": "manual-31047",
+    "kanji": "祇",
+    "hanViet": "Kỳ",
+    "image": ""
+  },
+  {
+    "id": "manual-39321",
+    "kanji": "香",
+    "hanViet": "Hương",
+    "image": ""
+  },
+  {
+    "id": "manual-39658",
+    "kanji": "髪",
+    "hanViet": "Phát",
+    "image": ""
+  },
+  {
+    "id": "manual-32819",
+    "kanji": "耳",
+    "hanViet": "Nhĩ",
+    "image": ""
+  },
+  {
+    "id": "manual-40763",
+    "kanji": "鼻",
+    "hanViet": "Tỵ",
+    "image": ""
+  },
+  {
+    "id": "manual-39340",
+    "kanji": "馬",
+    "hanViet": "Mã",
+    "image": ""
+  },
+  {
+    "id": "manual-35282",
+    "kanji": "角",
+    "hanViet": "Giác",
+    "image": ""
+  },
+  {
+    "id": "manual-27178",
+    "kanji": "横",
+    "hanViet": "Hoành",
+    "image": ""
+  },
+  {
+    "id": "manual-36208",
+    "kanji": "走",
+    "hanViet": "Tẩu",
+    "image": ""
+  },
+  {
+    "id": "manual-40165",
+    "kanji": "鳥",
+    "hanViet": "Điểu",
+    "image": ""
+  },
+  {
+    "id": "manual-30399",
+    "kanji": "皿",
+    "hanViet": "Mãnh",
+    "image": ""
+  },
+  {
+    "id": "manual-27663",
+    "kanji": "氏",
+    "hanViet": "Thị",
+    "image": ""
+  },
+  {
+    "id": "manual-29572",
+    "kanji": "玄",
+    "hanViet": "Huyền",
+    "image": ""
+  },
+  {
+    "id": "manual-25903",
+    "kanji": "支",
+    "hanViet": "Chi",
+    "image": ""
+  },
+  {
+    "id": "manual-29281",
+    "kanji": "牡",
+    "hanViet": "Mẫu",
+    "image": ""
+  },
+  {
+    "id": "manual-30690",
+    "kanji": "矢",
+    "hanViet": "Thỉ",
+    "image": ""
+  },
+  {
+    "id": "manual-40644",
+    "kanji": "黄",
+    "hanViet": "Hoàng",
+    "image": ""
+  },
+  {
+    "id": "manual-31859",
+    "kanji": "米",
+    "hanViet": "Mễ",
+    "image": ""
+  },
+  {
+    "id": "manual-24037",
+    "kanji": "工",
+    "hanViet": "Công",
+    "image": ""
+  },
+  {
+    "id": "manual-39318",
+    "kanji": "首",
+    "hanViet": "Thủ",
+    "image": ""
+  },
+  {
+    "id": "manual-29577",
+    "kanji": "玉",
+    "hanViet": "Ngọc",
+    "image": ""
+  },
+  {
+    "id": "manual-20572",
+    "kanji": "停",
+    "hanViet": "Đình",
+    "image": ""
+  },
+  {
+    "id": "manual-34892",
+    "kanji": "行",
+    "hanViet": "Hành",
+    "image": ""
+  },
+  {
+    "id": "manual-22763",
+    "kanji": "士",
+    "hanViet": "Sĩ",
+    "image": ""
+  },
+  {
+    "id": "manual-33258",
+    "kanji": "自",
+    "hanViet": "Tự",
+    "image": ""
+  },
+  {
+    "id": "manual-31435",
+    "kanji": "立",
+    "hanViet": "Lập",
+    "image": ""
+  },
+  {
+    "id": "manual-22235",
+    "kanji": "四",
+    "hanViet": "Tứ",
+    "image": ""
   }
 ]

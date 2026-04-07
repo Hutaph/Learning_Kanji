@@ -10,6 +10,35 @@ function keyReset(level: JlptLevel): string {
   return `${PREFIX}-meta-${level}`;
 }
 
+function keyWrongReview(level: JlptLevel): string {
+  return `${PREFIX}-wrong-review-${level}`;
+}
+
+/** ID các từ làm sai ở lần kiểm tra gần nhất (để ôn lại). */
+export function loadWrongReviewIds(level: JlptLevel): string[] {
+  try {
+    const raw = localStorage.getItem(keyWrongReview(level));
+    if (!raw) {
+      return [];
+    }
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed.filter((id): id is string => typeof id === "string");
+  } catch {
+    return [];
+  }
+}
+
+export function saveWrongReviewIds(level: JlptLevel, ids: string[]): void {
+  localStorage.setItem(keyWrongReview(level), JSON.stringify([...new Set(ids)]));
+}
+
+export function clearWrongReviewIds(level: JlptLevel): void {
+  localStorage.removeItem(keyWrongReview(level));
+}
+
 export function loadLearnedMap(level: JlptLevel): Record<string, boolean> {
   try {
     const raw = localStorage.getItem(keyLearned(level));

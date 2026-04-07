@@ -18,6 +18,42 @@ from typing import Any
 
 TAG_STRIP = re.compile(r"<[^>]+>")
 
+
+def load_kanji_han_map(repo_root: Path) -> dict[str, str]:
+    p = repo_root / "src" / "data" / "kanjiImported.json"
+    raw = json.loads(p.read_text(encoding="utf-8"))
+    m: dict[str, str] = {}
+    for row in raw:
+        k = row.get("kanji")
+        hv = row.get("hanViet")
+        if isinstance(k, str) and len(k) == 1 and isinstance(hv, str):
+            m[k] = hv.strip()
+    return m
+
+
+def is_kanji_char(ch: str) -> bool:
+    if len(ch) != 1:
+        return False
+    o = ord(ch)
+    return bool(
+        0x4E00 <= o <= 0x9FFF
+        or 0x3400 <= o <= 0x4DBF
+        or 0xF900 <= o <= 0xFAFF
+    )
+
+
+def han_viet_from_word(word: str, kv: dict[str, str]) -> str:
+    parts: list[str] = []
+    for ch in word:
+        if ch == "々":
+            parts.append(parts[-1] if parts else "[々]")
+            continue
+        if is_kanji_char(ch):
+            mapped = kv.get(ch)
+            parts.append(mapped if mapped else f"[{ch}]")
+    return " - ".join(parts) if parts else ""
+
+
 def strip_html(text: str) -> str:
     if not text:
         return ""
@@ -67,6 +103,9 @@ def main() -> None:
     parser.add_argument("--out-n5", default="src/data/n5Vocabulary.json")
     parser.add_argument("--out-n4", default="src/data/n4Vocabulary.json")
     args = parser.parse_args()
+
+    repo_root = Path(__file__).resolve().parent.parent
+    kanji_map = load_kanji_han_map(repo_root)
 
     apkg_path = Path(args.apkg)
     if not apkg_path.is_file():
@@ -137,6 +176,7 @@ def main() -> None:
                 "word": expr,
                 "reading": reading,
                 "meaning": meaning,
+                "hanViet": han_viet_from_word(expr, kanji_map),
                 "lesson": lesson,
                 "tags": [t for t in (anki_tags or "").split() if t]
             }

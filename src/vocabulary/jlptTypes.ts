@@ -5,6 +5,8 @@ export interface JlptWord {
   word: string;
   reading: string;
   meaning: string;
+  /** Âm Hán Việt từng chữ (từ kanjiImported), ví dụ "Thông - Đạo" */
+  hanViet?: string;
   /** Bài Minna (1–25) nếu đã gán; null nếu không xác định */
   lesson: number | null;
   /** Thẻ/ghi chú gốc từ deck (tùy bản APKG) */

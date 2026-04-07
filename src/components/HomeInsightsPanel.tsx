@@ -2,28 +2,17 @@ import React, { useState } from "react";
 import { loadLearnedMap, countLearned } from "../vocabulary/jlptProgress";
 import n5Pack from "../data/n5Vocabulary.json";
 import n4Pack from "../data/n4Vocabulary.json";
-import { GroupMasteryStat, GroupStat, KanjiFrequency } from "../types";
 
 export function HomeInsightsPanel({
-  masteryRate,
-  recentGroupMastery,
   dueCardsCount,
   unknownCardsCount,
   totalVocabulary,
-  totalGroups,
-  topGroups,
-  topKanji,
-  insight
+  totalGroups
 }: {
-  masteryRate: number;
-  recentGroupMastery: GroupMasteryStat[];
   dueCardsCount: number;
   unknownCardsCount: number;
   totalVocabulary: number;
   totalGroups: number;
-  topGroups: GroupStat[];
-  topKanji: KanjiFrequency[];
-  insight: string;
 }) {
   const [learnedN5] = useState(() => loadLearnedMap("N5"));
   const [learnedN4] = useState(() => loadLearnedMap("N4"));
@@ -39,6 +28,9 @@ export function HomeInsightsPanel({
   
   const n5Rate = n5Total > 0 ? Math.round((n5Learned / n5Total) * 100) : 0;
   const n4Rate = n4Total > 0 ? Math.round((n4Learned / n4Total) * 100) : 0;
+  const jlptTotal = n5Total + n4Total;
+  const jlptLearned = n5Learned + n4Learned;
+  const jlptRate = jlptTotal > 0 ? Math.round((jlptLearned / jlptTotal) * 100) : 0;
 
   const getLessonBreakdown = (words: any[], learnedMap: Record<string, boolean>) => {
     const lessonMap: Record<number, { total: number; learned: number }> = {};
@@ -56,10 +48,10 @@ export function HomeInsightsPanel({
   return (
     <section className="card insightsCard">
       <h2>Thống kê học tập chung</h2>
-      <p className="muted">Tiến độ chinh phục từ vựng và flashcard Kanji.</p>
+      <p className="muted">Tổng quan tiến độ học hiện tại.</p>
       <div className="insightsGrid">
         <article className="insightPanel">
-          <h3>Tiến độ JLPT Từ Vựng (Minna)</h3>
+          <h3>Tiến độ JLPT Từ vựng</h3>
           <div className="masteryGroups">
             <div 
               className="masteryItem" 
@@ -67,12 +59,12 @@ export function HomeInsightsPanel({
               style={{ cursor: "pointer", transition: "transform 0.2s" }}
               onMouseOver={e => e.currentTarget.style.transform = "scale(1.05)"}
               onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
-              title="Bấm để xem chi tiết từng bài N5"
+              title="Chi tiết theo bài N5"
             >
               <div className="masteryRing" style={{ ["--progress" as string]: `${n5Rate}` }}>
                 <span>{n5Rate}%</span>
               </div>
-              <p className="masteryGroupName">Sơ cấp (N5)</p>
+              <p className="masteryGroupName">N5</p>
               <p className="muted masteryTiny">
                 {n5Learned}/{n5Total} từ
               </p>
@@ -83,12 +75,12 @@ export function HomeInsightsPanel({
               style={{ cursor: "pointer", transition: "transform 0.2s" }}
               onMouseOver={e => e.currentTarget.style.transform = "scale(1.05)"}
               onMouseOut={e => e.currentTarget.style.transform = "scale(1)"}
-              title="Bấm để xem chi tiết từng bài N4"
+              title="Chi tiết theo bài N4"
             >
               <div className="masteryRing" style={{ ["--progress" as string]: `${n4Rate}` }}>
                 <span>{n4Rate}%</span>
               </div>
-              <p className="masteryGroupName">Sơ trung cấp (N4)</p>
+              <p className="masteryGroupName">N4</p>
               <p className="muted masteryTiny">
                 {n4Learned}/{n4Total} từ
               </p>
@@ -97,7 +89,7 @@ export function HomeInsightsPanel({
           
           {expandedJlpt && (
              <div style={{ marginTop: "16px", padding: "14px", background: "var(--surface)", borderTop: "1px solid var(--border)", borderRadius: "var(--radius-sm)" }}>
-               <h4 style={{ margin: "0 0 12px", fontSize: "0.875rem", color: "var(--accent)" }}>Chi tiết tiến độ {expandedJlpt} (Click để đóng)</h4>
+               <h4 style={{ margin: "0 0 12px", fontSize: "0.875rem", color: "var(--accent)" }}>Chi tiết {expandedJlpt}</h4>
                <div className="barList" style={{ maxHeight: "250px", overflowY: "auto", paddingRight: "10px" }}>
                  {getLessonBreakdown(expandedJlpt === "N5" ? n5Words : n4Words, expandedJlpt === "N5" ? learnedN5 : learnedN4).map(item => {
                     const pct = Math.round((item.learned / item.total) * 100);
@@ -117,64 +109,43 @@ export function HomeInsightsPanel({
              </div>
           )}
           <div className="statsMini">
-            <span>Tổng từ vựng: {n5Total + n4Total}</span>
-            <span>Tổng đã nhớ: {n5Learned + n4Learned}</span>
+            <span>Tổng JLPT: {jlptLearned}/{jlptTotal}</span>
+            <span>Hoàn thành: {jlptRate}%</span>
           </div>
         </article>
 
         <article className="insightPanel">
-          <h3>Tiến độ Flashcard Kanji (Tự tạo)</h3>
-          {recentGroupMastery.length === 0 ? (
-            <p className="muted">Chưa có nhóm Flashcard nào được đánh giá thuộc.</p>
-          ) : (
-            <div className="barList">
-              {recentGroupMastery.map((item) => (
-                <div key={item.group} className="barItem">
-                  <div className="barHeader">
-                    <span>{item.group}</span>
-                    <strong>{item.rate}%</strong>
-                  </div>
-                  <div className="barTrack">
-                    <div className="barFill" style={{ width: `${item.rate}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </article>
-
-        <article className="insightPanel">
-          <h3>Tổng quan Bộ Từ vựng (Custom)</h3>
+          <h3>Việc cần học hôm nay</h3>
           <div className="overviewList">
             <div>
-              <p className="muted">Tổng số nhóm học (Folder)</p>
-              <strong>{totalGroups}</strong>
-            </div>
-            <div>
-              <p className="muted">Từ vựng đã thêm tay</p>
-              <strong>{totalVocabulary}</strong>
-            </div>
-            <div>
-              <p className="muted">Gợi ý học tập hôm nay</p>
-              <strong>{dueCardsCount > 0 ? "Ưu tiên ôn Flashcard Kanji đến hạn" : "Khám phá từ vựng Minna!"}</strong>
-            </div>
-          </div>
-        </article>
-
-        <article className="insightPanel">
-          <h3>Tình trạng Bộ Nhớ Kanji hiện tại</h3>
-          <div className="overviewList">
-            <div>
-              <p className="muted">Đến hạn ôn (Hôm nay)</p>
+              <p className="muted">Kanji đến hạn ôn</p>
               <strong>{dueCardsCount} thẻ</strong>
             </div>
             <div>
-              <p className="muted">Lần đầu tiếp xúc (Chưa thuộc)</p>
+              <p className="muted">Kanji chưa thuộc</p>
               <strong>{unknownCardsCount} thẻ</strong>
             </div>
             <div>
-              <p className="muted">Thuộc nằm lòng (Đã thuộc)</p>
-              <strong>{totalVocabulary > 0 ? Math.round(masteryRate) : 0}% thẻ</strong>
+              <p className="muted">Gợi ý</p>
+              <strong>{dueCardsCount > 0 ? "Ưu tiên ôn thẻ đến hạn." : "Tiếp tục học từ mới."}</strong>
+            </div>
+          </div>
+        </article>
+
+        <article className="insightPanel">
+          <h3>Dữ liệu học hiện có</h3>
+          <div className="overviewList">
+            <div>
+              <p className="muted">Nhóm học</p>
+              <strong>{totalGroups}</strong>
+            </div>
+            <div>
+              <p className="muted">Từ vựng tự thêm</p>
+              <strong>{totalVocabulary}</strong>
+            </div>
+            <div>
+              <p className="muted">Mức hoàn thành JLPT</p>
+              <strong>{jlptRate}%</strong>
             </div>
           </div>
         </article>

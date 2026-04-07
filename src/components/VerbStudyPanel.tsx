@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { VerbLesson, VerbType, VerbLevel, VerbConjugation } from "../types";
+
+function shuffle<T>(arr: T[]): T[] {
+  const out = [...arr];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
 
 export function conjugateVerb(verb: VerbLesson): VerbConjugation[] {
   const dictionaryKana = verb.kana;
@@ -121,12 +130,55 @@ export function VerbStudyPanel({
   onLevelFilterChange: (value: "Tất cả" | VerbLevel) => void;
   onTypeFilterChange: (value: "Tất cả" | VerbType) => void;
 }) {
+  const [quizSeed, setQuizSeed] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [quizScore, setQuizScore] = useState(0);
+  const [quizCount, setQuizCount] = useState(0);
+
+  const meaningQuiz = useMemo(() => {
+    if (verbs.length < 4) {
+      return null;
+    }
+    const question = verbs[Math.floor(Math.random() * verbs.length)];
+    const correct = question.meaningVi;
+    const distractors = shuffle(
+      Array.from(
+        new Set(
+          verbs
+            .map((v) => v.meaningVi)
+            .filter((m) => m && m !== correct)
+        )
+      )
+    ).slice(0, 3);
+    if (distractors.length < 3) {
+      return null;
+    }
+    return {
+      question,
+      correct,
+      options: shuffle([correct, ...distractors])
+    };
+  }, [verbs, quizSeed]);
+
+  const onChooseAnswer = (opt: string) => {
+    if (!meaningQuiz || selectedAnswer) {
+      return;
+    }
+    setSelectedAnswer(opt);
+    setQuizCount((c) => c + 1);
+    if (opt === meaningQuiz.correct) {
+      setQuizScore((s) => s + 1);
+    }
+  };
+
+  const nextQuiz = () => {
+    setSelectedAnswer(null);
+    setQuizSeed((s) => s + 1);
+  };
+
   return (
     <div className="verbMode">
-      <p className="muted">
-        Luyện chia động từ N5-N4 với các thể thông dụng: ます, て, た, ない, khả năng, ý chí, mệnh lệnh, điều kiện,
-        bị động, sai khiến.
-      </p>
+      <p className="muted">Động từ được lấy từ dữ liệu N5/N4 hiện có và chia thể tự động.</p>
       <div className="verbFilters">
         <label>
           Cấp độ
@@ -146,20 +198,56 @@ export function VerbStudyPanel({
           </select>
         </label>
       </div>
+      {meaningQuiz ? (
+        <article className="verbCard verbQuizCard">
+          <div className="verbCardHeader">
+            <h3>Kiểm tra nghĩa động từ</h3>
+            <p className="muted">
+              {meaningQuiz.question.dictionary}（{meaningQuiz.question.kana}） · {meaningQuiz.question.jlpt}
+            </p>
+            <p className="muted">Điểm: {quizScore}/{quizCount}</p>
+          </div>
+          <div className="verbQuizOptions">
+            {meaningQuiz.options.map((opt) => {
+              const isChosen = selectedAnswer === opt;
+              const isCorrect = opt === meaningQuiz.correct;
+              let cls = "verbQuizOption";
+              if (selectedAnswer) {
+                if (isCorrect) cls += " isCorrect";
+                else if (isChosen) cls += " isWrong";
+              }
+              return (
+                <button key={opt} type="button" className={cls} onClick={() => onChooseAnswer(opt)} disabled={Boolean(selectedAnswer)}>
+                  {opt}
+                </button>
+              );
+            })}
+          </div>
+          {selectedAnswer ? (
+            <div className="verbQuizActions">
+              <button type="button" className="btnSecondary" onClick={nextQuiz}>
+                Câu kế tiếp
+              </button>
+            </div>
+          ) : null}
+        </article>
+      ) : null}
       {verbs.length === 0 ? (
         <p className="muted">Không có động từ phù hợp với bộ lọc hiện tại.</p>
       ) : (
         <div className="verbCards">
           {verbs.map((verb) => {
-            const forms = conjugateVerb(verb);
+            const forms = verb.conjugations?.length ? verb.conjugations : conjugateVerb(verb);
             return (
               <article key={verb.dictionary} className="verbCard">
                 <div className="verbCardHeader">
                   <h3>{verb.dictionary}</h3>
                   <p className="muted">{verb.kana}</p>
+                  <p className="verbMeaningLine">{verb.meaningVi}</p>
                   <p className="muted">
-                    {verb.meaningVi} - {verb.jlpt} - {verbTypeToLabel(verb.type)}
+                    {verb.jlpt} - {verbTypeToLabel(verb.type)}
                   </p>
+                  {verb.image ? <img className="verbThumb" src={verb.image} alt={verb.dictionary} /> : null}
                 </div>
                 <div className="tableWrap">
                   <table className="verbTable">

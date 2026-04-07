@@ -110,6 +110,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* Japanese text in inputs and tables */
 [lang="ja"],
 .vocabTable tbody td:nth-child(1),
@@ -304,6 +309,12 @@ body {
   margin-bottom: 0;
 }
 
+.navPillInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .navPill:hover:not(:disabled) {
   color: var(--text);
   background: var(--surface-2);
@@ -327,6 +338,9 @@ body {
 }
 
 .toolbarBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   min-height: 38px;
   padding: 8px 14px;
   font-size: 0.8125rem;
@@ -336,6 +350,35 @@ body {
   color: var(--text);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
+}
+
+.toolbarBtn svg {
+  flex-shrink: 0;
+}
+
+.pageLoadingCard {
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  min-height: 110px;
+}
+
+.pageLoadingBar {
+  width: min(320px, 60%);
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-muted) 0%, var(--accent) 50%, var(--accent-muted) 100%);
+  background-size: 200% 100%;
+  animation: loadingShimmer 1.3s linear infinite;
+}
+
+@keyframes loadingShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
 
 .toolbarBtn:hover:not(:disabled) {
@@ -353,6 +396,12 @@ body {
   box-shadow: var(--shadow-sm);
   padding: 20px 22px;
   margin-bottom: 20px;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
 }
 
 .card h2 {
@@ -872,6 +921,50 @@ option {
   padding: 16px;
 }
 
+.verbQuizCard {
+  margin-bottom: 14px;
+}
+
+.verbQuizOptions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.verbQuizOption {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.verbQuizOption:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.verbQuizOption.isCorrect {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  color: var(--success);
+}
+
+.verbQuizOption.isWrong {
+  background: var(--error-bg);
+  border-color: var(--error-border);
+  color: var(--error-text);
+}
+
+.verbQuizActions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .verbCardHeader h3 {
   margin: 0;
   font-size: 1.25rem;
@@ -880,6 +973,22 @@ option {
 .verbCardHeader p {
   margin: 4px 0 0;
   font-size: 0.875rem;
+}
+
+.verbMeaningLine {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.verbThumb {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 240px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .tableWrap {
@@ -1137,11 +1246,16 @@ tbody tr:last-child td {
   }
 
   .navPill {
-    flex: 1 1 auto;
+    flex: 1 1 calc(50% - 4px);
     text-align: center;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     margin-bottom: 8px;
+  }
+
+  .navPillInner {
+    justify-content: center;
+    width: 100%;
   }
 
   .navPill.isActive {
@@ -1263,8 +1377,16 @@ tbody tr:last-child td {
   gap: 8px;
 }
 
-.jlptLessonRow {
+.jlptListToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px 24px;
   margin-bottom: 14px;
+}
+
+.jlptLessonRow {
+  margin-bottom: 0;
   max-width: 280px;
 }
 
@@ -1275,8 +1397,107 @@ tbody tr:last-child td {
   color: var(--muted);
 }
 
+.jlptHideLearnedRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.jlptShuffleBtn {
+  align-self: flex-end;
+}
+
+.jlptShuffleBtn.isOn {
+  background: var(--surface-accent);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.jlptHideLearnedLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  user-select: none;
+}
+
+.jlptSwitch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 26px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.jlptSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.jlptSwitchSlider {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+  border: 1px solid var(--border-strong);
+}
+
+.jlptSwitchSlider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.jlptSwitch input:checked + .jlptSwitchSlider {
+  background: rgba(34, 197, 94, 0.45);
+  border-color: rgba(34, 197, 94, 0.55);
+}
+
+.jlptSwitch input:checked + .jlptSwitchSlider::before {
+  transform: translate(18px, -50%);
+}
+
+.jlptSwitch input:focus-visible + .jlptSwitchSlider {
+  outline: 2px solid var(--ring, #3b82f6);
+  outline-offset: 2px;
+}
+
+:root[data-theme="dark"] .jlptSwitchSlider {
+  background: rgba(148, 163, 184, 0.25);
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+:root[data-theme="dark"] .jlptSwitch input:checked + .jlptSwitchSlider {
+  background: rgba(34, 197, 94, 0.35);
+  border-color: rgba(74, 222, 128, 0.5);
+}
+
+.jlptListEmptyHint {
+  padding: 12px 0;
+  max-width: 42rem;
+}
+
 .jlptWordTable tbody tr.isLearnedRow {
   background: rgba(34, 197, 94, 0.06);
+}
+
+.jlptHanVietCell {
+  font-size: 0.9rem;
+  white-space: normal;
+  max-width: 14rem;
+  line-height: 1.35;
 }
 
 .jlptLearnedOn,

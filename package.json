@@ -8,9 +8,13 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "vite",
-    "import-minna": "python scripts/import_n5_apkg.py --apkg apkg/Japanese_Minna_no_Nihongo_1__2_Lessons_1_-_50.apkg"
+    "import-minna": "python scripts/import_n5_apkg.py --apkg apkg/Japanese_Minna_no_Nihongo_1__2_Lessons_1_-_50.apkg",
+    "enrich-jlpt-hanviet": "node scripts/enrich_jlpt_hanviet.cjs",
+    "import-verbs": "python scripts/import_verb_conjugation_apkg.py --apkg apkg/Makos_Japanese_Verb_Conjugation.apkg"
   },
   "dependencies": {
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "wanakana": "^5.3.1"

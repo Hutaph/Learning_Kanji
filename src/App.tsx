@@ -1,9 +1,10 @@
-import React, { FormEvent, KeyboardEvent, useEffect, useMemo, useState, useRef } from "react";
+import React, { FormEvent, KeyboardEvent, Suspense, lazy, useEffect, useMemo, useState, useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { BookOpen, House, LayoutGrid, MoonStar, Sparkles, SunMedium, TextSearch } from "lucide-react";
 import { BgmPlayer } from "./components/BgmPlayer";
 import { HomeInsightsPanel } from "./components/HomeInsightsPanel";
 import { VocabularyList, formatMeaningLine } from "./components/VocabularyList";
-import { VerbStudyPanel } from "./components/VerbStudyPanel";
-import { FlashCard, ImportedKanjiRecord, VerbType, VerbLevel, InspirationItem, VerbLesson, VerbConjugation, GroupStat, KanjiFrequency, GroupMasteryStat, KanjiProgress, VocabularyEntry } from "./types";
+import { FlashCard, ImportedKanjiRecord, VerbType, VerbLevel, InspirationItem, VerbLesson, KanjiProgress, VocabularyEntry } from "./types";
 import {
   addGroup,
   addVocabulary,
@@ -21,14 +22,18 @@ import {
   toReadingPreview
 } from "./dictionary/lookup";
 import { lookupVocabularyOnline, OnlineLookupResult } from "./dictionary/onlineLookup";
-import { JlptVocabularyPage } from "./components/JlptVocabularyPage";
-import { loadLearnedMap, countLearned } from "./vocabulary/jlptProgress";
-import n5Pack from "./data/n5Vocabulary.json";
-import n4Pack from "./data/n4Vocabulary.json";
-import importedKanjiData from "./data/kanjiImported.json";
-import { speakJapanese } from "./audio";
+import verbsPack from "./data/verbsConjugation.json";
+
+const JlptVocabularyPage = lazy(() =>
+  import("./components/JlptVocabularyPage").then((mod) => ({ default: mod.JlptVocabularyPage }))
+);
+const VerbStudyPanel = lazy(() =>
+  import("./components/VerbStudyPanel").then((mod) => ({ default: mod.VerbStudyPanel }))
+);
 
 function App() {
+  const KANJI_STUDY_GROUP_KEY = "kanji-study-group";
+  const KANJI_STUDY_FOCUS_KEY = "kanji-study-focus";
   const [layoutMode, setLayoutMode] = useState<"full" | "compact">(() => {
     const stored = localStorage.getItem("kanji-layout");
     return stored === "compact" ? "compact" : "full";
@@ -46,7 +51,11 @@ function App() {
   const [newGroupName, setNewGroupName] = useState("");
   const [groupToDelete, setGroupToDelete] = useState("");
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  const [studyGroup, setStudyGroup] = useState("Tất cả");
+  const [studyGroup, setStudyGroup] = useState(() => localStorage.getItem(KANJI_STUDY_GROUP_KEY) || "Tất cả");
+  const [studyFocus, setStudyFocus] = useState<"priority" | "due" | "new">(() => {
+    const stored = localStorage.getItem(KANJI_STUDY_FOCUS_KEY);
+    return stored === "due" || stored === "new" ? stored : "priority";
+  });
   const [cardIndex, setCardIndex] = useState(0);
   const [showHanViet, setShowHanViet] = useState(false);
   const [revealedFields, setRevealedFields] = useState<Record<string, boolean>>({});
@@ -60,8 +69,10 @@ function App() {
   const [error, setError] = useState("");
   const [verbLevelFilter, setVerbLevelFilter] = useState<"Tất cả" | VerbLevel>("Tất cả");
   const [verbTypeFilter, setVerbTypeFilter] = useState<"Tất cả" | VerbType>("Tất cả");
+  const [importedRecords, setImportedRecords] = useState<ImportedKanjiRecord[]>([]);
+  const [kanjiDataReady, setKanjiDataReady] = useState(false);
+  const kanjiPrefetchStartedRef = useRef(false);
 
-  const importedRecords = useMemo(() => importedKanjiData as ImportedKanjiRecord[], []);
   const importedByKanji = useMemo(() => {
     const map: Record<string, ImportedKanjiRecord> = {};
     for (const item of importedRecords) {
@@ -103,91 +114,41 @@ function App() {
     () => buildFlashCards(studyGroup, allVocabulary, importedRecords, importedByKanji),
     [studyGroup, allVocabulary, importedRecords, importedByKanji]
   );
-  const scheduledCards = useMemo(() => scheduleCards(cards, progressMap), [cards, progressMap]);
+  const scopedCards = useMemo(() => {
+    if (studyFocus === "due") {
+      const now = Date.now();
+      return cards.filter((card) => {
+        const progress = progressMap[card.kanji];
+        return Boolean(progress?.known && progress.dueAt <= now);
+      });
+    }
+    if (studyFocus === "new") {
+      return cards.filter((card) => !progressMap[card.kanji]?.known);
+    }
+    return cards;
+  }, [cards, progressMap, studyFocus]);
+  const scheduledCards = useMemo(() => scheduleCards(scopedCards, progressMap), [scopedCards, progressMap]);
   const unknownCardsCount = useMemo(
-    () => scheduledCards.filter((card) => !progressMap[card.kanji]?.known).length,
-    [scheduledCards, progressMap]
+    () => cards.filter((card) => !progressMap[card.kanji]?.known).length,
+    [cards, progressMap]
   );
   const dueCardsCount = useMemo(() => {
     const now = Date.now();
-    return scheduledCards.filter((card) => {
+    return cards.filter((card) => {
       const progress = progressMap[card.kanji];
       return Boolean(progress?.known && progress.dueAt <= now);
     }).length;
-  }, [scheduledCards, progressMap]);
+  }, [cards, progressMap]);
   const currentCard = scheduledCards[cardIndex] || null;
   const dailyInspiration = useMemo(() => getDailyInspiration(new Date()), []);
+  const jlptVerbs = useMemo(() => (verbsPack as { verbs: VerbLesson[] }).verbs || [], []);
   const filteredVerbs = useMemo(() => {
-    return JLPT_VERBS.filter((verb) => {
+    return jlptVerbs.filter((verb) => {
       const passLevel = verbLevelFilter === "Tất cả" || verb.jlpt === verbLevelFilter;
       const passType = verbTypeFilter === "Tất cả" || verb.type === verbTypeFilter;
       return passLevel && passType;
     });
-  }, [verbLevelFilter, verbTypeFilter]);
-  const knownCardsCount = useMemo(
-    () => scheduledCards.filter((card) => Boolean(progressMap[card.kanji]?.known)).length,
-    [scheduledCards, progressMap]
-  );
-  const masteryRate = useMemo(() => {
-    if (scheduledCards.length === 0) {
-      return 0;
-    }
-    return Math.round((knownCardsCount / scheduledCards.length) * 100);
-  }, [knownCardsCount, scheduledCards.length]);
-  const recentGroupMastery = useMemo(() => {
-    const groupLatestMap: Record<string, number> = {};
-    for (const item of allVocabulary) {
-      const ts = Date.parse(item.createdAt || "");
-      const time = Number.isFinite(ts) ? ts : 0;
-      if (!groupLatestMap[item.group] || groupLatestMap[item.group] < time) {
-        groupLatestMap[item.group] = time;
-      }
-    }
-
-    const recentGroups = Object.entries(groupLatestMap)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 4)
-      .map(([group]) => group);
-
-    return recentGroups.map((group) => {
-      const cards = buildFlashCards(group, allVocabulary, importedRecords, importedByKanji);
-      const known = cards.filter((card) => Boolean(progressMap[card.kanji]?.known)).length;
-      const total = cards.length;
-      const rate = total === 0 ? 0 : Math.round((known / total) * 100);
-      return { group, known, total, rate };
-    });
-  }, [allVocabulary, importedByKanji, importedRecords, progressMap]);
-  const topGroups = useMemo(() => {
-    const bucket: Record<string, number> = {};
-    for (const item of allVocabulary) {
-      bucket[item.group] = (bucket[item.group] || 0) + 1;
-    }
-    return Object.entries(bucket)
-      .map(([group, count]) => ({ group, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 5);
-  }, [allVocabulary]);
-  const topKanji = useMemo(() => {
-    const bucket: Record<string, number> = {};
-    for (const item of allVocabulary) {
-      for (const kanji of getKanjiCharacters(item.word)) {
-        bucket[kanji] = (bucket[kanji] || 0) + 1;
-      }
-    }
-    return Object.entries(bucket)
-      .map(([kanji, count]) => ({ kanji, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 6);
-  }, [allVocabulary]);
-  const studyInsight = useMemo(() => {
-    if (dueCardsCount > 0) {
-      return `Hôm nay có ${dueCardsCount} thẻ đến hạn ôn. Làm trước nhóm này sẽ giúp nhớ lâu hơn.`;
-    }
-    if (unknownCardsCount > 0) {
-      return `Bạn còn ${unknownCardsCount} thẻ chưa thuộc. Cứ mỗi ngày xử lý 5-10 thẻ là rất ổn.`;
-    }
-    return "Tiến độ rất tốt! Hôm nay phù hợp để mở rộng thêm từ mới hoặc động từ mới.";
-  }, [dueCardsCount, unknownCardsCount]);
+  }, [jlptVerbs, verbLevelFilter, verbTypeFilter]);
   const currentPage = useMemo(() => {
     if (currentPath === "/study/kanji") {
       return "kanji";
@@ -227,6 +188,53 @@ function App() {
   }, [layoutMode]);
 
   useEffect(() => {
+    localStorage.setItem(KANJI_STUDY_GROUP_KEY, studyGroup);
+  }, [studyGroup]);
+
+  useEffect(() => {
+    localStorage.setItem(KANJI_STUDY_FOCUS_KEY, studyFocus);
+  }, [studyFocus]);
+
+  useEffect(() => {
+    if (currentPage !== "kanji" || kanjiDataReady) {
+      return;
+    }
+    let cancelled = false;
+    import("./data/kanjiImported.json")
+      .then((mod) => {
+        if (cancelled) {
+          return;
+        }
+        setImportedRecords(mod.default as ImportedKanjiRecord[]);
+        setKanjiDataReady(true);
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setImportedRecords([]);
+          setKanjiDataReady(true);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [currentPage, kanjiDataReady]);
+
+  const prefetchKanjiData = () => {
+    if (kanjiDataReady || kanjiPrefetchStartedRef.current) {
+      return;
+    }
+    kanjiPrefetchStartedRef.current = true;
+    import("./data/kanjiImported.json")
+      .then((mod) => {
+        setImportedRecords(mod.default as ImportedKanjiRecord[]);
+        setKanjiDataReady(true);
+      })
+      .catch(() => {
+        kanjiPrefetchStartedRef.current = false;
+      });
+  };
+
+  useEffect(() => {
     if (selectedAddGroup && !allGroups.includes(selectedAddGroup)) {
       setSelectedAddGroup("Chung");
     }
@@ -242,7 +250,7 @@ function App() {
     setError("");
     setNotice("");
     if (!word.trim() || !reading.trim() || (!meaningVi.trim() && !meaningEn.trim())) {
-      setError("Vui lòng nhập đủ Từ vựng, Cách đọc và ít nhất một nghĩa (Việt hoặc Anh) trước khi lưu.");
+      setError("Vui lòng nhập từ, cách đọc và ít nhất một nghĩa.");
       return false;
     }
     addVocabulary(word.trim(), reading.trim(), meaningVi.trim(), meaningEn.trim(), selectedAddGroup);
@@ -253,7 +261,7 @@ function App() {
     setMeaningEn("");
     setOnlineResult(null);
     setEnterLookupReady(false);
-    setNotice("Đã lưu từ vựng thành công.");
+    setNotice("Đã lưu từ vựng.");
     setRefreshTick((prev) => prev + 1);
     return true;
   };
@@ -287,7 +295,7 @@ function App() {
       setError("Không thể xóa nhóm hệ thống.");
       return;
     }
-    const ok = window.confirm(`Xóa nhóm "${groupToDelete}"? Các từ trong nhóm sẽ chuyển về "Chung".`);
+    const ok = window.confirm(`Xóa nhóm "${groupToDelete}"? Từ vựng sẽ chuyển về "Chung".`);
     if (!ok) {
       return;
     }
@@ -302,7 +310,7 @@ function App() {
       setListGroup("");
     }
     setGroupToDelete("");
-    setNotice(`Đã xóa nhóm "${groupToDelete}" và chuyển từ vựng về Chung.`);
+    setNotice(`Đã xóa nhóm "${groupToDelete}".`);
     setRefreshTick((prev) => prev + 1);
   };
 
@@ -324,57 +332,13 @@ function App() {
     setRevealedFields({});
   };
 
-  const handleExportData = () => {
-    const data = {
-      vocabulary: JSON.parse(localStorage.getItem("kanji_vocabulary_list") || "[]"),
-      groups: JSON.parse(localStorage.getItem("kanji_vocabulary_groups") || '["Chung"]'),
-      progress: JSON.parse(localStorage.getItem("kanji-learned") || "{}"),
-      jlptN5: JSON.parse(localStorage.getItem("jlpt-progress-N5") || "{}"),
-      jlptN4: JSON.parse(localStorage.getItem("jlpt-progress-N4") || "{}")
-    };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `kulukulu_backup_${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    setNotice("Đã tải file sao lưu gốc JSON (Flashcard + JLPT) thành công.");
-  };
-
-  const handleImportData = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const ok = window.confirm("Cảnh báo: Nhập dữ liệu sẽ GHI ĐÈ toàn bộ tiến độ và từ vựng hiện tại. Bạn có chắc chắn?");
-    if (!ok) return;
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      try {
-        const text = evt.target?.result as string;
-        const data = JSON.parse(text);
-        if (data.vocabulary) localStorage.setItem("kanji_vocabulary_list", JSON.stringify(data.vocabulary));
-        if (data.groups) localStorage.setItem("kanji_vocabulary_groups", JSON.stringify(data.groups));
-        if (data.progress) localStorage.setItem("kanji-learned", JSON.stringify(data.progress));
-        if (data.jlptN5) localStorage.setItem("jlpt-progress-N5", JSON.stringify(data.jlptN5));
-        if (data.jlptN4) localStorage.setItem("jlpt-progress-N4", JSON.stringify(data.jlptN4));
-        setNotice("Phục hồi dữ liệu thành công! Đang khởi động lại...");
-        setRefreshTick(r => r + 1);
-        setTimeout(() => window.location.reload(), 1500);
-      } catch (err) {
-        setError("File không hợp lệ hoặc cấu trúc bị lỗi.");
-      }
-    };
-    reader.readAsText(file);
-    e.target.value = ''; // reset
-  };
-
   const handleMarkKnown = () => {
     if (!currentCard) {
       return;
     }
     const next = markKanjiKnown(currentCard.kanji);
     setProgressMap(next);
-    setNotice(`Đã đánh dấu "${currentCard.kanji}" là Đã thuộc.`);
+    setNotice(`Đã đánh dấu "${currentCard.kanji}" là thuộc.`);
     handleNextCard();
   };
 
@@ -384,7 +348,7 @@ function App() {
     }
     const next = markKanjiUnknown(currentCard.kanji);
     setProgressMap(next);
-    setNotice(`Đã đánh dấu "${currentCard.kanji}" là Chưa thuộc.`);
+    setNotice(`Đã đánh dấu "${currentCard.kanji}" là chưa thuộc.`);
     handleNextCard();
   };
 
@@ -400,7 +364,7 @@ function App() {
     setNotice("");
     setOnlineResult(null);
     if (!query.trim()) {
-      setError("Hãy nhập từ (romaji/hiragana/kanji) trước khi tra online.");
+      setError("Vui lòng nhập từ để tra cứu.");
       return false;
     }
 
@@ -408,7 +372,7 @@ function App() {
     try {
       const result = await lookupVocabularyOnline(query);
       if (!result) {
-        setError("Không tìm thấy từ phù hợp trên Jisho.");
+        setError("Không tìm thấy kết quả phù hợp.");
         return false;
       }
       setWord(result.word);
@@ -416,11 +380,11 @@ function App() {
       setMeaningVi(result.meaningVi || "");
       setMeaningEn(result.meaningEn || "");
       setOnlineResult(result);
-      setNotice("Đã điền dữ liệu từ tra cứu online (gồm cả nghĩa Việt và Anh).");
+      setNotice("Đã áp dụng kết quả tra cứu.");
       setEnterLookupReady(true);
       return true;
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Không thể tra online lúc này.");
+      setError(err instanceof Error ? err.message : "Không thể tra cứu lúc này.");
       return false;
     } finally {
       setIsOnlineLookingUp(false);
@@ -435,14 +399,14 @@ function App() {
     setError("");
     setNotice("");
     if (!localSuggestion) {
-      setError("Không có gợi ý local phù hợp.");
+      setError("Không có gợi ý phù hợp.");
       return;
     }
     setWord(localSuggestion.word);
     setReading(localSuggestion.reading);
     setMeaningVi((prev) => (prev.trim() ? prev : localSuggestion.meaningVi));
     setMeaningEn((prev) => (prev.trim() ? prev : localSuggestion.meaningEn));
-    setNotice("Đã áp dụng gợi ý local vào form.");
+    setNotice("Đã áp dụng gợi ý.");
   };
 
   const handleResetForm = () => {
@@ -497,7 +461,7 @@ function App() {
             <img className="brandLogo" src="/logo.png" alt="Nihongo Studio" />
             <div>
               <h1>Kulukulu Nihongo</h1>
-              <p className="heroSubtitle">Học từ vựng JLPT, Kanji và Ngữ pháp tập trung, không phân tâm.</p>
+              <p className="heroSubtitle">Nền tảng học Kanji và JLPT tập trung, tối giản, hiệu quả.</p>
             </div>
           </div>
           <div className="headerControls">
@@ -507,46 +471,58 @@ function App() {
               className="toolbarBtn"
               onClick={() => setLayoutMode((prev) => (prev === "full" ? "compact" : "full"))}
             >
+              <LayoutGrid size={16} />
               {layoutMode === "full" ? "Layout gọn" : "Layout rộng"}
             </button>
             <button type="button" className="toolbarBtn" onClick={() => setTheme((prev) => (prev === "light" ? "dark" : "light"))}>
+              {theme === "light" ? <MoonStar size={16} /> : <SunMedium size={16} />}
               {theme === "light" ? "Giao diện tối" : "Giao diện sáng"}
             </button>
           </div>
         </div>
         <nav className="mainNav" aria-label="Điều hướng chính">
           <button type="button" className={currentPage === "home" ? "navPill isActive" : "navPill"} onClick={() => goToPage("/")}>
-            Trang chủ
+            <span className="navPillInner"><House size={16} />Trang chủ</span>
           </button>
           <button
             type="button"
             className={currentPage === "kanji" ? "navPill isActive" : "navPill"}
             onClick={() => goToPage("/study/kanji")}
+            onMouseEnter={prefetchKanjiData}
+            onFocus={prefetchKanjiData}
           >
-            Học Kanji
+            <span className="navPillInner"><Sparkles size={16} />Học Kanji</span>
           </button>
           <button
             type="button"
             className={currentPage === "verbs" ? "navPill isActive" : "navPill"}
             onClick={() => goToPage("/study/verbs")}
           >
-            Động từ
+            <span className="navPillInner"><TextSearch size={16} />Động từ</span>
           </button>
           <button
             type="button"
             className={currentPage === "vocabulary" ? "navPill isActive" : "navPill"}
             onClick={() => goToPage("/study/vocabulary")}
           >
-            Từ vựng JLPT
+            <span className="navPillInner"><BookOpen size={16} />Từ vựng JLPT</span>
           </button>
         </nav>
       </header>
 
+      <AnimatePresence mode="wait">
+      <motion.div
+        key={currentPage}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -6 }}
+        transition={{ duration: 0.18, ease: "easeOut" }}
+      >
       {currentPage === "home" && (
       <section className="card inspirationCard">
         <div className="inspirationMain">
           <div className="inspirationKanjiWrap">
-            <p className="resultLabel">Kanji nhân văn trong ngày</p>
+            <p className="resultLabel">Kanji hôm nay</p>
             <p className="inspirationKanji">{dailyInspiration.kanji}</p>
             <p className="inspirationMeta">
               Hán Việt: <strong>{dailyInspiration.hanViet}</strong> - {dailyInspiration.keyword}
@@ -557,7 +533,7 @@ function App() {
             <p className="quoteReading">{dailyInspiration.reading}</p>
             <p className="quoteMeaning">{dailyInspiration.meaningVi}</p>
             <button type="button" className="ctaStudyButton btnPrimary" onClick={() => goToPage("/study/kanji")}>
-              Bắt đầu học Kanji
+              Bắt đầu học
             </button>
           </div>
         </div>
@@ -570,15 +546,10 @@ function App() {
       {currentPage === "home" && (
         <>
           <HomeInsightsPanel
-            masteryRate={masteryRate}
-            recentGroupMastery={recentGroupMastery}
             dueCardsCount={dueCardsCount}
             unknownCardsCount={unknownCardsCount}
             totalVocabulary={allVocabulary.length}
             totalGroups={allGroups.length}
-            topGroups={topGroups}
-            topKanji={topKanji}
-            insight={studyInsight}
           />
         </>
       )}
@@ -599,32 +570,31 @@ function App() {
                   ))}
                 </select>
               </label>
+              <label>
+                Chế độ ôn
+                <select value={studyFocus} onChange={(event) => setStudyFocus(event.target.value as "priority" | "due" | "new")}>
+                  <option value="priority">Ưu tiên thông minh</option>
+                  <option value="due">Chỉ thẻ đến hạn</option>
+                  <option value="new">Chỉ thẻ chưa thuộc</option>
+                </select>
+              </label>
               <p className="muted cardCounter">
                 Tiến độ thẻ: {scheduledCards.length === 0 ? 0 : cardIndex + 1}/{scheduledCards.length}
               </p>
             </div>
-            <p className="hint">
-              Ôn tập thông minh: thẻ Chưa thuộc được ưu tiên hiển thị trước.
+            <p className="muted">
+              Hôm nay: {dueCardsCount} thẻ đến hạn · {unknownCardsCount} thẻ chưa thuộc
             </p>
 
-            {currentCard ? (
+            {!kanjiDataReady ? (
+              <p className="muted">Đang tải dữ liệu Kanji...</p>
+            ) : currentCard ? (
               <div className="flashcard">
                 <div className="flashTopRow">
                   <div className="kanjiPanel">
                     <p className="resultLabel">Kanji</p>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginBottom: "16px" }}>
-                      <p className="flashKanji" style={{ margin: 0 }}>{currentCard.kanji}</p>
-                      <button 
-                        type="button" 
-                        className="toolbarBtn" 
-                        onClick={() => speakJapanese(currentCard.kanji)}
-                        style={{ borderRadius: "50%", padding: "8px", width: "48px", height: "48px", fontSize: "1.2rem", flexShrink: 0 }}
-                        title="Phát âm"
-                      >
-                        🔊
-                      </button>
-                    </div>
-                    <p className="resultLabel">Âm Hán Việt (nhấn để hiện)</p>
+                    <p className="flashKanji">{currentCard.kanji}</p>
+                    <p className="resultLabel">Âm Hán Việt</p>
                     <button
                       type="button"
                       className={`blurRevealButton ${showHanViet ? "revealed" : ""}`}
@@ -637,16 +607,15 @@ function App() {
                     {currentCard.image ? (
                       <img className="kanjiImage" src={currentCard.image} alt={`Minh họa ${currentCard.kanji}`} />
                     ) : (
-                      <p className="muted">Chưa có ảnh minh họa cho Kanji này.</p>
+                      <p className="muted">Chưa có ảnh minh họa.</p>
                     )}
                   </div>
                 </div>
 
                 <div className="vocabPanel">
                   <p className="resultLabel">Từ vựng liên quan</p>
-                  <p className="muted">Nhấn vào chữ mờ để hiện Hiragana hoặc Nghĩa.</p>
                   {currentCard.vocabulary.length === 0 ? (
-                    <p className="muted">Chưa có từ vựng nào chứa Kanji này.</p>
+                    <p className="muted">Chưa có từ liên quan.</p>
                   ) : (
                     <div className="tableWrap">
                       <table className="vocabTable">
@@ -665,20 +634,7 @@ function App() {
                             const showMeaning = Boolean(revealedFields[meaningKey]);
                             return (
                               <tr key={`${currentCard.kanji}-${entry.id}`}>
-                                <td>
-                                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                                    {entry.word}
-                                    <button 
-                                      type="button" 
-                                      className="btnGhost" 
-                                      style={{ padding: "4px", fontSize: "1rem" }}
-                                      onClick={() => speakJapanese(entry.word)}
-                                      title="Nghe"
-                                    >
-                                      🔊
-                                    </button>
-                                  </div>
-                                </td>
+                                <td>{entry.word}</td>
                                 <td>
                                   <button
                                     type="button"
@@ -724,25 +680,37 @@ function App() {
                 </div>
               </div>
             ) : (
-              <p className="muted">Nhóm này chưa có dữ liệu. Hãy thêm từ vựng để bắt đầu học.</p>
+              <p className="muted">
+                {studyFocus === "due"
+                  ? "Không có thẻ đến hạn trong bộ lọc hiện tại."
+                  : studyFocus === "new"
+                    ? "Không còn thẻ chưa thuộc trong bộ lọc hiện tại."
+                    : "Nhóm này chưa có dữ liệu. Hãy thêm từ vựng để bắt đầu học."}
+              </p>
             )}
           </section>
         </>
       )}
 
-      {currentPage === "vocabulary" && <JlptVocabularyPage />}
+      {currentPage === "vocabulary" && (
+        <Suspense fallback={<PageLoadingCard label="Đang tải tab Từ vựng JLPT..." />}>
+          <JlptVocabularyPage />
+        </Suspense>
+      )}
 
       {currentPage === "verbs" && (
-        <section className="card studyCard">
-          <h2>Học động từ (N4 trở xuống)</h2>
-          <VerbStudyPanel
-            verbs={filteredVerbs}
-            levelFilter={verbLevelFilter}
-            typeFilter={verbTypeFilter}
-            onLevelFilterChange={setVerbLevelFilter}
-            onTypeFilterChange={setVerbTypeFilter}
-          />
-        </section>
+        <Suspense fallback={<PageLoadingCard label="Đang tải tab Động từ..." />}>
+          <section className="card studyCard">
+            <h2>Học động từ (N4 trở xuống)</h2>
+            <VerbStudyPanel
+              verbs={filteredVerbs}
+              levelFilter={verbLevelFilter}
+              typeFilter={verbTypeFilter}
+              onLevelFilterChange={setVerbLevelFilter}
+              onTypeFilterChange={setVerbTypeFilter}
+            />
+          </section>
+        </Suspense>
       )}
 
       {currentPage === "kanji" && (
@@ -769,33 +737,19 @@ function App() {
                   Xóa nhóm
                 </button>
               </div>
-              <p className="muted">Khi xóa nhóm, các từ vựng trong nhóm sẽ được chuyển về "Chung".</p>
+              <p className="muted">Khi xóa nhóm, từ vựng sẽ chuyển về "Chung".</p>
             </section>
             
             <section className="card">
-              <h2>Sao Lưu Dữ Liệu</h2>
-              <p className="muted">Hãy Export thường xuyên để đảm bảo tiến độ và từ vựng tự nạp không bị mất khi dọn Browser Cache.</p>
-              <div className="row gap groupRow">
-                <button type="button" className="btnPrimary" onClick={handleExportData}>
-                  Tải Backup (Export)
-                </button>
-                <label className="btnSecondary" style={{ cursor: "pointer", textAlign: "center" }}>
-                  Phục hồi gốc (Import)
-                  <input type="file" accept=".json" style={{ display: "none" }} onChange={handleImportData} />
-                </label>
-              </div>
-            </section>
-
-            <section className="card">
               <h2>Thêm Từ Vựng</h2>
-              <p className="muted">Bước 1: Tra cứu nhanh. Bước 2: Chỉnh sửa. Bước 3: Lưu vào nhóm học.</p>
+              <p className="muted">Tra cứu, chỉnh sửa và lưu từ mới.</p>
               <div className="lookupBar">
                 <input
                   lang="ja"
                   value={queryInput}
                   onChange={(event) => setQueryInput(event.target.value)}
                   onKeyDown={handleQueryKeyDown}
-                  placeholder="Nhập từ cần tra (Romaji / Hiragana / Kanji). Ví dụ: gakkou"
+                  placeholder="Nhập từ cần tra (romaji / hiragana / kanji)"
                 />
                 <button
                   type="button"
@@ -809,7 +763,6 @@ function App() {
                   Gợi ý cục bộ
                 </button>
               </div>
-              <p className="hint">Mẹo nhanh: Enter lần 1 để tra cứu, Enter lần 2 để lưu vào nhóm đang chọn.</p>
               {localSuggestion && (
                 <p className="hint">
                   Gợi ý local: {localSuggestion.word}（{localSuggestion.reading}） - {formatMeaningLine(localSuggestion)}
@@ -855,7 +808,7 @@ function App() {
                     onChange={(event) => setReading(event.target.value)}
                     placeholder="Ví dụ: がっこう / gakkou"
                   />
-                  <p className="hint">Xem trước cách đọc: {readingPreview || "-"}</p>
+                  <p className="hint">Preview: {readingPreview || "-"}</p>
                 </div>
 
                 <div className="field">
@@ -879,12 +832,10 @@ function App() {
               </form>
               {onlineResult && (
                 <p className="hint">
-                  Kết quả online ({onlineResult.source}): {onlineResult.word}（{onlineResult.reading}） - VI:{" "}
-                  {onlineResult.meaningVi || onlineResult.meaningEn} | EN: {onlineResult.meaningEn} | Hán Việt:{" "}
-                  {renderHanViet(onlineResult.word, importedByKanji)}
+                  Nguồn {onlineResult.source}: {onlineResult.word}（{onlineResult.reading}） · {onlineResult.meaningVi || onlineResult.meaningEn}
                 </p>
               )}
-              <p className="hint">Hán Việt (tự động theo từ hiện tại): {hanVietPreview}</p>
+              <p className="hint">Âm Hán: {hanVietPreview}</p>
             </section>
           </div>
 
@@ -903,11 +854,13 @@ function App() {
             {listGroup ? (
               <VocabularyList entries={listEntries} emptyText="Nhóm này chưa có từ vựng." onDelete={handleDeleteVocabulary} />
             ) : (
-              <p className="muted">Danh sách đang ẩn. Hãy chọn nhóm để hiển thị.</p>
+              <p className="muted">Chọn nhóm để hiển thị danh sách.</p>
             )}
           </section>
         </>
       )}
+      </motion.div>
+      </AnimatePresence>
       <div className="floatingActions">
         {currentPage === "kanji" ? (
           <>
@@ -939,6 +892,15 @@ function App() {
       </div>
       </div>
     </main>
+  );
+}
+
+function PageLoadingCard({ label }: { label: string }) {
+  return (
+    <section className="card pageLoadingCard" aria-live="polite" aria-busy="true">
+      <div className="pageLoadingBar" />
+      <p className="muted">{label}</p>
+    </section>
   );
 }
 
@@ -1080,33 +1042,6 @@ const DAILY_INSPIRATIONS: InspirationItem[] = [
     reading: "Ippome no yuuki ga, mirai o kaeru.",
     meaningVi: "Sự can đảm ở bước đầu tiên có thể thay đổi tương lai."
   }
-];
-
-const JLPT_VERBS: VerbLesson[] = [
-  { dictionary: "行く", kana: "いく", meaningVi: "đi", jlpt: "N5", type: "godan" },
-  { dictionary: "書く", kana: "かく", meaningVi: "viết", jlpt: "N5", type: "godan" },
-  { dictionary: "聞く", kana: "きく", meaningVi: "nghe/hỏi", jlpt: "N5", type: "godan" },
-  { dictionary: "飲む", kana: "のむ", meaningVi: "uống", jlpt: "N5", type: "godan" },
-  { dictionary: "読む", kana: "よむ", meaningVi: "đọc", jlpt: "N5", type: "godan" },
-  { dictionary: "話す", kana: "はなす", meaningVi: "nói", jlpt: "N5", type: "godan" },
-  { dictionary: "待つ", kana: "まつ", meaningVi: "đợi", jlpt: "N5", type: "godan" },
-  { dictionary: "帰る", kana: "かえる", meaningVi: "về", jlpt: "N5", type: "godan" },
-  { dictionary: "使う", kana: "つかう", meaningVi: "sử dụng", jlpt: "N5", type: "godan" },
-  { dictionary: "買う", kana: "かう", meaningVi: "mua", jlpt: "N5", type: "godan" },
-  { dictionary: "食べる", kana: "たべる", meaningVi: "ăn", jlpt: "N5", type: "ichidan" },
-  { dictionary: "見る", kana: "みる", meaningVi: "xem/nhìn", jlpt: "N5", type: "ichidan" },
-  { dictionary: "起きる", kana: "おきる", meaningVi: "thức dậy", jlpt: "N5", type: "ichidan" },
-  { dictionary: "寝る", kana: "ねる", meaningVi: "ngủ", jlpt: "N5", type: "ichidan" },
-  { dictionary: "開ける", kana: "あける", meaningVi: "mở", jlpt: "N4", type: "ichidan" },
-  { dictionary: "閉める", kana: "しめる", meaningVi: "đóng", jlpt: "N4", type: "ichidan" },
-  { dictionary: "借りる", kana: "かりる", meaningVi: "mượn", jlpt: "N4", type: "ichidan" },
-  { dictionary: "調べる", kana: "しらべる", meaningVi: "tra cứu", jlpt: "N4", type: "ichidan" },
-  { dictionary: "働く", kana: "はたらく", meaningVi: "làm việc", jlpt: "N4", type: "godan" },
-  { dictionary: "作る", kana: "つくる", meaningVi: "làm/chế tạo", jlpt: "N4", type: "godan" },
-  { dictionary: "持つ", kana: "もつ", meaningVi: "cầm/nắm", jlpt: "N4", type: "godan" },
-  { dictionary: "手伝う", kana: "てつだう", meaningVi: "giúp đỡ", jlpt: "N4", type: "godan" },
-  { dictionary: "勉強する", kana: "べんきょうする", meaningVi: "học", jlpt: "N5", type: "irregular" },
-  { dictionary: "来る", kana: "くる", meaningVi: "đến", jlpt: "N5", type: "irregular" }
 ];
 
 function getDailyInspiration(date: Date): InspirationItem {
