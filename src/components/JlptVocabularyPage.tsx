@@ -1,7 +1,10 @@
 import { FormEvent, useCallback, useMemo, useState, useEffect } from "react";
+import { Eye, EyeOff, Volume2 } from "lucide-react";
 import n5Pack from "../data/n5Vocabulary.json";
 import n4Pack from "../data/n4Vocabulary.json";
 import { speakJapanese } from "../audio";
+import { getString, setString } from "../lib/storage";
+import { STORAGE_KEYS } from "../lib/storageKeys";
 import {
   clearWrongReviewIds,
   completionRate,
@@ -16,6 +19,7 @@ import {
   toggleLearned
 } from "../vocabulary/jlptProgress";
 import { JLPT_LEVEL_ORDER, JlptLevel, JlptWord, N5VocabularyFile, TestMode, WordScope } from "../vocabulary/jlptTypes";
+import { answerOk, buildPool, JlptSubView, keyListShuffleEnabled, keyListShuffleOrder, loadListShuffleOrder, shuffle, takeCount } from "./jlpt/jlptUtils";
 
 const n5Data = n5Pack as N5VocabularyFile;
 const n4Data = n4Pack as N5VocabularyFile; // Vẫn dùng chung schema n5
@@ -25,93 +29,6 @@ const PLACEHOLDER_LEVELS: Record<Exclude<JlptLevel, "N5" | "N4">, string> = {
   N2: "Nội dung N2 sẽ được bổ sung sau.",
   N1: "Nội dung N1 sẽ được bổ sung sau."
 };
-
-type SubView = "levels" | "list" | "testConfig" | "testRun";
-
-function keyListShuffleEnabled(level: JlptLevel): string {
-  return `jlpt_list_shuffle_enabled_${level}`;
-}
-
-function keyListShuffleOrder(level: JlptLevel): string {
-  return `jlpt_list_shuffle_order_${level}`;
-}
-
-function loadListShuffleOrder(level: JlptLevel): string[] {
-  try {
-    const raw = localStorage.getItem(keyListShuffleOrder(level));
-    if (!raw) {
-      return [];
-    }
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) {
-      return [];
-    }
-    return parsed.filter((id): id is string => typeof id === "string");
-  } catch {
-    return [];
-  }
-}
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function normalize(s: string): string {
-  return s.trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function answerOk(expected: string, user: string): boolean {
-  const e = normalize(expected);
-  const u = normalize(user);
-  if (!u) {
-    return false;
-  }
-  if (e === u) {
-    return true;
-  }
-  if (e.includes(u) || u.includes(e)) {
-    return true;
-  }
-  const eParts = e.split(/[;,\/|]/).map((p) => p.trim()).filter(Boolean);
-  return eParts.some((p) => p === u || p.includes(u) || u.includes(p));
-}
-
-function buildPool(
-  words: JlptWord[],
-  learned: Record<string, boolean>,
-  wordScope: WordScope,
-  skipMemorized: boolean,
-  lesson: number | "all" | "unassigned"
-): JlptWord[] {
-  let basePool = words;
-  if (lesson === "unassigned") {
-    basePool = words.filter((w) => w.lesson == null);
-  } else if (lesson !== "all") {
-    basePool = words.filter((w) => w.lesson === lesson);
-  }
-
-  if (wordScope === "memorized") {
-    return shuffle(basePool.filter((w) => learned[w.id]));
-  }
-  let pool = [...basePool];
-  if (skipMemorized) {
-    pool = pool.filter((w) => !learned[w.id]);
-  }
-  return shuffle(pool);
-}
-
-function takeCount(pool: JlptWord[], mode: "10" | "50" | "all" | "custom", custom: number): JlptWord[] {
-  if (mode === "all") {
-    return pool;
-  }
-  const n = mode === "10" ? 10 : mode === "50" ? 50 : Math.max(1, Math.min(custom, pool.length));
-  return pool.slice(0, Math.min(n, pool.length));
-}
 
 export function JlptVocabularyPage() {
   const wordsByLevel = useMemo<Record<JlptLevel, JlptWord[]>>(
@@ -157,64 +74,64 @@ export function JlptVocabularyPage() {
     }
   }, []);
 
-  const [subView, setSubView] = useState<SubView>(() => {
-    return (localStorage.getItem("jlpt_subView") as SubView) || "levels";
+  const [subView, setSubView] = useState<JlptSubView>(() => {
+    return (getString(STORAGE_KEYS.jlpt.subView) as JlptSubView) || "levels";
   });
   const [activeLevel, setActiveLevel] = useState<JlptLevel>(() => {
-    return (localStorage.getItem("jlpt_activeLevel") as JlptLevel) || "N5";
+    return (getString(STORAGE_KEYS.jlpt.activeLevel) as JlptLevel) || "N5";
   });
   const [lessonFilter, setLessonFilter] = useState<number | "all" | "unassigned">(() => {
-    const saved = localStorage.getItem("jlpt_lessonFilter");
+    const saved = getString(STORAGE_KEYS.jlpt.lessonFilter);
     if (saved === "all" || saved === "unassigned") return saved;
     return saved ? Number(saved) : 1;
   });
 
   useEffect(() => {
-    localStorage.setItem("jlpt_subView", subView);
-    localStorage.setItem("jlpt_activeLevel", activeLevel);
-    localStorage.setItem("jlpt_lessonFilter", String(lessonFilter));
+    setString(STORAGE_KEYS.jlpt.subView, subView);
+    setString(STORAGE_KEYS.jlpt.activeLevel, activeLevel);
+    setString(STORAGE_KEYS.jlpt.lessonFilter, String(lessonFilter));
   }, [subView, activeLevel, lessonFilter]);
 
   const [isReadingHidden, setIsReadingHidden] = useState(false);
   const [isMeaningHidden, setIsMeaningHidden] = useState(false);
   const [revealedCells, setRevealedCells] = useState<Record<string, boolean>>({});
-  const [hideLearned, setHideLearned] = useState(() => localStorage.getItem("jlpt_hideLearned") === "1");
-  const [shuffleEnabled, setShuffleEnabled] = useState(false);
-  const [shuffleOrderIds, setShuffleOrderIds] = useState<string[]>([]);
+  const [hideLearned, setHideLearned] = useState(() => getString(STORAGE_KEYS.jlpt.hideLearned) === "1");
+  const [shuffleEnabled, setShuffleEnabled] = useState(() => getString(keyListShuffleEnabled(activeLevel)) === "1");
+  const [shuffleOrderIds, setShuffleOrderIds] = useState<string[]>(() => loadListShuffleOrder(activeLevel));
 
   const [wordScope, setWordScope] = useState<WordScope>(() => {
-    return (localStorage.getItem("jlpt_wordScope") as WordScope) || "all";
+    return (getString(STORAGE_KEYS.jlpt.wordScope) as WordScope) || "all";
   });
   const [testLesson, setTestLesson] = useState<number | "all" | "unassigned">(() => {
-    const saved = localStorage.getItem("jlpt_testLesson");
+    const saved = getString(STORAGE_KEYS.jlpt.testLesson);
     if (saved === "all" || saved === "unassigned") return saved;
     return saved ? Number(saved) : 1;
   });
   const [testMode, setTestMode] = useState<TestMode>(() => {
-    return (localStorage.getItem("jlpt_testMode") as TestMode) || "meaning";
+    return (getString(STORAGE_KEYS.jlpt.testMode) as TestMode) || "meaning";
   });
 
   useEffect(() => {
-    localStorage.setItem("jlpt_wordScope", wordScope);
-    localStorage.setItem("jlpt_testLesson", String(testLesson));
-    localStorage.setItem("jlpt_testMode", testMode);
+    setString(STORAGE_KEYS.jlpt.wordScope, wordScope);
+    setString(STORAGE_KEYS.jlpt.testLesson, String(testLesson));
+    setString(STORAGE_KEYS.jlpt.testMode, testMode);
   }, [wordScope, testLesson, testMode]);
 
   useEffect(() => {
-    localStorage.setItem("jlpt_hideLearned", hideLearned ? "1" : "0");
+    setString(STORAGE_KEYS.jlpt.hideLearned, hideLearned ? "1" : "0");
   }, [hideLearned]);
 
   useEffect(() => {
-    setShuffleEnabled(localStorage.getItem(keyListShuffleEnabled(activeLevel)) === "1");
+    setShuffleEnabled(getString(keyListShuffleEnabled(activeLevel)) === "1");
     setShuffleOrderIds(loadListShuffleOrder(activeLevel));
   }, [activeLevel]);
 
   useEffect(() => {
-    localStorage.setItem(keyListShuffleEnabled(activeLevel), shuffleEnabled ? "1" : "0");
+    setString(keyListShuffleEnabled(activeLevel), shuffleEnabled ? "1" : "0");
   }, [activeLevel, shuffleEnabled]);
 
   useEffect(() => {
-    localStorage.setItem(keyListShuffleOrder(activeLevel), JSON.stringify(shuffleOrderIds));
+    setString(keyListShuffleOrder(activeLevel), JSON.stringify(shuffleOrderIds));
   }, [activeLevel, shuffleOrderIds]);
   const [countMode, setCountMode] = useState<"10" | "50" | "all" | "custom">("10");
   const [customCount, setCustomCount] = useState(20);
@@ -313,11 +230,15 @@ export function JlptVocabularyPage() {
 
   const toggleShuffleList = () => {
     if (shuffleEnabled) {
+      setString(keyListShuffleEnabled(activeLevel), "0");
       setShuffleEnabled(false);
       return;
     }
     const ids = words.map((w) => w.id);
-    setShuffleOrderIds(shuffle(ids));
+    const nextOrder = shuffle(ids);
+    setString(keyListShuffleEnabled(activeLevel), "1");
+    setString(keyListShuffleOrder(activeLevel), JSON.stringify(nextOrder));
+    setShuffleOrderIds(nextOrder);
     setShuffleEnabled(true);
   };
 
@@ -440,15 +361,14 @@ export function JlptVocabularyPage() {
       questionMode === "meaning" ? (
         <>
           <p className="jlptTestPromptLabel">Nghĩa tiếng Anh/Việt của từ sau là gì?</p>
-          <div className="jlptTestJapaneseWrap" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
-            <p className="jlptTestJapanese" lang="ja" style={{ margin: 0 }}>
+          <div className="jlptTestJapaneseWrap">
+            <p className="jlptTestJapanese" lang="ja">
               {currentQ.word}
             </p>
             <button 
               type="button" 
-              className="toolbarBtn" 
+              className="toolbarBtn jlptSpeakBtn" 
               onClick={() => speakJapanese(currentQ.word)}
-              style={{ borderRadius: "50%", padding: "8px", width: "40px", height: "40px" }}
               title="Phát âm"
             >
               🔊
@@ -490,7 +410,7 @@ export function JlptVocabularyPage() {
         {prompt}
         
         <div className="jlptTestForm">
-          <div className="jlptOptionsGrid" style={{ display: "grid", gap: "10px", marginTop: "16px" }}>
+          <div className="jlptOptionsGrid">
             {currentOptions.map((opt, i) => {
               let btnClass = "jlptOptionBtn";
               if (showAnswer) {
@@ -508,31 +428,17 @@ export function JlptVocabularyPage() {
                   className={btnClass}
                   onClick={() => onSelectOption(opt)}
                   disabled={showAnswer}
-                  style={{
-                    padding: "14px",
-                    borderRadius: "8px",
-                    border: "1px solid var(--border-strong)",
-                    background: "var(--surface)",
-                    textAlign: "left",
-                    color: "var(--text)",
-                    fontSize: "1rem",
-                    fontWeight: 500,
-                    cursor: showAnswer ? "default" : "pointer",
-                    transition: "all 0.2s",
-                    ...(showAnswer && opt === correctOpt ? { background: "var(--success-bg)", borderColor: "var(--success-border)", color: "var(--success)" } : {}),
-                    ...(showAnswer && opt === userAnswer && opt !== correctOpt ? { background: "var(--error-bg)", borderColor: "var(--error-border)", color: "var(--error-text)" } : {}),
-                  }}
                 >
-                  <span style={{ marginRight: "10px", opacity: 0.5, fontSize: "0.9rem" }}>{["A", "B", "C", "D"][i]}.</span>
+                  <span className="jlptOptionPrefix">{["A", "B", "C", "D"][i]}.</span>
                   {opt}
                 </button>
               );
             })}
           </div>
 
-          <div className="jlptTestActions" style={{ marginTop: "20px", display: "flex", justifyContent: "flex-end" }}>
+          <div className="jlptTestActions jlptTestActionsEnd">
             {showAnswer && (
-              <button type="button" className="jlptTestBtnPrimary" onClick={goNextQuestion}>
+              <button type="button" className="jlptTestBtnPrimary ctaPrimary" onClick={goNextQuestion}>
                 {testIndex + 1 >= testQueue.length ? "Kết thúc" : "Câu tiếp →"}
               </button>
             )}
@@ -553,17 +459,17 @@ export function JlptVocabularyPage() {
 
         <div className="jlptSegSection">
           <p className="jlptSegLabel">Loại từ</p>
-          <div className="jlptSegRow">
+          <div className="jlptSegRow segmentedRow">
             <button
               type="button"
-              className={`jlptSegBtn ${wordScope === "all" ? "isOn" : ""}`}
+              className={`jlptSegBtn segmentedBtn ${wordScope === "all" ? "isOn isSelected" : ""}`}
               onClick={() => setWordScope("all")}
             >
               Tất cả ({total})
             </button>
             <button
               type="button"
-              className={`jlptSegBtn ${wordScope === "memorized" ? "isOn" : ""}`}
+              className={`jlptSegBtn segmentedBtn ${wordScope === "memorized" ? "isOn isSelected" : ""}`}
               onClick={() => setWordScope("memorized")}
             >
               Đã nhớ ({memorizedCount})
@@ -573,15 +479,14 @@ export function JlptVocabularyPage() {
 
         <div className="jlptSegSection">
           <p className="jlptSegLabel">Phạm vi bài học (Lesson)</p>
-          <div className="jlptSegRow">
+          <div className="jlptSegRow segmentedRow">
             <select
-              className="jlptTestInput"
               value={testLesson === "all" ? "all" : testLesson === "unassigned" ? "unassigned" : String(testLesson)}
               onChange={(e) => {
                 const v = e.target.value;
                 setTestLesson(v === "all" ? "all" : v === "unassigned" ? "unassigned" : Number(v));
               }}
-              style={{ width: "100%", marginBottom: 0, padding: "8px 12px", borderRadius: "10px", borderColor: "var(--border-strong)", cursor: "pointer" }}
+              className="jlptTestInput jlptSelectFull"
             >
               {activeLevel !== "N5" && activeLevel !== "N4" ? (
                 <>
@@ -603,14 +508,14 @@ export function JlptVocabularyPage() {
 
         <div className="jlptSegSection">
           <p className="jlptSegLabel">Loại kiểm tra</p>
-          <div className="jlptSegRow jlptSegRow3">
-            <button type="button" className={`jlptSegBtn ${testMode === "meaning" ? "isOn" : ""}`} onClick={() => setTestMode("meaning")}>
+          <div className="jlptSegRow segmentedRow jlptSegRow3">
+            <button type="button" className={`jlptSegBtn segmentedBtn ${testMode === "meaning" ? "isOn isSelected" : ""}`} onClick={() => setTestMode("meaning")}>
               KT nghĩa
             </button>
-            <button type="button" className={`jlptSegBtn ${testMode === "kanji" ? "isOn" : ""}`} onClick={() => setTestMode("kanji")}>
+            <button type="button" className={`jlptSegBtn segmentedBtn ${testMode === "kanji" ? "isOn isSelected" : ""}`} onClick={() => setTestMode("kanji")}>
               KT chữ Hán / kana
             </button>
-            <button type="button" className={`jlptSegBtn ${testMode === "both" ? "isOn" : ""}`} onClick={() => setTestMode("both")}>
+            <button type="button" className={`jlptSegBtn segmentedBtn ${testMode === "both" ? "isOn isSelected" : ""}`} onClick={() => setTestMode("both")}>
               Cả hai
             </button>
           </div>
@@ -618,9 +523,9 @@ export function JlptVocabularyPage() {
 
         <div className="jlptSegSection">
           <p className="jlptSegLabel">Số từ</p>
-          <div className="jlptSegRow jlptSegRowWrap">
+          <div className="jlptSegRow segmentedRow jlptSegRowWrap">
             {(["10", "50", "all"] as const).map((m) => (
-              <button key={m} type="button" className={`jlptSegBtn ${countMode === m ? "isOn" : ""}`} onClick={() => setCountMode(m)}>
+              <button key={m} type="button" className={`jlptSegBtn segmentedBtn ${countMode === m ? "isOn isSelected" : ""}`} onClick={() => setCountMode(m)}>
                 {m === "all" ? `Tất cả (${total})` : m}
               </button>
             ))}
@@ -656,11 +561,11 @@ export function JlptVocabularyPage() {
         {wrongReviewCount > 0 ? (
           <div className="jlptSegSection">
             <p className="jlptSegLabel">Ôn câu sai</p>
-            <p className="muted jlptTestSubtitle" style={{ marginTop: 0 }}>
+            <p className="muted jlptTestSubtitle jlptTightTop">
               Đã lưu {wrongReviewCount} từ làm sai ở lần kiểm tra gần nhất (trên máy này).
             </p>
-            <div className="jlptTestNavRow" style={{ marginTop: 8 }}>
-              <button type="button" className="jlptTestBtnPrimary" onClick={startReviewWrongTest}>
+            <div className="jlptTestNavRow jlptWrongActions">
+              <button type="button" className="jlptTestBtnPrimary ctaPrimary" onClick={startReviewWrongTest}>
                 Ôn lại chỗ sai →
               </button>
               <button
@@ -697,7 +602,7 @@ export function JlptVocabularyPage() {
           <button type="button" className="btnSecondary" onClick={() => setSubView("list")}>
             ← Quay lại
           </button>
-          <button type="button" className="jlptTestBtnPrimary jlptStartBtn" onClick={startTest}>
+          <button type="button" className="jlptTestBtnPrimary ctaPrimary jlptStartBtn" onClick={startTest}>
             Bắt đầu →
           </button>
         </div>
@@ -726,7 +631,7 @@ export function JlptVocabularyPage() {
                 ← Chọn cấp độ
               </button>
               {total > 0 ? (
-                <button type="button" className="jlptTestBtnPrimary" onClick={() => setSubView("testConfig")}>
+                <button type="button" className="jlptTestBtnPrimary ctaPrimary" onClick={() => setSubView("testConfig")}>
                   Kiểm tra từ vựng
                 </button>
               ) : null}
@@ -807,18 +712,18 @@ export function JlptVocabularyPage() {
                   <tr>
                     <th>Từ</th>
                     <th>
-                      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                      <div className="jlptHeadCell">
                         Đọc
-                        <button type="button" className="btnGhost" style={{ padding: "4px", fontSize: "1rem" }} onClick={() => { setIsReadingHidden(!isReadingHidden); setRevealedCells({}); }} title={isReadingHidden ? "Hiện tất cả" : "Ẩn tất cả"}>
-                          {isReadingHidden ? "👁️" : "🙈"}
+                        <button type="button" className="btnGhost jlptHeadIconBtn" onClick={() => { setIsReadingHidden(!isReadingHidden); setRevealedCells({}); }} title={isReadingHidden ? "Hiện tất cả" : "Ẩn tất cả"}>
+                          {isReadingHidden ? <Eye size={16} /> : <EyeOff size={16} />}
                         </button>
                       </div>
                     </th>
                     <th>
-                      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                      <div className="jlptHeadCell">
                         Ý nghĩa
-                        <button type="button" className="btnGhost" style={{ padding: "4px", fontSize: "1rem" }} onClick={() => { setIsMeaningHidden(!isMeaningHidden); setRevealedCells({}); }} title={isMeaningHidden ? "Hiện tất cả" : "Ẩn tất cả"}>
-                          {isMeaningHidden ? "👁️" : "🙈"}
+                        <button type="button" className="btnGhost jlptHeadIconBtn" onClick={() => { setIsMeaningHidden(!isMeaningHidden); setRevealedCells({}); }} title={isMeaningHidden ? "Hiện tất cả" : "Ẩn tất cả"}>
+                          {isMeaningHidden ? <Eye size={16} /> : <EyeOff size={16} />}
                         </button>
                       </div>
                     </th>
@@ -831,16 +736,15 @@ export function JlptVocabularyPage() {
                   {listWordsForTable.map((w) => (
                     <tr key={w.id} className={learnedMap[w.id] ? "isLearnedRow" : ""}>
                       <td lang="ja">
-                        <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                        <div className="jlptWordCell">
                           {w.word}
                           <button 
                             type="button" 
-                            className="btnGhost" 
-                            style={{ padding: "4px", fontSize: "1rem" }}
+                            className="btnGhost jlptHeadIconBtn"
                             onClick={() => speakJapanese(w.word)}
                             title="Nghe"
                           >
-                            🔊
+                            <Volume2 size={16} />
                           </button>
                         </div>
                       </td>
@@ -848,7 +752,7 @@ export function JlptVocabularyPage() {
                         <span 
                           className={isReadingHidden && !revealedCells[`read-${w.id}`] ? "blurTextOnly" : ""}
                           onClick={() => { if (isReadingHidden) setRevealedCells(p => ({...p, [`read-${w.id}`]: !p[`read-${w.id}`]})) }}
-                          style={{ cursor: isReadingHidden ? "pointer" : "text", display: "inline-block", padding: "4px 0" }}
+                          style={{ cursor: isReadingHidden ? "pointer" : "text" }}
                           title={isReadingHidden && !revealedCells[`read-${w.id}`] ? "Bấm để xem" : ""}
                         >
                           {w.reading}
@@ -858,7 +762,7 @@ export function JlptVocabularyPage() {
                         <span 
                           className={isMeaningHidden && !revealedCells[`mean-${w.id}`] ? "blurTextOnly" : ""}
                           onClick={() => { if (isMeaningHidden) setRevealedCells(p => ({...p, [`mean-${w.id}`]: !p[`mean-${w.id}`]})) }}
-                          style={{ cursor: isMeaningHidden ? "pointer" : "text", display: "inline-block", padding: "4px 0" }}
+                          style={{ cursor: isMeaningHidden ? "pointer" : "text" }}
                           title={isMeaningHidden && !revealedCells[`mean-${w.id}`] ? "Bấm để xem" : ""}
                         >
                           {w.meaning}

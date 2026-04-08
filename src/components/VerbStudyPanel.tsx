@@ -1,5 +1,21 @@
-import React, { useMemo, useState } from "react";
-import { VerbLesson, VerbType, VerbLevel, VerbConjugation } from "../types";
+import React, { useEffect, useMemo, useState } from "react";
+import { VerbLesson, VerbType } from "../types";
+import { getJSON, getString, setJSON, setString } from "../lib/storage";
+import { STORAGE_KEYS } from "../lib/storageKeys";
+import { conjugateVerb, verbTypeToLabel } from "../verbs/conjugate";
+
+function loadLearnedMap(): Record<string, boolean> {
+  return getJSON<Record<string, boolean>>(STORAGE_KEYS.verb.learnedMap, {});
+}
+
+function saveLearnedMap(map: Record<string, boolean>): void {
+  setJSON(STORAGE_KEYS.verb.learnedMap, map);
+}
+
+function loadOrderIds(): string[] {
+  const parsed = getJSON<unknown>(STORAGE_KEYS.verb.shuffleOrder, []);
+  return Array.isArray(parsed) ? parsed.filter((x): x is string => typeof x === "string") : [];
+}
 
 function shuffle<T>(arr: T[]): T[] {
   const out = [...arr];
@@ -10,141 +26,88 @@ function shuffle<T>(arr: T[]): T[] {
   return out;
 }
 
-export function conjugateVerb(verb: VerbLesson): VerbConjugation[] {
-  const dictionaryKana = verb.kana;
-
-  if (verb.type === "ichidan") {
-    const stem = dictionaryKana.slice(0, -1);
-    return [
-      { label: "Từ điển", form: dictionaryKana, note: "Dạng thường, hiện tại/tương lai" },
-      { label: "ます", form: `${stem}ます`, note: "Lịch sự" },
-      { label: "て", form: `${stem}て`, note: "Liên kết câu / yêu cầu" },
-      { label: "た", form: `${stem}た`, note: "Quá khứ thường" },
-      { label: "ない", form: `${stem}ない`, note: "Phủ định thường" },
-      { label: "Khả năng", form: `${stem}られる`, note: "Có thể làm" },
-      { label: "Ý chí", form: `${stem}よう`, note: "Thể rủ rê / quyết tâm" },
-      { label: "Mệnh lệnh", form: `${stem}ろ`, note: "Mệnh lệnh trực tiếp" },
-      { label: "Điều kiện", form: `${stem}れば`, note: "Nếu..." },
-      { label: "Bị động", form: `${stem}られる`, note: "Bị..." },
-      { label: "Sai khiến", form: `${stem}させる`, note: "Khiến/cho phép..." },
-      { label: "Sai khiến bị động", form: `${stem}させられる`, note: "Bị ép phải..." }
-    ];
-  }
-
-  if (verb.type === "irregular") {
-    if (dictionaryKana.endsWith("する")) {
-      const stem = dictionaryKana.slice(0, -2);
-      const potential = stem ? `${stem}できる` : "できる";
-      return [
-        { label: "Từ điển", form: dictionaryKana, note: "Dạng thường, hiện tại/tương lai" },
-        { label: "ます", form: `${stem}します`, note: "Lịch sự" },
-        { label: "て", form: `${stem}して`, note: "Liên kết câu / yêu cầu" },
-        { label: "た", form: `${stem}した`, note: "Quá khứ thường" },
-        { label: "ない", form: `${stem}しない`, note: "Phủ định thường" },
-        { label: "Khả năng", form: potential, note: "Có thể làm" },
-        { label: "Ý chí", form: `${stem}しよう`, note: "Thể rủ rê / quyết tâm" },
-        { label: "Mệnh lệnh", form: `${stem}しろ`, note: "Mệnh lệnh trực tiếp" },
-        { label: "Điều kiện", form: `${stem}すれば`, note: "Nếu..." },
-        { label: "Bị động", form: `${stem}される`, note: "Bị..." },
-        { label: "Sai khiến", form: `${stem}させる`, note: "Khiến/cho phép..." },
-        { label: "Sai khiến bị động", form: `${stem}させられる`, note: "Bị ép phải..." }
-      ];
-    }
-    return [
-      { label: "Từ điển", form: "くる", note: "Dạng thường, hiện tại/tương lai" },
-      { label: "ます", form: "きます", note: "Lịch sự" },
-      { label: "て", form: "きて", note: "Liên kết câu / yêu cầu" },
-      { label: "た", form: "きた", note: "Quá khứ thường" },
-      { label: "ない", form: "こない", note: "Phủ định thường" },
-      { label: "Khả năng", form: "こられる", note: "Có thể đến" },
-      { label: "Ý chí", form: "こよう", note: "Thể rủ rê / quyết tâm" },
-      { label: "Mệnh lệnh", form: "こい", note: "Mệnh lệnh trực tiếp" },
-      { label: "Điều kiện", form: "くれば", note: "Nếu..." },
-      { label: "Bị động", form: "こられる", note: "Bị..." },
-      { label: "Sai khiến", form: "こさせる", note: "Khiến/cho phép..." },
-      { label: "Sai khiến bị động", form: "こさせられる", note: "Bị ép phải..." }
-    ];
-  }
-
-  const stem = dictionaryKana.slice(0, -1);
-  const last = dictionaryKana[dictionaryKana.length - 1] as string;
-  const iMap: Record<string, string> = { う: "い", く: "き", ぐ: "ぎ", す: "し", つ: "ち", ぬ: "に", ぶ: "び", む: "み", る: "り" };
-  const aMap: Record<string, string> = { う: "わ", く: "か", ぐ: "が", す: "さ", つ: "た", ぬ: "な", ぶ: "ば", む: "ま", る: "ら" };
-  const eMap: Record<string, string> = { う: "え", く: "け", ぐ: "げ", す: "せ", つ: "て", ぬ: "ね", ぶ: "べ", む: "め", る: "れ" };
-  const oMap: Record<string, string> = { う: "お", く: "こ", ぐ: "ご", す: "そ", つ: "と", ぬ: "の", ぶ: "ぼ", む: "も", る: "ろ" };
-  let te = `${stem}って`;
-  let ta = `${stem}った`;
-  if (dictionaryKana === "いく") {
-    te = "いって";
-    ta = "いった";
-  } else if (last === "く") {
-    te = `${stem}いて`;
-    ta = `${stem}いた`;
-  } else if (last === "ぐ") {
-    te = `${stem}いで`;
-    ta = `${stem}いだ`;
-  } else if (last === "す") {
-    te = `${stem}して`;
-    ta = `${stem}した`;
-  } else if (last === "む" || last === "ぶ" || last === "ぬ") {
-    te = `${stem}んで`;
-    ta = `${stem}んだ`;
-  }
-
-  return [
-    { label: "Từ điển", form: dictionaryKana, note: "Dạng thường, hiện tại/tương lai" },
-    { label: "ます", form: `${stem}${iMap[last]}ます`, note: "Lịch sự" },
-    { label: "て", form: te, note: "Liên kết câu / yêu cầu" },
-    { label: "た", form: ta, note: "Quá khứ thường" },
-    { label: "ない", form: `${stem}${aMap[last]}ない`, note: "Phủ định thường" },
-    { label: "Khả năng", form: `${stem}${eMap[last]}る`, note: "Có thể làm" },
-    { label: "Ý chí", form: `${stem}${oMap[last]}う`, note: "Thể rủ rê / quyết tâm" },
-    { label: "Mệnh lệnh", form: `${stem}${eMap[last]}`, note: "Mệnh lệnh trực tiếp" },
-    { label: "Điều kiện", form: `${stem}${eMap[last]}ば`, note: "Nếu..." },
-    { label: "Bị động", form: `${stem}${aMap[last]}れる`, note: "Bị..." },
-    { label: "Sai khiến", form: `${stem}${aMap[last]}せる`, note: "Khiến/cho phép..." },
-    { label: "Sai khiến bị động", form: `${stem}${aMap[last]}せられる`, note: "Bị ép phải..." }
-  ];
-}
-
-export function verbTypeToLabel(type: VerbType): string {
-  if (type === "godan") {
-    return "Godan (Nhóm 1)";
-  }
-  if (type === "ichidan") {
-    return "Ichidan (Nhóm 2)";
-  }
-  return "Bất quy tắc (Nhóm 3)";
-}
-
 export function VerbStudyPanel({
   verbs,
-  levelFilter,
   typeFilter,
-  onLevelFilterChange,
   onTypeFilterChange
 }: {
   verbs: VerbLesson[];
-  levelFilter: "Tất cả" | VerbLevel;
   typeFilter: "Tất cả" | VerbType;
-  onLevelFilterChange: (value: "Tất cả" | VerbLevel) => void;
   onTypeFilterChange: (value: "Tất cả" | VerbType) => void;
 }) {
+  const [activeTab, setActiveTab] = useState<"conjugation" | "quiz">("conjugation");
+  const [expandedVerbIds, setExpandedVerbIds] = useState<Set<string>>(new Set());
+  const [learnedMap, setLearnedMap] = useState<Record<string, boolean>>(() => loadLearnedMap());
+  const [hideLearned, setHideLearned] = useState(() => getString(STORAGE_KEYS.verb.hideLearned) === "1");
+  const [shuffleEnabled, setShuffleEnabled] = useState(() => getString(STORAGE_KEYS.verb.shuffleEnabled) === "1");
+  const [shuffleOrderIds, setShuffleOrderIds] = useState<string[]>(() => loadOrderIds());
+  const [quizScope, setQuizScope] = useState<"all" | "unlearned" | "learned">(() => {
+    const raw = getString(STORAGE_KEYS.verb.quizScope);
+    return raw === "unlearned" || raw === "learned" ? raw : "all";
+  });
   const [quizSeed, setQuizSeed] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [quizScore, setQuizScore] = useState(0);
   const [quizCount, setQuizCount] = useState(0);
 
+  const learnedCount = useMemo(() => verbs.filter((v) => learnedMap[v.id]).length, [verbs, learnedMap]);
+
+  const orderedVerbs = useMemo(() => {
+    if (!shuffleEnabled) return verbs;
+    const orderMap = new Map<string, number>();
+    for (let i = 0; i < shuffleOrderIds.length; i++) {
+      orderMap.set(shuffleOrderIds[i], i);
+    }
+    return [...verbs].sort((a, b) => {
+      const ia = orderMap.get(a.id);
+      const ib = orderMap.get(b.id);
+      if (ia == null && ib == null) return 0;
+      if (ia == null) return 1;
+      if (ib == null) return -1;
+      return ia - ib;
+    });
+  }, [verbs, shuffleEnabled, shuffleOrderIds]);
+
+  const listVerbs = useMemo(() => {
+    if (!hideLearned) return orderedVerbs;
+    return orderedVerbs.filter((v) => !learnedMap[v.id]);
+  }, [orderedVerbs, hideLearned, learnedMap]);
+
+  const quizPool = useMemo(() => {
+    if (quizScope === "learned") return verbs.filter((v) => learnedMap[v.id]);
+    if (quizScope === "unlearned") return verbs.filter((v) => !learnedMap[v.id]);
+    return verbs;
+  }, [quizScope, verbs, learnedMap]);
+
+  useEffect(() => {
+    setString(STORAGE_KEYS.verb.hideLearned, hideLearned ? "1" : "0");
+    setString(STORAGE_KEYS.verb.shuffleEnabled, shuffleEnabled ? "1" : "0");
+    setJSON(STORAGE_KEYS.verb.shuffleOrder, shuffleOrderIds);
+    setString(STORAGE_KEYS.verb.quizScope, quizScope);
+  }, [hideLearned, shuffleEnabled, shuffleOrderIds, quizScope]);
+
+  useEffect(() => {
+    if (!shuffleEnabled) return;
+    const ids = verbs.map((v) => v.id);
+    const idSet = new Set(ids);
+    const normalized = shuffleOrderIds.filter((id) => idSet.has(id));
+    const normalizedSet = new Set(normalized);
+    const missing = ids.filter((id) => !normalizedSet.has(id));
+    if (missing.length > 0 || normalized.length !== shuffleOrderIds.length) {
+      setShuffleOrderIds([...normalized, ...shuffle(missing)]);
+    }
+  }, [verbs, shuffleEnabled, shuffleOrderIds]);
+
   const meaningQuiz = useMemo(() => {
-    if (verbs.length < 4) {
+    if (quizPool.length < 4) {
       return null;
     }
-    const question = verbs[Math.floor(Math.random() * verbs.length)];
+    const question = quizPool[Math.floor(Math.random() * quizPool.length)];
     const correct = question.meaningVi;
     const distractors = shuffle(
       Array.from(
         new Set(
-          verbs
+          quizPool
             .map((v) => v.meaningVi)
             .filter((m) => m && m !== correct)
         )
@@ -158,7 +121,7 @@ export function VerbStudyPanel({
       correct,
       options: shuffle([correct, ...distractors])
     };
-  }, [verbs, quizSeed]);
+  }, [quizPool, quizSeed]);
 
   const onChooseAnswer = (opt: string) => {
     if (!meaningQuiz || selectedAnswer) {
@@ -168,6 +131,11 @@ export function VerbStudyPanel({
     setQuizCount((c) => c + 1);
     if (opt === meaningQuiz.correct) {
       setQuizScore((s) => s + 1);
+      if (!learnedMap[meaningQuiz.question.id]) {
+        const next = { ...learnedMap, [meaningQuiz.question.id]: true };
+        setLearnedMap(next);
+        saveLearnedMap(next);
+      }
     }
   };
 
@@ -178,18 +146,25 @@ export function VerbStudyPanel({
 
   return (
     <div className="verbMode">
-      <p className="muted">Động từ được lấy từ dữ liệu N5/N4 hiện có và chia thể tự động.</p>
+      <p className="muted studySubtitle">Nguồn dữ liệu: Makoto Verb Conjugation APKG.</p>
+      <div className="verbTabRow">
+        {activeTab === "quiz" ? (
+          <button type="button" className="btnSecondary" onClick={() => setActiveTab("conjugation")}>
+            ← Quay lại
+          </button>
+        ) : null}
+        <button
+          type="button"
+          className="jlptTestBtnPrimary ctaPrimary"
+          onClick={() => setActiveTab("quiz")}
+          disabled={activeTab === "quiz"}
+        >
+          Kiểm tra từ vựng
+        </button>
+      </div>
       <div className="verbFilters">
         <label>
-          Cấp độ
-          <select value={levelFilter} onChange={(event) => onLevelFilterChange(event.target.value as "Tất cả" | VerbLevel)}>
-            <option value="Tất cả">Tất cả</option>
-            <option value="N5">N5</option>
-            <option value="N4">N4</option>
-          </select>
-        </label>
-        <label>
-          Loại động từ
+          Nhóm động từ
           <select value={typeFilter} onChange={(event) => onTypeFilterChange(event.target.value as "Tất cả" | VerbType)}>
             <option value="Tất cả">Tất cả</option>
             <option value="godan">Godan (Nhóm 1)</option>
@@ -198,10 +173,54 @@ export function VerbStudyPanel({
           </select>
         </label>
       </div>
-      {meaningQuiz ? (
+      {activeTab === "conjugation" ? (
+        <div className="verbListActions">
+          <button
+            type="button"
+            className={`btnSecondary ${hideLearned ? "isOn" : ""}`}
+            onClick={() => setHideLearned((v) => !v)}
+          >
+            {hideLearned ? "Hiện đã học" : "Ẩn đã học"}
+          </button>
+          <button
+            type="button"
+            className={`btnSecondary ${shuffleEnabled ? "isOn" : ""}`}
+            onClick={() => {
+              if (shuffleEnabled) {
+                setString(STORAGE_KEYS.verb.shuffleEnabled, "0");
+                setShuffleEnabled(false);
+                return;
+              }
+              const nextOrder = shuffle(verbs.map((v) => v.id));
+              setString(STORAGE_KEYS.verb.shuffleEnabled, "1");
+              setJSON(STORAGE_KEYS.verb.shuffleOrder, nextOrder);
+              setShuffleOrderIds(nextOrder);
+              setShuffleEnabled(true);
+            }}
+          >
+            {shuffleEnabled ? "Tắt xáo trộn" : "Xáo trộn"}
+          </button>
+          <p className="muted">Đã học: {learnedCount}/{verbs.length}</p>
+        </div>
+      ) : (
+        <div className="verbListActions">
+          <div className="jlptSegRow segmentedRow">
+            <button type="button" className={`jlptSegBtn segmentedBtn ${quizScope === "all" ? "isOn isSelected" : ""}`} onClick={() => setQuizScope("all")}>
+              Test tất cả
+            </button>
+            <button type="button" className={`jlptSegBtn segmentedBtn ${quizScope === "unlearned" ? "isOn isSelected" : ""}`} onClick={() => setQuizScope("unlearned")}>
+              Test chưa học
+            </button>
+            <button type="button" className={`jlptSegBtn segmentedBtn ${quizScope === "learned" ? "isOn isSelected" : ""}`} onClick={() => setQuizScope("learned")}>
+              Test đã học
+            </button>
+          </div>
+        </div>
+      )}
+      {activeTab === "quiz" && meaningQuiz ? (
         <article className="verbCard verbQuizCard">
           <div className="verbCardHeader">
-            <h3>Kiểm tra nghĩa động từ</h3>
+            <h3>Kiểm tra từ vựng động từ</h3>
             <p className="muted">
               {meaningQuiz.question.dictionary}（{meaningQuiz.question.kana}） · {meaningQuiz.question.jlpt}
             </p>
@@ -231,49 +250,101 @@ export function VerbStudyPanel({
             </div>
           ) : null}
         </article>
+      ) : activeTab === "quiz" ? (
+        <p className="muted">Không đủ dữ liệu để tạo quiz (cần ít nhất 4 động từ).</p>
       ) : null}
-      {verbs.length === 0 ? (
+      {activeTab === "conjugation" && listVerbs.length === 0 ? (
         <p className="muted">Không có động từ phù hợp với bộ lọc hiện tại.</p>
-      ) : (
+      ) : activeTab === "conjugation" ? (
         <div className="verbCards">
-          {verbs.map((verb) => {
+          {listVerbs.map((verb) => {
             const forms = verb.conjugations?.length ? verb.conjugations : conjugateVerb(verb);
+            const isExpanded = expandedVerbIds.has(verb.id);
             return (
-              <article key={verb.dictionary} className="verbCard">
-                <div className="verbCardHeader">
-                  <h3>{verb.dictionary}</h3>
-                  <p className="muted">{verb.kana}</p>
-                  <p className="verbMeaningLine">{verb.meaningVi}</p>
-                  <p className="muted">
-                    {verb.jlpt} - {verbTypeToLabel(verb.type)}
-                  </p>
-                  {verb.image ? <img className="verbThumb" src={verb.image} alt={verb.dictionary} /> : null}
+              <article key={verb.id} className={`verbCard ${isExpanded ? "isExpanded" : ""}`}>
+                <div
+                  className="verbCardTop"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() =>
+                    setExpandedVerbIds((prev) => {
+                      const next = new Set(prev);
+                      if (next.has(verb.id)) next.delete(verb.id);
+                      else next.add(verb.id);
+                      return next;
+                    })
+                  }
+                  onKeyDown={(event) => {
+                    if (event.key !== "Enter" && event.key !== " ") {
+                      return;
+                    }
+                    event.preventDefault();
+                    setExpandedVerbIds((prev) => {
+                      const next = new Set(prev);
+                      if (next.has(verb.id)) next.delete(verb.id);
+                      else next.add(verb.id);
+                      return next;
+                    });
+                  }}
+                >
+                  <div className="verbCardMain">
+                    <div className="verbHeadRow">
+                      <h3 className="verbHeadWord">{verb.dictionary}</h3>
+                      <p className="verbKanaLine">{verb.kana}</p>
+                    </div>
+                    <p className="verbMeaningLine">{verb.meaningVi}</p>
+                    <span className="verbExpandHint">{isExpanded ? "▾ Thu gọn" : "▸ Mở rộng"}</span>
+                    <button
+                      type="button"
+                      className={learnedMap[verb.id] ? "jlptLearnedOn" : "jlptLearnedOff"}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        const nextValue = !learnedMap[verb.id];
+                        const next = { ...learnedMap, [verb.id]: nextValue };
+                        if (!nextValue) {
+                          delete next[verb.id];
+                        }
+                        setLearnedMap(next);
+                        saveLearnedMap(next);
+                      }}
+                    >
+                      {learnedMap[verb.id] ? "Đã học" : "Đánh dấu học"}
+                    </button>
+                  </div>
+                  {verb.image ? <img className="verbThumb verbThumbInline" src={verb.image} alt={verb.dictionary} /> : null}
                 </div>
-                <div className="tableWrap">
-                  <table className="verbTable">
-                    <thead>
-                      <tr>
-                        <th>Thể</th>
-                        <th>Dạng chia</th>
-                        <th>Ghi chú</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {forms.map((row) => (
-                        <tr key={`${verb.dictionary}-${row.label}`}>
-                          <td>{row.label}</td>
-                          <td>{row.form}</td>
-                          <td>{row.note}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                {isExpanded ? (
+                  <>
+                    <div className="verbExpandedMain">
+                      <p className="muted">
+                        {verb.jlpt} - {verbTypeToLabel(verb.type)}
+                      </p>
+                    </div>
+                    <div className="tableWrap">
+                      <table className="verbTable">
+                        <thead>
+                          <tr>
+                            <th>Thể</th>
+                            <th>Dạng chia</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {forms.map((row) => (
+                            <tr key={`${verb.dictionary}-${row.label}`}>
+                              <td>{row.label}</td>
+                              <td>{row.form}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                ) : null}
               </article>
             );
           })}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

@@ -1,9 +1,12 @@
 import { JLPT_LEVEL_ORDER, JLPT_UNLOCK_RATIO, JlptLevel, JlptWord } from "./jlptTypes";
+import { getJSON, getString, removeKey, setJSON, setString } from "../lib/storage";
+import { STORAGE_KEYS } from "../lib/storageKeys";
 
 const PREFIX = "jlpt-vocab";
+const JLPT_LEVELS: JlptLevel[] = ["N5", "N4", "N3", "N2", "N1"];
 
 function keyLearned(level: JlptLevel): string {
-  return `${PREFIX}-learned-${level}`;
+  return STORAGE_KEYS.jlpt.learned(level);
 }
 
 function keyReset(level: JlptLevel): string {
@@ -11,49 +14,36 @@ function keyReset(level: JlptLevel): string {
 }
 
 function keyWrongReview(level: JlptLevel): string {
-  return `${PREFIX}-wrong-review-${level}`;
+  return STORAGE_KEYS.jlpt.wrongReview(level);
 }
 
 /** ID các từ làm sai ở lần kiểm tra gần nhất (để ôn lại). */
 export function loadWrongReviewIds(level: JlptLevel): string[] {
-  try {
-    const raw = localStorage.getItem(keyWrongReview(level));
-    if (!raw) {
-      return [];
-    }
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) {
-      return [];
-    }
-    return parsed.filter((id): id is string => typeof id === "string");
-  } catch {
+  const parsed = getJSON<unknown>(keyWrongReview(level), []);
+  if (!Array.isArray(parsed)) {
     return [];
   }
+  return parsed.filter((id): id is string => typeof id === "string");
 }
 
 export function saveWrongReviewIds(level: JlptLevel, ids: string[]): void {
-  localStorage.setItem(keyWrongReview(level), JSON.stringify([...new Set(ids)]));
+  setJSON(keyWrongReview(level), [...new Set(ids)]);
 }
 
 export function clearWrongReviewIds(level: JlptLevel): void {
-  localStorage.removeItem(keyWrongReview(level));
+  removeKey(keyWrongReview(level));
 }
 
 export function loadLearnedMap(level: JlptLevel): Record<string, boolean> {
-  try {
-    const raw = localStorage.getItem(keyLearned(level));
-    if (!raw) {
-      return {};
-    }
-    const parsed = JSON.parse(raw) as Record<string, boolean>;
-    return typeof parsed === "object" && parsed ? parsed : {};
-  } catch {
+  const parsed = getJSON<Record<string, boolean> | null>(keyLearned(level), {});
+  if (typeof parsed !== "object" || !parsed) {
     return {};
   }
+  return parsed;
 }
 
 export function saveLearnedMap(level: JlptLevel, map: Record<string, boolean>): void {
-  localStorage.setItem(keyLearned(level), JSON.stringify(map));
+  setJSON(keyLearned(level), map);
 }
 
 export function toggleLearned(level: JlptLevel, wordId: string, learned: boolean): Record<string, boolean> {
@@ -68,8 +58,8 @@ export function toggleLearned(level: JlptLevel, wordId: string, learned: boolean
 }
 
 export function resetLearnedLevel(level: JlptLevel): void {
-  localStorage.removeItem(keyLearned(level));
-  localStorage.setItem(keyReset(level), JSON.stringify({ resetAt: Date.now() }));
+  removeKey(keyLearned(level));
+  setJSON(keyReset(level), { resetAt: Date.now() });
 }
 
 export function countLearned(words: JlptWord[], map: Record<string, boolean>): number {
@@ -125,4 +115,89 @@ export function nextLockedReason(
   const need = Math.ceil(prevWords.length * JLPT_UNLOCK_RATIO);
   const have = countLearned(prevWords, learnedByLevel[prev]);
   return `Cần đánh dấu đã học ít nhất ${need}/${prevWords.length} từ ở cấp ${prev} (≥80%). Hiện tại: ${have}/${prevWords.length}.`;
+}
+
+export type JlptLocalState = {
+  learned: Record<JlptLevel, Record<string, boolean>>;
+  wrongReview: Record<JlptLevel, string[]>;
+  settings: Record<string, string>;
+};
+
+const JLPT_GLOBAL_KEYS = [
+  STORAGE_KEYS.jlpt.subView,
+  STORAGE_KEYS.jlpt.activeLevel,
+  STORAGE_KEYS.jlpt.lessonFilter,
+  STORAGE_KEYS.jlpt.wordScope,
+  STORAGE_KEYS.jlpt.testLesson,
+  STORAGE_KEYS.jlpt.testMode,
+  STORAGE_KEYS.jlpt.hideLearned
+] as const;
+
+function collectJlptDynamicSettings(): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (!key) {
+      continue;
+    }
+    if (key.startsWith("jlpt_list_shuffle_enabled_") || key.startsWith("jlpt_list_shuffle_order_")) {
+      const value = getString(key);
+      if (value != null) {
+        out[key] = value;
+      }
+    }
+  }
+  return out;
+}
+
+export function exportJlptLocalState(): JlptLocalState {
+  const learned = {} as Record<JlptLevel, Record<string, boolean>>;
+  const wrongReview = {} as Record<JlptLevel, string[]>;
+  for (const level of JLPT_LEVELS) {
+    learned[level] = loadLearnedMap(level);
+    wrongReview[level] = loadWrongReviewIds(level);
+  }
+  const settings: Record<string, string> = {};
+  for (const key of JLPT_GLOBAL_KEYS) {
+    const value = getString(key);
+    if (value != null) {
+      settings[key] = value;
+    }
+  }
+  Object.assign(settings, collectJlptDynamicSettings());
+  return {
+    learned,
+    wrongReview,
+    settings
+  };
+}
+
+export function importJlptLocalState(payload: JlptLocalState): void {
+  for (const level of JLPT_LEVELS) {
+    const learned = payload.learned?.[level];
+    saveLearnedMap(level, learned && typeof learned === "object" ? learned : {});
+    const wrong = payload.wrongReview?.[level];
+    saveWrongReviewIds(level, Array.isArray(wrong) ? wrong : []);
+  }
+
+  for (const key of JLPT_GLOBAL_KEYS) {
+    removeKey(key);
+  }
+  for (let i = localStorage.length - 1; i >= 0; i--) {
+    const key = localStorage.key(i);
+    if (!key) {
+      continue;
+    }
+    if (key.startsWith("jlpt_list_shuffle_enabled_") || key.startsWith("jlpt_list_shuffle_order_")) {
+      removeKey(key);
+    }
+  }
+
+  const entries = payload.settings && typeof payload.settings === "object" ? Object.entries(payload.settings) : [];
+  for (const [key, value] of entries) {
+    if (typeof value !== "string") {
+      continue;
+    }
+    setString(key, value);
+  }
 }

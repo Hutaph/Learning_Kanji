@@ -51,10 +51,11 @@ def parse_image_name(image_field: str) -> str:
 
 def infer_type(tags: str) -> str:
     t = (tags or "").lower()
-    if "u-verb" in t:
-        return "godan"
+    # Check ru-verb first because "ru-verb" contains "u-verb" as substring.
     if "ru-verb" in t:
         return "ichidan"
+    if "u-verb" in t:
+        return "godan"
     return "irregular"
 
 

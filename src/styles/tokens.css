@@ -1,0 +1,12 @@
+/* Refactor step: reusable surface and toolbar primitives */
+.surfaceCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.toolbarRow {
+  display: grid;
+  gap: 12px;
+}

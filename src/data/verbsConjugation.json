@@ -6751,7 +6751,7 @@
       "kana": "あげる",
       "meaningVi": "to give",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/28____.jpg",
       "conjugations": [
         {
@@ -6887,7 +6887,7 @@
       "kana": "あける",
       "meaningVi": "to open",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/38____.jpg",
       "conjugations": [
         {
@@ -7023,7 +7023,7 @@
       "kana": "でる",
       "meaningVi": "to leave (on a journey)",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/52___.jpg",
       "conjugations": [
         {
@@ -7159,7 +7159,7 @@
       "kana": "いれる",
       "meaningVi": "to put in",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/1____.jpg",
       "conjugations": [
         {
@@ -7295,7 +7295,7 @@
       "kana": "かえる",
       "meaningVi": "to change",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/20_____.jpg",
       "conjugations": [
         {
@@ -7431,7 +7431,7 @@
       "kana": "をかける",
       "meaningVi": "to make a call (phone)",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/46______1_.jpg",
       "conjugations": [
         {
@@ -7567,7 +7567,7 @@
       "kana": "きえる",
       "meaningVi": "to go out, to disappear",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/35____.jpg",
       "conjugations": [
         {
@@ -7703,7 +7703,7 @@
       "kana": "きる",
       "meaningVi": "to put on",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/22___.jpg",
       "conjugations": [
         {
@@ -7839,7 +7839,7 @@
       "kana": "こわれる",
       "meaningVi": "to be broken",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/70____2.jpg",
       "conjugations": [
         {
@@ -7975,7 +7975,7 @@
       "kana": "みる",
       "meaningVi": "to see, to look",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/11______1_.jpg",
       "conjugations": [
         {
@@ -8111,7 +8111,7 @@
       "kana": "ねる",
       "meaningVi": "to lie down (to sleep)",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/64____.jpg",
       "conjugations": [
         {
@@ -8247,7 +8247,7 @@
       "kana": "のせる",
       "meaningVi": "to put (something) on top",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/24____.jpg",
       "conjugations": [
         {
@@ -8383,7 +8383,7 @@
       "kana": "おちる",
       "meaningVi": "to fall down, to drop",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/8____.jpg",
       "conjugations": [
         {
@@ -8519,7 +8519,7 @@
       "kana": "おきる",
       "meaningVi": "to get up",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/30____.jpg",
       "conjugations": [
         {
@@ -8655,7 +8655,7 @@
       "kana": "おしえる",
       "meaningVi": "to teach",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/58____.jpg",
       "conjugations": [
         {
@@ -8791,7 +8791,7 @@
       "kana": "しめる",
       "meaningVi": "to close, shut",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/2____.jpg",
       "conjugations": [
         {
@@ -8927,7 +8927,7 @@
       "kana": "すてる",
       "meaningVi": "to throw away",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/44____.jpg",
       "conjugations": [
         {
@@ -9063,7 +9063,7 @@
       "kana": "たべる",
       "meaningVi": "to eat",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/59____.jpg",
       "conjugations": [
         {
@@ -9199,7 +9199,7 @@
       "kana": "とめる",
       "meaningVi": "to stop",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/19_____.jpg",
       "conjugations": [
         {
@@ -9335,7 +9335,7 @@
       "kana": "つかれる",
       "meaningVi": "to get tired",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/25____2.jpg",
       "conjugations": [
         {
@@ -9471,7 +9471,7 @@
       "kana": "わすれる",
       "meaningVi": "to forget",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/9____.jpg",
       "conjugations": [
         {
@@ -9607,7 +9607,7 @@
       "kana": "やめる",
       "meaningVi": "to quit, to stop",
       "jlpt": "N4",
-      "type": "godan",
+      "type": "ichidan",
       "image": "/verb-media/68_____.jpg",
       "conjugations": [
         {

@@ -1,0 +1,51 @@
+/* Refactor step: JLPT control primitives */
+.segmentedRow,
+.jlptSegRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.segmentedBtn,
+.jlptSegBtn {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.segmentedBtn:hover,
+.jlptSegBtn:hover {
+  background: var(--surface-2);
+  border-color: var(--jlpt-theme);
+}
+
+.segmentedBtn.isSelected,
+.jlptSegBtn.isOn {
+  background: var(--jlpt-theme);
+  color: #fff;
+  border-color: var(--jlpt-theme);
+}
+
+.ctaPrimary,
+.jlptTestBtnPrimary {
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--jlpt-theme);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(185, 28, 28, 0.35);
+}
+
+.ctaPrimary:hover:not(:disabled),
+.jlptTestBtnPrimary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}

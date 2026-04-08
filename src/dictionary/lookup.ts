@@ -9,6 +9,12 @@ const KANJI_REGEX = /\p{Script=Han}/u;
 const LATIN_REGEX = /^[A-Za-z\s'-]+$/;
 const DEFAULT_GROUP = "Chung";
 
+export type DictionaryLocalState = {
+  customVocabulary: VocabularyEntry[];
+  customGroups: string[];
+  kanjiProgress: Record<string, KanjiProgress>;
+};
+
 function normalizeGroupName(groupName: string): string {
   const trimmed = (groupName || "").trim();
   if (!trimmed || trimmed === "Mặc định" || trimmed === "Bộ 2136") {
@@ -261,4 +267,26 @@ export function markKanjiUnknown(kanji: string): Record<string, KanjiProgress> {
   };
   writeProgressMap(map);
   return map;
+}
+
+export function exportDictionaryLocalState(): DictionaryLocalState {
+  const rawRows = localStorage.getItem(STORAGE_KEY);
+  const rawGroups = localStorage.getItem(GROUP_KEY);
+  const customVocabulary = rawRows ? ((JSON.parse(rawRows) as VocabularyEntry[]) ?? []) : [];
+  const customGroups = rawGroups ? ((JSON.parse(rawGroups) as string[]) ?? []) : [];
+  const kanjiProgress = readProgressMap();
+  return {
+    customVocabulary,
+    customGroups,
+    kanjiProgress
+  };
+}
+
+export function importDictionaryLocalState(payload: DictionaryLocalState): void {
+  const rows = Array.isArray(payload.customVocabulary) ? payload.customVocabulary : [];
+  const groups = Array.isArray(payload.customGroups) ? payload.customGroups : [];
+  const progress = payload.kanjiProgress && typeof payload.kanjiProgress === "object" ? payload.kanjiProgress : {};
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(rows));
+  localStorage.setItem(GROUP_KEY, JSON.stringify(groups));
+  writeProgressMap(progress);
 }

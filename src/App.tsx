@@ -1,27 +1,39 @@
-import React, { FormEvent, KeyboardEvent, Suspense, lazy, useEffect, useMemo, useState, useRef } from "react";
+import React, { FormEvent, KeyboardEvent, Suspense, lazy, useCallback, useEffect, useMemo, useState, useRef } from "react";
+import type { Session } from "@supabase/supabase-js";
 import { AnimatePresence, motion } from "framer-motion";
-import { BookOpen, House, LayoutGrid, MoonStar, Sparkles, SunMedium, TextSearch } from "lucide-react";
-import { BgmPlayer } from "./components/BgmPlayer";
+import { MessageCircle } from "lucide-react";
+import { AppHeader } from "./components/app/AppHeader";
+import { AppFooter } from "./components/app/AppFooter";
 import { HomeInsightsPanel } from "./components/HomeInsightsPanel";
+import { VocabularyLookupPage } from "./components/VocabularyLookupPage";
 import { VocabularyList, formatMeaningLine } from "./components/VocabularyList";
-import { FlashCard, ImportedKanjiRecord, VerbType, VerbLevel, InspirationItem, VerbLesson, KanjiProgress, VocabularyEntry } from "./types";
+import { FlashCard, ImportedKanjiRecord, VerbType, VerbLesson, KanjiProgress, VocabularyEntry } from "./types";
 import {
   addGroup,
   addVocabulary,
   deleteGroup,
   deleteVocabularyById,
+  exportDictionaryLocalState,
   findByKanjiCharacter,
   getAllVocabulary,
   getGroups,
   getKanjiCharacters,
   getKanjiProgressMap,
+  importDictionaryLocalState,
   markKanjiKnown,
   markKanjiUnknown,
   suggestVocabularyByWordInput,
   toHanVietFromKanji,
   toReadingPreview
 } from "./dictionary/lookup";
+import { AuthGate } from "./auth/AuthGate";
+import { hasSupabaseEnv, supabase } from "./lib/supabaseClient";
+import { formatKanjiLessonLabel, getCurrentJlptStudyLabelFromStorage, getDailyInspiration, getNextJlptCountdown } from "./lib/appHelpers";
+import { getJSON, getString, removeKey, setString } from "./lib/storage";
+import { STORAGE_KEYS } from "./lib/storageKeys";
 import { lookupVocabularyOnline, OnlineLookupResult } from "./dictionary/onlineLookup";
+import { exportJlptLocalState, importJlptLocalState } from "./vocabulary/jlptProgress";
+import { getCurrentSession, loadUserProfile, loadUserState, saveUserProfile, saveUserState, UserProfile, UserStatePayload } from "./sync/userStateSync";
 import verbsPack from "./data/verbsConjugation.json";
 
 const JlptVocabularyPage = lazy(() =>
@@ -31,15 +43,36 @@ const VerbStudyPanel = lazy(() =>
   import("./components/VerbStudyPanel").then((mod) => ({ default: mod.VerbStudyPanel }))
 );
 
+const BRAINROT_LINES = [
+  "🚨 Não ping 9999ms, Kanji đang breakdance trên RAM của bạn.",
+  "🧠💥 Bài học vừa crit damage, tim bạn đang combo 32 hit.",
+  "🐸⚡ Trí nhớ bật turbo, chữ Hán đang drift qua võng mạc.",
+  "💀📚 Bạn vừa enter vùng học quái vật, xin đừng nhìn lại phía sau.",
+  "🦈🔥 Cá mập từ vựng đang cắn deadline, chạy đi còn kịp.",
+  "👾🍜 Não bạn đang ăn mì gói, Kanji tự học thay chủ nhân.",
+  "🤯🎯 Mỗi chữ Hán là một cú headshot vào sự trì hoãn.",
+  "🫠💫 Ý chí tan chảy, nhưng streak học vẫn bay như tên lửa.",
+  "🗿⚔️ Chế độ chiến thần mở khóa, ai ngáp là thua.",
+  "🐶📈 Động lực điên cuồng, điểm nhớ từ đang pump không phanh."
+] as const;
+
 function App() {
-  const KANJI_STUDY_GROUP_KEY = "kanji-study-group";
-  const KANJI_STUDY_FOCUS_KEY = "kanji-study-focus";
+  const [authReady, setAuthReady] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
+  const [syncReady, setSyncReady] = useState(false);
+  const [syncError, setSyncError] = useState("");
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [profileDraft, setProfileDraft] = useState<UserProfile | null>(null);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
+  const [profileSaving, setProfileSaving] = useState(false);
+  const profileMenuRef = useRef<HTMLDivElement>(null);
   const [layoutMode, setLayoutMode] = useState<"full" | "compact">(() => {
-    const stored = localStorage.getItem("kanji-layout");
+    const stored = getString(STORAGE_KEYS.app.layout);
     return stored === "compact" ? "compact" : "full";
   });
   const [theme, setTheme] = useState<"light" | "dark">(() => {
-    const stored = localStorage.getItem("kanji-theme");
+    const stored = getString(STORAGE_KEYS.app.theme);
     return stored === "dark" ? "dark" : "light";
   });
   const [queryInput, setQueryInput] = useState("");
@@ -51,9 +84,9 @@ function App() {
   const [newGroupName, setNewGroupName] = useState("");
   const [groupToDelete, setGroupToDelete] = useState("");
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  const [studyGroup, setStudyGroup] = useState(() => localStorage.getItem(KANJI_STUDY_GROUP_KEY) || "Tất cả");
+  const [studyGroup, setStudyGroup] = useState(() => getString(STORAGE_KEYS.app.studyGroup) || "Tất cả");
   const [studyFocus, setStudyFocus] = useState<"priority" | "due" | "new">(() => {
-    const stored = localStorage.getItem(KANJI_STUDY_FOCUS_KEY);
+    const stored = getString(STORAGE_KEYS.app.studyFocus);
     return stored === "due" || stored === "new" ? stored : "priority";
   });
   const [cardIndex, setCardIndex] = useState(0);
@@ -67,11 +100,16 @@ function App() {
   const [listGroup, setListGroup] = useState("");
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
-  const [verbLevelFilter, setVerbLevelFilter] = useState<"Tất cả" | VerbLevel>("Tất cả");
   const [verbTypeFilter, setVerbTypeFilter] = useState<"Tất cả" | VerbType>("Tất cả");
+  const [logoTapCount, setLogoTapCount] = useState(0);
+  const [easterEggOn, setEasterEggOn] = useState(false);
+  const [rainState, setRainState] = useState<"off" | "running" | "stopping">("off");
+  const [brainrotLine, setBrainrotLine] = useState<string>(BRAINROT_LINES[0]);
   const [importedRecords, setImportedRecords] = useState<ImportedKanjiRecord[]>([]);
   const [kanjiDataReady, setKanjiDataReady] = useState(false);
   const kanjiPrefetchStartedRef = useRef(false);
+  const lastSavedPayloadRef = useRef("");
+  const saveTimerRef = useRef<number | null>(null);
 
   const importedByKanji = useMemo(() => {
     const map: Record<string, ImportedKanjiRecord> = {};
@@ -139,16 +177,21 @@ function App() {
       return Boolean(progress?.known && progress.dueAt <= now);
     }).length;
   }, [cards, progressMap]);
+  const knownCardsCount = useMemo(() => cards.filter((card) => progressMap[card.kanji]?.known).length, [cards, progressMap]);
+  const jlptCurrentLevel = useMemo(() => getCurrentJlptStudyLabelFromStorage(), [currentPath, refreshTick]);
+  const nextJlptCountdown = useMemo(() => getNextJlptCountdown(new Date()), []);
   const currentCard = scheduledCards[cardIndex] || null;
   const dailyInspiration = useMemo(() => getDailyInspiration(new Date()), []);
   const jlptVerbs = useMemo(() => (verbsPack as { verbs: VerbLesson[] }).verbs || [], []);
+  const learningStreakDays = useMemo(() => {
+    const history = getJSON<Array<{ date?: unknown }>>(STORAGE_KEYS.insights.history, []);
+    return calculateLearningStreak(history);
+  }, [refreshTick, currentPath]);
   const filteredVerbs = useMemo(() => {
     return jlptVerbs.filter((verb) => {
-      const passLevel = verbLevelFilter === "Tất cả" || verb.jlpt === verbLevelFilter;
-      const passType = verbTypeFilter === "Tất cả" || verb.type === verbTypeFilter;
-      return passLevel && passType;
+      return verbTypeFilter === "Tất cả" || verb.type === verbTypeFilter;
     });
-  }, [jlptVerbs, verbLevelFilter, verbTypeFilter]);
+  }, [jlptVerbs, verbTypeFilter]);
   const currentPage = useMemo(() => {
     if (currentPath === "/study/kanji") {
       return "kanji";
@@ -159,8 +202,264 @@ function App() {
     if (currentPath === "/study/vocabulary") {
       return "vocabulary";
     }
+    if (currentPath === "/study/lookup") {
+      return "lookup";
+    }
     return "home";
   }, [currentPath]);
+
+  const buildCloudPayload = useCallback((): UserStatePayload => {
+    const dictionaryState = exportDictionaryLocalState();
+    const jlptState = exportJlptLocalState();
+    return {
+      version: 1,
+      data: {
+        appSettings: {
+          theme,
+          layoutMode,
+          studyGroup,
+          studyFocus
+        },
+        kanjiProgress: dictionaryState.kanjiProgress,
+        customVocabulary: dictionaryState.customVocabulary,
+        customGroups: dictionaryState.customGroups,
+        jlpt: jlptState
+      }
+    };
+  }, [theme, layoutMode, studyGroup, studyFocus]);
+
+  const buildEmptyCloudPayload = useCallback((): UserStatePayload => {
+    const emptyLearned = { N5: {}, N4: {}, N3: {}, N2: {}, N1: {} };
+    const emptyWrong = { N5: [], N4: [], N3: [], N2: [], N1: [] };
+    return {
+      version: 1,
+      data: {
+        appSettings: {
+          theme: "light",
+          layoutMode: "full",
+          studyGroup: "Tất cả",
+          studyFocus: "priority"
+        },
+        kanjiProgress: {},
+        customVocabulary: [],
+        customGroups: [],
+        jlpt: {
+          learned: emptyLearned,
+          wrongReview: emptyWrong,
+          settings: {}
+        }
+      }
+    };
+  }, []);
+
+  const applyCloudPayload = useCallback((payload: UserStatePayload) => {
+    importDictionaryLocalState({
+      customVocabulary: payload.data.customVocabulary,
+      customGroups: payload.data.customGroups,
+      kanjiProgress: payload.data.kanjiProgress
+    });
+    importJlptLocalState(payload.data.jlpt);
+    setTheme(payload.data.appSettings.theme);
+    setLayoutMode(payload.data.appSettings.layoutMode);
+    setStudyGroup(payload.data.appSettings.studyGroup || "Tất cả");
+    setStudyFocus(payload.data.appSettings.studyFocus || "priority");
+    setProgressMap(payload.data.kanjiProgress || {});
+    setRefreshTick((prev) => prev + 1);
+  }, []);
+
+  const buildCloudPayloadFromStorage = useCallback((): UserStatePayload => {
+    const dictionaryState = exportDictionaryLocalState();
+    const jlptState = exportJlptLocalState();
+    const themeStored = getString(STORAGE_KEYS.app.theme);
+    const layoutStored = getString(STORAGE_KEYS.app.layout);
+    const studyGroupStored = getString(STORAGE_KEYS.app.studyGroup);
+    const studyFocusStored = getString(STORAGE_KEYS.app.studyFocus);
+    return {
+      version: 1,
+      data: {
+        appSettings: {
+          theme: themeStored === "dark" ? "dark" : "light",
+          layoutMode: layoutStored === "compact" ? "compact" : "full",
+          studyGroup: studyGroupStored || "Tất cả",
+          studyFocus: studyFocusStored === "due" || studyFocusStored === "new" ? studyFocusStored : "priority"
+        },
+        kanjiProgress: dictionaryState.kanjiProgress,
+        customVocabulary: dictionaryState.customVocabulary,
+        customGroups: dictionaryState.customGroups,
+        jlpt: jlptState
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    const init = async () => {
+      if (!hasSupabaseEnv || !supabase) {
+        if (mounted) {
+          setAuthReady(true);
+        }
+        return;
+      }
+      try {
+        const current = await getCurrentSession();
+        if (mounted) {
+          setSession(current);
+        }
+      } catch (err) {
+        if (mounted) {
+          setSyncError(err instanceof Error ? err.message : "Không thể khởi tạo phiên đăng nhập.");
+        }
+      } finally {
+        if (mounted) {
+          setAuthReady(true);
+        }
+      }
+    };
+    void init();
+    const { data } = supabase
+      ? supabase.auth.onAuthStateChange((_event, nextSession) => {
+          setSession(nextSession);
+        })
+      : { data: { subscription: { unsubscribe: () => undefined } } };
+    return () => {
+      mounted = false;
+      data.subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    const hydrate = async () => {
+      if (!session?.user?.id) {
+        setSyncReady(false);
+        lastSavedPayloadRef.current = "";
+        return;
+      }
+      setSyncReady(false);
+      setSyncError("");
+      try {
+        const cloudState = await loadUserState(session.user.id);
+        if (cancelled) {
+          return;
+        }
+        if (cloudState?.version === 1) {
+          applyCloudPayload(cloudState);
+          lastSavedPayloadRef.current = JSON.stringify(cloudState);
+        } else {
+          const justSignedUp = getString(STORAGE_KEYS.app.authJustSignedUp) === "1";
+          if (justSignedUp) {
+            removeKey(STORAGE_KEYS.app.authJustSignedUp);
+            const emptyPayload = buildEmptyCloudPayload();
+            applyCloudPayload(emptyPayload);
+            await saveUserState(session.user.id, emptyPayload);
+            lastSavedPayloadRef.current = JSON.stringify(emptyPayload);
+          } else {
+            const localPayload = buildCloudPayloadFromStorage();
+            await saveUserState(session.user.id, localPayload);
+            lastSavedPayloadRef.current = JSON.stringify(localPayload);
+          }
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setSyncError(err instanceof Error ? err.message : "Không thể đồng bộ dữ liệu đám mây.");
+        }
+      } finally {
+        if (!cancelled) {
+          setSyncReady(true);
+        }
+      }
+    };
+    void hydrate();
+    return () => {
+      cancelled = true;
+    };
+  }, [session?.user?.id, applyCloudPayload, buildCloudPayloadFromStorage, buildEmptyCloudPayload]);
+
+  useEffect(() => {
+    if (!session?.user?.id || !syncReady) {
+      return;
+    }
+    const payload = buildCloudPayload();
+    const serialized = JSON.stringify(payload);
+    if (serialized === lastSavedPayloadRef.current) {
+      return;
+    }
+    if (saveTimerRef.current != null) {
+      window.clearTimeout(saveTimerRef.current);
+    }
+    saveTimerRef.current = window.setTimeout(() => {
+      void saveUserState(session.user.id, payload)
+        .then(() => {
+          lastSavedPayloadRef.current = serialized;
+        })
+        .catch((err) => {
+          setSyncError(err instanceof Error ? err.message : "Lưu cloud thất bại.");
+        });
+    }, 900);
+    return () => {
+      if (saveTimerRef.current != null) {
+        window.clearTimeout(saveTimerRef.current);
+      }
+    };
+  }, [session?.user?.id, syncReady, buildCloudPayload, refreshTick, progressMap, theme, layoutMode, studyGroup, studyFocus]);
+
+  useEffect(() => {
+    if (!profileMenuOpen) {
+      return;
+    }
+    const onDocClick = (event: MouseEvent) => {
+      const target = event.target as Node | null;
+      if (!profileMenuRef.current || !target) {
+        return;
+      }
+      if (!profileMenuRef.current.contains(target)) {
+        setProfileMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, [profileMenuOpen]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadProfileData = async () => {
+      if (!session?.user?.id) {
+        setProfile(null);
+        return;
+      }
+      try {
+        const remote = await loadUserProfile(session.user.id);
+        if (cancelled) {
+          return;
+        }
+        const email = session.user.email || "";
+        const fallbackUsername = (session.user.user_metadata?.username as string | undefined) || "";
+        const initial: UserProfile = remote || {
+          username: fallbackUsername,
+          email,
+          full_name: "",
+          gender: "",
+          birth_date: "",
+          avatar_url: ""
+        };
+        if (!initial.email) {
+          initial.email = email;
+        }
+        if (!initial.username) {
+          initial.username = fallbackUsername || email.split("@")[0] || "user";
+        }
+        setProfile(initial);
+      } catch (err) {
+        if (!cancelled) {
+          setSyncError(err instanceof Error ? err.message : "Không thể tải hồ sơ người dùng.");
+        }
+      }
+    };
+    void loadProfileData();
+    return () => {
+      cancelled = true;
+    };
+  }, [session?.user?.id, session?.user?.email, session?.user?.user_metadata]);
 
   useEffect(() => {
     const onPopState = () => setCurrentPath(window.location.pathname);
@@ -179,24 +478,24 @@ function App() {
   }, [queryInput]);
 
   useEffect(() => {
-    localStorage.setItem("kanji-theme", theme);
+    setString(STORAGE_KEYS.app.theme, theme);
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
-    localStorage.setItem("kanji-layout", layoutMode);
+    setString(STORAGE_KEYS.app.layout, layoutMode);
   }, [layoutMode]);
 
   useEffect(() => {
-    localStorage.setItem(KANJI_STUDY_GROUP_KEY, studyGroup);
+    setString(STORAGE_KEYS.app.studyGroup, studyGroup);
   }, [studyGroup]);
 
   useEffect(() => {
-    localStorage.setItem(KANJI_STUDY_FOCUS_KEY, studyFocus);
+    setString(STORAGE_KEYS.app.studyFocus, studyFocus);
   }, [studyFocus]);
 
   useEffect(() => {
-    if (currentPage !== "kanji" || kanjiDataReady) {
+    if ((currentPage !== "kanji" && currentPage !== "lookup") || kanjiDataReady) {
       return;
     }
     let cancelled = false;
@@ -245,6 +544,51 @@ function App() {
       setListGroup("");
     }
   }, [allGroups, selectedAddGroup, studyGroup, listGroup]);
+
+  useEffect(() => {
+    if (rainState !== "stopping") {
+      return;
+    }
+    const timer = window.setTimeout(() => setRainState("off"), 20000);
+    return () => window.clearTimeout(timer);
+  }, [rainState]);
+
+  useEffect(() => {
+    if (logoTapCount < 7) {
+      return;
+    }
+    setLogoTapCount(0);
+    setEasterEggOn(true);
+    setRainState("running");
+    setBrainrotLine((prev) => {
+      const choices = BRAINROT_LINES.filter((line) => line !== prev);
+      return choices[Math.floor(Math.random() * choices.length)] || BRAINROT_LINES[0];
+    });
+  }, [logoTapCount]);
+
+  const pickBrainrotLine = useCallback(() => {
+    setBrainrotLine((prev) => {
+      const choices = BRAINROT_LINES.filter((line) => line !== prev);
+      return choices[Math.floor(Math.random() * choices.length)] || BRAINROT_LINES[0];
+    });
+  }, []);
+
+  useEffect(() => {
+    const onKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.shiftKey && event.code === "KeyJ") {
+        if (rainState === "running") {
+          setEasterEggOn(false);
+          setRainState("stopping");
+        } else {
+          setEasterEggOn(true);
+          setRainState("running");
+          pickBrainrotLine();
+        }
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [rainState, pickBrainrotLine]);
 
   const saveVocabulary = () => {
     setError("");
@@ -444,7 +788,7 @@ function App() {
     setRefreshTick((prev) => prev + 1);
   };
 
-  const goToPage = (path: "/" | "/study/kanji" | "/study/verbs" | "/study/vocabulary") => {
+  const goToPage = (path: "/" | "/study/kanji" | "/study/verbs" | "/study/vocabulary" | "/study/lookup") => {
     if (window.location.pathname === path) {
       return;
     }
@@ -452,63 +796,121 @@ function App() {
     setCurrentPath(path);
   };
 
-  return (
-    <main className={`appShell ${layoutMode === "compact" ? "layoutCompact" : "layoutFull"}`}>
-      <div className="container">
-      <header className="appHeader">
-        <div className="brandRow">
-          <div className="heroTitleBlock">
-            <img className="brandLogo" src="/logo.png" alt="Nihongo Studio" />
-            <div>
-              <h1>Kulukulu Nihongo</h1>
-              <p className="heroSubtitle">Nền tảng học Kanji và JLPT tập trung, tối giản, hiệu quả.</p>
-            </div>
-          </div>
-          <div className="headerControls">
-            <BgmPlayer />
-            <button
-              type="button"
-              className="toolbarBtn"
-              onClick={() => setLayoutMode((prev) => (prev === "full" ? "compact" : "full"))}
-            >
-              <LayoutGrid size={16} />
-              {layoutMode === "full" ? "Layout gọn" : "Layout rộng"}
-            </button>
-            <button type="button" className="toolbarBtn" onClick={() => setTheme((prev) => (prev === "light" ? "dark" : "light"))}>
-              {theme === "light" ? <MoonStar size={16} /> : <SunMedium size={16} />}
-              {theme === "light" ? "Giao diện tối" : "Giao diện sáng"}
-            </button>
-          </div>
+  const handleSignOut = async () => {
+    if (!supabase) {
+      return;
+    }
+    await supabase.auth.signOut();
+  };
+
+  const openProfileModal = () => {
+    if (!profile) {
+      return;
+    }
+    setProfileDraft({
+      ...profile,
+      birth_date: formatBirthDateDisplay(profile.birth_date)
+    });
+    setProfileModalOpen(true);
+    setProfileMenuOpen(false);
+  };
+
+  const saveProfileChanges = async () => {
+    if (!session?.user?.id || !profileDraft || !profile) {
+      return;
+    }
+    const normalizedBirthDate = normalizeBirthDateInput(profileDraft.birth_date);
+    if (normalizedBirthDate === null) {
+      setError("Ngày sinh không hợp lệ. Vui lòng nhập theo định dạng dd/mm/yyyy.");
+      return;
+    }
+    setProfileSaving(true);
+    try {
+      const nextProfile: UserProfile = {
+        ...profile,
+        username: profile.username.trim().toLowerCase(),
+        email: profile.email.trim().toLowerCase(),
+        avatar_url: profileDraft.avatar_url,
+        full_name: profileDraft.full_name.trim(),
+        gender: profileDraft.gender.trim(),
+        birth_date: normalizedBirthDate
+      };
+      await saveUserProfile(session.user.id, nextProfile);
+      setProfile(nextProfile);
+      setProfileModalOpen(false);
+      setNotice("Đã cập nhật thông tin tài khoản.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Không thể lưu hồ sơ.");
+    } finally {
+      setProfileSaving(false);
+    }
+  };
+
+  const onPickAvatar = async (file: File | null) => {
+    if (!file || !profileDraft) {
+      return;
+    }
+    if (!file.type.startsWith("image/")) {
+      setError("Vui lòng chọn file ảnh hợp lệ.");
+      return;
+    }
+    const dataUrl = await fileToDataUrl(file);
+    setProfileDraft((prev) => (prev ? { ...prev, avatar_url: dataUrl } : prev));
+  };
+
+  if (!authReady) {
+    return (
+      <main className="appShell layoutCompact">
+        <div className="container">
+          <PageLoadingCard label="Đang kiểm tra phiên đăng nhập..." />
         </div>
-        <nav className="mainNav" aria-label="Điều hướng chính">
-          <button type="button" className={currentPage === "home" ? "navPill isActive" : "navPill"} onClick={() => goToPage("/")}>
-            <span className="navPillInner"><House size={16} />Trang chủ</span>
-          </button>
-          <button
-            type="button"
-            className={currentPage === "kanji" ? "navPill isActive" : "navPill"}
-            onClick={() => goToPage("/study/kanji")}
-            onMouseEnter={prefetchKanjiData}
-            onFocus={prefetchKanjiData}
-          >
-            <span className="navPillInner"><Sparkles size={16} />Học Kanji</span>
-          </button>
-          <button
-            type="button"
-            className={currentPage === "verbs" ? "navPill isActive" : "navPill"}
-            onClick={() => goToPage("/study/verbs")}
-          >
-            <span className="navPillInner"><TextSearch size={16} />Động từ</span>
-          </button>
-          <button
-            type="button"
-            className={currentPage === "vocabulary" ? "navPill isActive" : "navPill"}
-            onClick={() => goToPage("/study/vocabulary")}
-          >
-            <span className="navPillInner"><BookOpen size={16} />Từ vựng JLPT</span>
-          </button>
-        </nav>
-      </header>
+      </main>
+    );
+  }
+
+  if (!session) {
+    return <AuthGate />;
+  }
+
+  return (
+    <main
+      className={`appShell ${layoutMode === "compact" ? "layoutCompact" : "layoutFull"} ${rainState !== "off" ? "shockMode" : ""}`}
+      onClickCapture={() => {
+        if (rainState === "running") {
+          setEasterEggOn(false);
+          setRainState("stopping");
+        }
+      }}
+    >
+      <div className="container enterpriseShell">
+      <AppHeader
+        logoTapCount={logoTapCount}
+        onTapLogo={() => setLogoTapCount((c) => c + 1)}
+        layoutMode={layoutMode}
+        onToggleLayout={() => setLayoutMode((prev) => (prev === "full" ? "compact" : "full"))}
+        theme={theme}
+        onToggleTheme={() => setTheme((prev) => (prev === "light" ? "dark" : "light"))}
+        profileMenuRef={profileMenuRef}
+        profile={profile}
+        getAvatarFallback={getAvatarFallback}
+        profileMenuOpen={profileMenuOpen}
+        onToggleProfileMenu={() => setProfileMenuOpen((prev) => !prev)}
+        onCloseProfileMenu={() => setProfileMenuOpen(false)}
+        onOpenProfile={openProfileModal}
+        onSignOut={handleSignOut}
+        jlptCurrentLevel={jlptCurrentLevel}
+        studyGroupLabel={formatKanjiLessonLabel(studyGroup)}
+        learningStreakDays={learningStreakDays}
+        jlptDaysLeft={nextJlptCountdown.daysLeft}
+        onGoVocabulary={() => goToPage("/study/vocabulary")}
+        onGoKanji={() => goToPage("/study/kanji")}
+        currentPage={currentPage}
+        onGoHome={() => goToPage("/")}
+        onGoVerbs={() => goToPage("/study/verbs")}
+        onGoLookup={() => goToPage("/study/lookup")}
+        onPrefetchKanji={prefetchKanjiData}
+        compactOnStudy={currentPage !== "home"}
+      />
 
       <AnimatePresence mode="wait">
       <motion.div
@@ -541,13 +943,94 @@ function App() {
       )}
 
       {error && <div className="error">{error}</div>}
+      {syncError && <div className="error">{syncError}</div>}
       {notice && <div className="notice">{notice}</div>}
+      {rainState !== "off" ? <EmojiRainPhysics state={rainState} onSettled={() => setRainState("off")} /> : null}
+      {rainState === "running" && (
+        <div className="easterEggBanner" role="status" aria-live="polite">
+          <strong>CHẾ ĐỘ BRAINROT TỐI THƯỢNG</strong> - {brainrotLine}
+        </div>
+      )}
+      {profileModalOpen && profileDraft ? (
+        <div className="profileModalBackdrop" role="dialog" aria-modal="true">
+          <section className="card profileModalCard">
+            <h2>Thông tin tài khoản</h2>
+            <p className="muted">Cập nhật hồ sơ cá nhân hiển thị trong ứng dụng.</p>
+            <div className="profileAvatarHeroWrap">
+              <div className="profileAvatarHero">
+                {profileDraft.avatar_url ? (
+                  <img src={profileDraft.avatar_url} alt="Avatar hồ sơ" />
+                ) : (
+                  <span className="profileAvatarHeroFallback">{getAvatarFallback(profileDraft)}</span>
+                )}
+              </div>
+            </div>
+            <div className="profileEditorGrid">
+              <label>
+                Tên đăng nhập
+                <input
+                  value={profileDraft.username}
+                  disabled
+                  placeholder="username"
+                />
+              </label>
+              <label>
+                Họ và tên
+                <input
+                  value={profileDraft.full_name}
+                  onChange={(e) => setProfileDraft((prev) => (prev ? { ...prev, full_name: e.target.value } : prev))}
+                  placeholder="Nguyễn Văn A"
+                />
+              </label>
+              <label>
+                Email
+                <input value={profileDraft.email} disabled />
+              </label>
+              <label>
+                Giới tính
+                <select
+                  value={profileDraft.gender}
+                  onChange={(e) => setProfileDraft((prev) => (prev ? { ...prev, gender: e.target.value } : prev))}
+                >
+                  <option value="">Chọn giới tính</option>
+                  <option value="male">Nam</option>
+                  <option value="female">Nữ</option>
+                  <option value="other">Khác</option>
+                </select>
+              </label>
+              <label>
+                Ngày sinh
+                <input
+                  type="text"
+                  value={profileDraft.birth_date}
+                  inputMode="numeric"
+                  placeholder="dd/mm/yyyy"
+                  onChange={(e) => setProfileDraft((prev) => (prev ? { ...prev, birth_date: e.target.value } : prev))}
+                />
+              </label>
+              <label className="profileFieldWide">
+                Ảnh đại diện
+                <input type="file" accept="image/*" onChange={(e) => void onPickAvatar(e.target.files?.[0] || null)} />
+              </label>
+            </div>
+            <div className="row gap profileModalActions">
+              <button type="button" className="btnSecondary" onClick={() => setProfileModalOpen(false)} disabled={profileSaving}>
+                Hủy
+              </button>
+              <button type="button" className="btnPrimary" onClick={() => void saveProfileChanges()} disabled={profileSaving}>
+                {profileSaving ? "Đang lưu..." : "Lưu thay đổi"}
+              </button>
+            </div>
+          </section>
+        </div>
+      ) : null}
 
       {currentPage === "home" && (
         <>
           <HomeInsightsPanel
             dueCardsCount={dueCardsCount}
             unknownCardsCount={unknownCardsCount}
+            knownCardsCount={knownCardsCount}
             totalVocabulary={allVocabulary.length}
             totalGroups={allGroups.length}
           />
@@ -557,7 +1040,8 @@ function App() {
       {currentPage === "kanji" && (
         <>
           <section className="card studyCard">
-            <h2>Flashcard Kanji</h2>
+            <h2>Học Kanji</h2>
+            <p className="muted studySubtitle">Ôn theo thẻ, theo nhóm và theo mức ưu tiên trong ngày.</p>
             <div className="toolbar toolbar-2">
               <label>
                 Nhóm đang học
@@ -701,16 +1185,24 @@ function App() {
       {currentPage === "verbs" && (
         <Suspense fallback={<PageLoadingCard label="Đang tải tab Động từ..." />}>
           <section className="card studyCard">
-            <h2>Học động từ (N4 trở xuống)</h2>
+            <h2>Học Động Từ</h2>
+            <p className="muted studySubtitle">Lọc theo nhóm động từ, ôn bảng chia và làm bài kiểm tra riêng.</p>
             <VerbStudyPanel
               verbs={filteredVerbs}
-              levelFilter={verbLevelFilter}
               typeFilter={verbTypeFilter}
-              onLevelFilterChange={setVerbLevelFilter}
               onTypeFilterChange={setVerbTypeFilter}
             />
           </section>
         </Suspense>
+      )}
+
+      {currentPage === "lookup" && (
+        <VocabularyLookupPage
+          allVocabulary={allVocabulary}
+          verbs={jlptVerbs}
+          kanjiRecords={importedRecords}
+          kanjiReady={kanjiDataReady}
+        />
       )}
 
       {currentPage === "kanji" && (
@@ -862,34 +1354,26 @@ function App() {
       </motion.div>
       </AnimatePresence>
       <div className="floatingActions">
-        {currentPage === "kanji" ? (
-          <>
-            <button type="button" className="btnSecondary" onClick={handleNextCard} disabled={!currentCard}>
-              Thẻ tiếp
-            </button>
-            <button
-              type="button"
-              className="btnPrimary"
-              onClick={handleLookupOnline}
-              disabled={isOnlineLookingUp || !queryInput.trim()}
-            >
-              Tra nhanh
-            </button>
-          </>
-        ) : currentPage === "verbs" ? (
-          <button type="button" className="btnSecondary" onClick={() => goToPage("/study/kanji")}>
-            Sang Học Kanji
-          </button>
-        ) : currentPage === "vocabulary" ? (
+        {currentPage === "home" ? (
+          <a
+            className="zaloFab"
+            href="https://zalo.me/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Liên hệ Zalo"
+            title="Liên hệ Zalo"
+          >
+            <span className="zaloFabIcon" aria-hidden="true">
+              <MessageCircle size={28} />
+            </span>
+          </a>
+        ) : (
           <button type="button" className="btnSecondary" onClick={() => goToPage("/")}>
             Về trang chủ
           </button>
-        ) : (
-          <button type="button" className="btnPrimary" onClick={() => goToPage("/study/verbs")}>
-            Học động từ
-          </button>
         )}
       </div>
+      <AppFooter />
       </div>
     </main>
   );
@@ -902,6 +1386,383 @@ function PageLoadingCard({ label }: { label: string }) {
       <p className="muted">{label}</p>
     </section>
   );
+}
+
+type RainMode = "running" | "stopping";
+
+type EmojiParticle = {
+  emoji: string;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  r: number;
+  mass: number;
+  rotation: number;
+  vr: number;
+};
+
+function EmojiRainPhysics({ state, onSettled }: { state: RainMode; onSettled: () => void }) {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const particlesRef = useRef<EmojiParticle[]>([]);
+  const spawnCarryRef = useRef(0);
+  const settleFrameRef = useRef(0);
+  const perfScoreRef = useRef(0);
+  const lowQualityRef = useRef(false);
+  const frameTickRef = useRef(0);
+  const prevStateRef = useRef<RainMode>(state);
+  const onSettledRef = useRef(onSettled);
+  onSettledRef.current = onSettled;
+
+  useEffect(() => {
+    if (prevStateRef.current !== state && state === "running") {
+      particlesRef.current = [];
+      spawnCarryRef.current = 0;
+      settleFrameRef.current = 0;
+    }
+    prevStateRef.current = state;
+  }, [state]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) {
+      return;
+    }
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      return;
+    }
+
+    let rafId = 0;
+    let lastTs = performance.now();
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const emojiPool = ["🔥", "💀", "🧠", "⚡", "🤯", "🐸", "🦈", "👾", "💥", "🫠", "🗿", "🍌"];
+
+    const resize = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const spawnParticle = () => {
+      const size = 34 + Math.random() * 20;
+      const r = size * 0.33;
+      particlesRef.current.push({
+        emoji: emojiPool[Math.floor(Math.random() * emojiPool.length)],
+        x: r + Math.random() * (window.innerWidth - r * 2),
+        y: -40 - Math.random() * 120,
+        vx: (Math.random() - 0.5) * 180,
+        vy: 40 + Math.random() * 120,
+        r,
+        mass: r * r,
+        rotation: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 3.2
+      });
+    };
+
+    const render = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const floorY = h - 8;
+      let dt = (performance.now() - lastTs) / 1000;
+      lastTs = performance.now();
+      dt = Math.max(0.005, Math.min(dt, 0.033));
+      frameTickRef.current += 1;
+
+      if (dt > 0.0215) {
+        perfScoreRef.current = Math.min(80, perfScoreRef.current + 1.4);
+      } else {
+        perfScoreRef.current = Math.max(0, perfScoreRef.current - 0.7);
+      }
+      if (perfScoreRef.current > 20) {
+        lowQualityRef.current = true;
+      } else if (perfScoreRef.current < 8) {
+        lowQualityRef.current = false;
+      }
+
+      const isLowQuality = lowQualityRef.current;
+      const maxParticles = isLowQuality ? 36 : 68;
+      const spawnRate = isLowQuality ? 9 : 16;
+      if (state === "running") {
+        spawnCarryRef.current += dt * spawnRate;
+        while (spawnCarryRef.current >= 1 && particlesRef.current.length < maxParticles) {
+          spawnParticle();
+          spawnCarryRef.current -= 1;
+        }
+      }
+
+      const particles = particlesRef.current;
+      if (particles.length > maxParticles) {
+        particles.splice(0, particles.length - maxParticles);
+      }
+      const g = 2100;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.vy += g * dt;
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        if (!isLowQuality) {
+          p.rotation += p.vr * dt;
+        }
+
+        if (p.x < p.r) {
+          p.x = p.r;
+          p.vx = Math.abs(p.vx) * 0.6;
+        } else if (p.x > w - p.r) {
+          p.x = w - p.r;
+          p.vx = -Math.abs(p.vx) * 0.6;
+        }
+
+        if (p.y > floorY - p.r) {
+          p.y = floorY - p.r;
+          if (Math.abs(p.vy) > 80) {
+            p.vy = -Math.abs(p.vy) * 0.34;
+          } else {
+            p.vy = 0;
+          }
+          p.vx *= 0.96;
+          p.vr *= 0.97;
+          if (Math.abs(p.vx) < 2) p.vx = 0;
+          if (Math.abs(p.vr) < 0.03) p.vr = 0;
+        }
+      }
+
+      // Broad-phase with spatial grid to avoid O(n^2) collision checks.
+      const shouldResolveCollisions = !isLowQuality || frameTickRef.current % 2 === 0;
+      if (shouldResolveCollisions) {
+        const cellSize = isLowQuality ? 92 : 74;
+        const grid = new Map<string, number[]>();
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const cx = Math.floor(p.x / cellSize);
+          const cy = Math.floor(p.y / cellSize);
+          const key = `${cx},${cy}`;
+          const bucket = grid.get(key);
+          if (bucket) {
+            bucket.push(i);
+          } else {
+            grid.set(key, [i]);
+          }
+        }
+
+        for (let i = 0; i < particles.length; i++) {
+          const a = particles[i];
+          const cx = Math.floor(a.x / cellSize);
+          const cy = Math.floor(a.y / cellSize);
+          for (let ox = -1; ox <= 1; ox++) {
+            for (let oy = -1; oy <= 1; oy++) {
+              const bucket = grid.get(`${cx + ox},${cy + oy}`);
+              if (!bucket) {
+                continue;
+              }
+              for (let k = 0; k < bucket.length; k++) {
+                const j = bucket[k];
+                if (j <= i) {
+                  continue;
+                }
+                const b = particles[j];
+                const dx = b.x - a.x;
+                const dy = b.y - a.y;
+                const minDist = a.r + b.r;
+                const distSq = dx * dx + dy * dy;
+                if (distSq >= minDist * minDist || distSq < 1e-6) {
+                  continue;
+                }
+                const dist = Math.sqrt(distSq);
+                const nx = dx / dist;
+                const ny = dy / dist;
+                const overlap = minDist - dist;
+
+                a.x -= nx * (overlap * 0.5);
+                a.y -= ny * (overlap * 0.5);
+                b.x += nx * (overlap * 0.5);
+                b.y += ny * (overlap * 0.5);
+
+                const rvx = b.vx - a.vx;
+                const rvy = b.vy - a.vy;
+                const velAlongNormal = rvx * nx + rvy * ny;
+                if (velAlongNormal > 0) {
+                  continue;
+                }
+
+                const restitution = isLowQuality ? 0.25 : 0.32;
+                const invMassA = 1 / a.mass;
+                const invMassB = 1 / b.mass;
+                const impulse = (-(1 + restitution) * velAlongNormal) / (invMassA + invMassB);
+                const ix = impulse * nx;
+                const iy = impulse * ny;
+
+                a.vx -= ix * invMassA;
+                a.vy -= iy * invMassA;
+                b.vx += ix * invMassB;
+                b.vy += iy * invMassB;
+              }
+            }
+          }
+        }
+      }
+
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        const size = p.r / 0.33;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.font = `${Math.round(size)}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(p.emoji, 0, 0);
+        ctx.restore();
+      }
+
+      if (state === "stopping") {
+        let active = 0;
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const onGround = p.y >= floorY - p.r - 0.5;
+          if (!onGround || Math.abs(p.vx) > 8 || Math.abs(p.vy) > 8) {
+            active += 1;
+          }
+        }
+        if (active === 0) {
+          settleFrameRef.current += 1;
+        } else {
+          settleFrameRef.current = 0;
+        }
+        if (settleFrameRef.current > 14) {
+          onSettledRef.current();
+          return;
+        }
+      }
+
+      rafId = window.requestAnimationFrame(render);
+    };
+
+    rafId = window.requestAnimationFrame(render);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      window.cancelAnimationFrame(rafId);
+    };
+  }, [state]);
+
+  return (
+    <div className="emojiRain" aria-hidden="true">
+      <canvas ref={canvasRef} className="emojiRainCanvas" />
+    </div>
+  );
+}
+
+function getAvatarFallback(profile: UserProfile | null): string {
+  const source = (profile?.full_name || profile?.username || "User").trim();
+  if (!source) {
+    return "U";
+  }
+  const parts = source.split(/\s+/).filter(Boolean);
+  if (parts.length === 1) {
+    return parts[0].slice(0, 1).toUpperCase();
+  }
+  return `${parts[0][0] || ""}${parts[parts.length - 1][0] || ""}`.toUpperCase();
+}
+
+function formatBirthDateDisplay(raw: string): string {
+  const value = raw.trim();
+  if (!value) {
+    return "";
+  }
+  const iso = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (iso) {
+    const [, year, month, day] = iso;
+    return `${day}/${month}/${year}`;
+  }
+  return value;
+}
+
+function toDayKey(date: Date): string {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+function calculateLearningStreak(history: Array<{ date?: unknown }>): number {
+  if (!Array.isArray(history) || history.length === 0) {
+    return 0;
+  }
+  const dayKeys = history
+    .map((item) => (typeof item?.date === "string" ? item.date : ""))
+    .filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(value));
+  if (dayKeys.length === 0) {
+    return 0;
+  }
+  const uniqueSorted = Array.from(new Set(dayKeys)).sort();
+  const lastKey = uniqueSorted[uniqueSorted.length - 1];
+  const todayKey = toDayKey(new Date());
+  const yesterdayKey = toDayKey(new Date(Date.now() - 86400000));
+  if (lastKey !== todayKey && lastKey !== yesterdayKey) {
+    return 0;
+  }
+  let streak = 0;
+  let cursor = new Date(`${lastKey}T00:00:00`);
+  const keySet = new Set(uniqueSorted);
+  while (true) {
+    const key = toDayKey(cursor);
+    if (!keySet.has(key)) {
+      break;
+    }
+    streak += 1;
+    cursor = new Date(cursor.getTime() - 86400000);
+  }
+  return streak;
+}
+
+function normalizeBirthDateInput(raw: string): string | null {
+  const value = raw.trim();
+  if (!value) {
+    return "";
+  }
+  const iso = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (iso) {
+    return value;
+  }
+  const dmy = value.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!dmy) {
+    return null;
+  }
+  const day = Number(dmy[1]);
+  const month = Number(dmy[2]);
+  const year = Number(dmy[3]);
+  if (!Number.isFinite(day) || !Number.isFinite(month) || !Number.isFinite(year)) {
+    return null;
+  }
+  const testDate = new Date(Date.UTC(year, month - 1, day));
+  if (
+    testDate.getUTCFullYear() !== year ||
+    testDate.getUTCMonth() !== month - 1 ||
+    testDate.getUTCDate() !== day
+  ) {
+    return null;
+  }
+  const dd = String(day).padStart(2, "0");
+  const mm = String(month).padStart(2, "0");
+  return `${year}-${mm}-${dd}`;
+}
+
+function fileToDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(new Error("Không thể đọc file ảnh."));
+    reader.readAsDataURL(file);
+  });
 }
 
 
@@ -991,62 +1852,6 @@ function getPriorityWeight(progress: KanjiProgress | undefined, now: number): nu
     return 1;
   }
   return 2;
-}
-
-const DAILY_INSPIRATIONS: InspirationItem[] = [
-  {
-    kanji: "忍",
-    hanViet: "Nhẫn",
-    keyword: "Kiên nhẫn và bền bỉ",
-    quoteJa: "小さな努力を、毎日積み重ねよう。",
-    reading: "Chiisana doryoku o, mainichi tsumikasaneyou.",
-    meaningVi: "Hãy tích lũy những nỗ lực nhỏ mỗi ngày, rồi kết quả lớn sẽ đến."
-  },
-  {
-    kanji: "和",
-    hanViet: "Hòa",
-    keyword: "Hài hòa với bản thân và người khác",
-    quoteJa: "相手を理解することは、自分を育てること。",
-    reading: "Aite o rikai suru koto wa, jibun o sodateru koto.",
-    meaningVi: "Hiểu người khác cũng là cách nuôi lớn chính mình."
-  },
-  {
-    kanji: "夢",
-    hanViet: "Mộng",
-    keyword: "Giữ ước mơ đủ lâu",
-    quoteJa: "夢は、続ける人を裏切らない。",
-    reading: "Yume wa, tsuzukeru hito o uragiranai.",
-    meaningVi: "Ước mơ không phản bội người biết kiên trì."
-  },
-  {
-    kanji: "誠",
-    hanViet: "Thành",
-    keyword: "Chân thành trong hành động",
-    quoteJa: "誠実さは、信頼をつくる最短の道。",
-    reading: "Seijitsusa wa, shinrai o tsukuru saitan no michi.",
-    meaningVi: "Sự chân thành là con đường ngắn nhất để tạo nên niềm tin."
-  },
-  {
-    kanji: "光",
-    hanViet: "Quang",
-    keyword: "Tìm ánh sáng trong khó khăn",
-    quoteJa: "暗い日にも、学びは光になる。",
-    reading: "Kurai hi ni mo, manabi wa hikari ni naru.",
-    meaningVi: "Ngay cả ngày tối nhất, việc học vẫn có thể trở thành ánh sáng."
-  },
-  {
-    kanji: "勇",
-    hanViet: "Dũng",
-    keyword: "Can đảm bắt đầu",
-    quoteJa: "一歩目の勇気が、未来を変える。",
-    reading: "Ippome no yuuki ga, mirai o kaeru.",
-    meaningVi: "Sự can đảm ở bước đầu tiên có thể thay đổi tương lai."
-  }
-];
-
-function getDailyInspiration(date: Date): InspirationItem {
-  const daySeed = Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000);
-  return DAILY_INSPIRATIONS[Math.abs(daySeed) % DAILY_INSPIRATIONS.length];
 }
 
 export default App;

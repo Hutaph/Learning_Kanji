@@ -13,6 +13,7 @@
     "import-verbs": "python scripts/import_verb_conjugation_apkg.py --apkg apkg/Makos_Japanese_Verb_Conjugation.apkg"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.102.0",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.7.0",
     "react": "^18.3.1",

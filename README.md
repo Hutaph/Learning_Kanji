@@ -39,39 +39,12 @@ Focused Japanese learning web app for **Kanji + JLPT Vocabulary + Verb practice*
   - Meaning quiz (4 random options)
   - Home dashboard simplified, Kanji workflow streamlined
 
-## Git Convention (v2.5)
-
-- **Branch naming**
-  - `feature/<scope>`
-  - `fix/<scope>`
-  - `chore/<scope>`
-  - `data/<scope>`
-
-- **Commit format**
-  - `<type>(<scope>): <short summary>`
-  - Use present tense, max ~72 chars for summary.
-
-- **Allowed commit types**
-  - `feat`: new user-facing functionality
-  - `fix`: bug fix / regression fix
-  - `refactor`: code restructure without behavior change
-  - `ui`: visual/copy/layout update
-  - `data`: JSON/APKG-derived dataset changes
-  - `docs`: README/docs only
-  - `chore`: tooling/maintenance/dependency updates
-  - `update`: broad non-breaking update when no better type fits
-
-- **v2.5 examples**
-  - `feat(verbs): migrate verb tab to APKG dataset`
-  - `data(verbs): refresh verbsConjugation and media assets`
-  - `ui(kanji): simplify study controls and copy`
-  - `chore(build): split vendor chunks in vite config`
-  - `update(readme): align docs with v2.5 release`
-
-- **PR checklist**
-  - Keep PR focused to one theme.
-  - Include test note: `npx tsc --noEmit`, `npm run build`, manual UI check.
-  - Add screenshots for UI changes.
+- **v3.0**
+  - Supabase authentication + cloud sync across devices (profile, settings, Kanji/JLPT/Verb progress)
+  - New enterprise-style header with live KPIs (current JLPT lesson, Kanji lesson, streak, JLPT countdown)
+  - Unified lookup tab for Vocabulary + Verbs + Kanji with romaji/JP/meaning search and expandable detail cards
+  - Improved study analytics: trend chart with Kanji/JLPT/Verb learning lines and clearer period-based tracking
+  - UI refresh: themed header background, professional icon system, and improved interaction consistency
 
 ## Key Features
 

@@ -1,0 +1,22 @@
+/* Refactor step: verb feature module */
+.verbMode {
+  --jlpt-theme: var(--accent);
+  --jlpt-theme-soft: var(--accent-muted);
+  --jlpt-theme-border: var(--border-strong);
+}
+
+.verbTabRow {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.verbTabRow .btnSecondary {
+  min-height: 44px;
+}
+
+.verbTabRow .jlptTestBtnPrimary {
+  margin-left: auto;
+}

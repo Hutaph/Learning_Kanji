@@ -1,0 +1,8 @@
+/* Refactor step: app shell wrappers */
+.enterpriseShell {
+  min-width: 0;
+}
+
+.dashboardMain {
+  min-width: 0;
+}
