@@ -6,3 +6,5 @@ kanji_learner.db
 coverage
 .DS_Store
 *.apkg
+.vite
+apkg

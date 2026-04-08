@@ -425,12 +425,13 @@ body {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: #f3f8ff;
+  color: #fbbf24;
+  text-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
 }
 
 .heroSubtitle {
   margin: 4px 0 0;
-  color: rgba(227, 238, 255, 0.88);
+  color: rgba(255, 247, 230, 0.96);
   font-size: 0.875rem;
   max-width: 42ch;
 }
@@ -2008,6 +2009,16 @@ tbody tr:last-child td {
   background: color-mix(in srgb, var(--surface-2) 78%, var(--accent) 22%);
 }
 
+.lookupInlineExpandRow td {
+  padding: 0 !important;
+  background: transparent !important;
+  border-top: none !important;
+}
+
+.lookupInlineExpandInner {
+  padding: 10px 8px 4px;
+}
+
 .lookupTable tbody td:nth-child(2),
 .lookupTable tbody td:nth-child(3) {
   font-family: var(--font-ja);
@@ -2053,7 +2064,7 @@ tbody tr:last-child td {
 }
 
 .lookupExpandedCard {
-  margin-top: 12px;
+  margin-top: 0;
 }
 
 .addForm {

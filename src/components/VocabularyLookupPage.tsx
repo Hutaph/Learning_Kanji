@@ -137,26 +137,21 @@ export function VocabularyLookupPage({
     return scored;
   }, [indexRows, query, scope]);
 
-  const expandedItem = useMemo(() => {
-    if (!expandedKey) return null;
-    return results.find((item) => `${item.kind}:${item.id}` === expandedKey) || null;
-  }, [expandedKey, results]);
+  const verbById = useMemo(() => {
+    const map = new Map<string, VerbLesson>();
+    for (const item of verbs) {
+      map.set(item.id, item);
+    }
+    return map;
+  }, [verbs]);
 
-  const expandedVerb = useMemo(() => {
-    if (!expandedItem || expandedItem.kind !== "verb") return null;
-    return verbs.find((v) => v.id === expandedItem.id) || null;
-  }, [expandedItem, verbs]);
-  const expandedVerbLearned = expandedVerb ? Boolean(verbLearnedMap[expandedVerb.id]) : false;
-
-  const expandedKanji = useMemo(() => {
-    if (!expandedItem || expandedItem.kind !== "kanji") return null;
-    return kanjiRecords.find((k) => k.id === expandedItem.id) || null;
-  }, [expandedItem, kanjiRecords]);
-
-  const relatedVocab = useMemo(() => {
-    if (!expandedKanji) return [];
-    return allVocabulary.filter((row) => row.word.includes(expandedKanji.kanji)).slice(0, 10);
-  }, [expandedKanji, allVocabulary]);
+  const kanjiById = useMemo(() => {
+    const map = new Map<string, ImportedKanjiRecord>();
+    for (const item of kanjiRecords) {
+      map.set(item.id, item);
+    }
+    return map;
+  }, [kanjiRecords]);
 
   return (
     <section className="card studyCard">
@@ -195,131 +190,164 @@ export function VocabularyLookupPage({
               </tr>
             </thead>
             <tbody>
-              {results.map((item) => (
-                <tr
-                  key={`${item.kind}-${item.id}`}
-                  className={item.kind === "verb" || item.kind === "kanji" ? "lookupRowExpandable" : ""}
-                  onClick={() => {
-                    if (item.kind !== "verb" && item.kind !== "kanji") {
-                      return;
-                    }
-                    const key = `${item.kind}:${item.id}`;
-                    setExpandedKey((prev) => (prev === key ? null : key));
-                  }}
-                >
-                  <td><span className={`lookupTypePill is-${item.kind}`}>{toKindLabel(item.kind)}</span></td>
-                  <td>{item.word}</td>
-                  <td>{item.reading}</td>
-                  <td>{item.meaningVi || item.meaningEn || "-"}</td>
-                  <td>
-                    {item.source}
-                    {item.lessonLabel ? ` · ${item.lessonLabel}` : ""}
-                  </td>
-                </tr>
-              ))}
+              {results.map((item) => {
+                const rowKey = `${item.kind}:${item.id}`;
+                const isExpanded = expandedKey === rowKey;
+                const isExpandable = item.kind === "verb" || item.kind === "kanji";
+                const verbDetail = item.kind === "verb" ? verbById.get(item.id) || null : null;
+                const kanjiDetail =
+                  item.kind === "kanji"
+                    ? kanjiById.get(item.id) || {
+                        id: item.id,
+                        kanji: item.word,
+                        hanViet: item.reading,
+                        image: ""
+                      }
+                    : null;
+                const relatedVocab =
+                  kanjiDetail && kanjiDetail.kanji
+                    ? allVocabulary.filter((row) => row.word.includes(kanjiDetail.kanji)).slice(0, 10)
+                    : [];
+
+                return (
+                  <React.Fragment key={rowKey}>
+                    <tr
+                      className={isExpandable ? "lookupRowExpandable" : ""}
+                      onClick={() => {
+                        if (!isExpandable) {
+                          return;
+                        }
+                        setExpandedKey((prev) => (prev === rowKey ? null : rowKey));
+                      }}
+                    >
+                      <td><span className={`lookupTypePill is-${item.kind}`}>{toKindLabel(item.kind)}</span></td>
+                      <td>{item.word}</td>
+                      <td>{item.reading}</td>
+                      <td>{item.meaningVi || item.meaningEn || "-"}</td>
+                      <td>
+                        {item.source}
+                        {item.lessonLabel ? ` · ${item.lessonLabel}` : ""}
+                      </td>
+                    </tr>
+                    {isExpanded && verbDetail ? (
+                      <tr className="lookupInlineExpandRow">
+                        <td colSpan={5}>
+                          <div className="lookupInlineExpandInner">
+                            <article className="verbCard isExpanded lookupExpandedCard">
+                              <div className="verbCardTop">
+                                <div className="verbCardMain">
+                                  <div className="verbHeadRow">
+                                    <h3 className="verbHeadWord">{verbDetail.dictionary}</h3>
+                                    <p className="verbKanaLine">{verbDetail.kana}</p>
+                                  </div>
+                                  <p className="verbMeaningLine">{verbDetail.meaningVi}</p>
+                                  <button
+                                    type="button"
+                                    className={verbLearnedMap[verbDetail.id] ? "jlptLearnedOn" : "jlptLearnedOff"}
+                                    onClick={(event) => {
+                                      event.stopPropagation();
+                                      const next = { ...verbLearnedMap };
+                                      if (next[verbDetail.id]) {
+                                        delete next[verbDetail.id];
+                                      } else {
+                                        next[verbDetail.id] = true;
+                                      }
+                                      setVerbLearnedMap(next);
+                                      setJSON(STORAGE_KEYS.verb.learnedMap, next);
+                                    }}
+                                  >
+                                    {verbLearnedMap[verbDetail.id] ? "Đã học" : "Đánh dấu học"}
+                                  </button>
+                                </div>
+                                {verbDetail.image ? <img className="verbThumb verbThumbInline" src={verbDetail.image} alt={verbDetail.dictionary} /> : null}
+                              </div>
+                              <div className="verbExpandedMain">
+                                <p className="muted">
+                                  {verbDetail.jlpt} - {verbTypeToLabel(verbDetail.type)}
+                                </p>
+                              </div>
+                              <div className="tableWrap">
+                                <table className="verbTable">
+                                  <thead>
+                                    <tr>
+                                      <th>Thể</th>
+                                      <th>Dạng chia</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {(verbDetail.conjugations?.length ? verbDetail.conjugations : conjugateVerb(verbDetail)).map((row) => (
+                                      <tr key={`${verbDetail.id}-${row.label}`}>
+                                        <td>{row.label}</td>
+                                        <td>{row.form}</td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            </article>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : null}
+                    {isExpanded && kanjiDetail ? (
+                      <tr className="lookupInlineExpandRow">
+                        <td colSpan={5}>
+                          <div className="lookupInlineExpandInner">
+                            <article className="verbCard lookupExpandedCard">
+                              <div className="flashTopRow">
+                                <div className="kanjiPanel">
+                                  <p className="resultLabel">Kanji</p>
+                                  <p className="flashKanji">{kanjiDetail.kanji}</p>
+                                  <p className="resultLabel">Âm Hán Việt</p>
+                                  <button type="button" className="blurRevealButton revealed">{kanjiDetail.hanViet || "-"}</button>
+                                </div>
+                                <div className="imagePanel">
+                                  {kanjiDetail.image ? (
+                                    <img className="kanjiImage" src={kanjiDetail.image} alt={kanjiDetail.kanji} />
+                                  ) : (
+                                    <p className="muted">Chưa có ảnh minh họa.</p>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="vocabPanel">
+                                <p className="resultLabel">Từ vựng liên quan</p>
+                                {relatedVocab.length === 0 ? (
+                                  <p className="muted">Chưa có từ liên quan trong dữ liệu hiện tại.</p>
+                                ) : (
+                                  <div className="tableWrap">
+                                    <table className="vocabTable">
+                                      <thead>
+                                        <tr>
+                                          <th>Từ vựng</th>
+                                          <th>Hiragana</th>
+                                          <th>Nghĩa</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {relatedVocab.map((row) => (
+                                          <tr key={`kv-${kanjiDetail.id}-${row.id}`}>
+                                            <td>{row.word}</td>
+                                            <td>{row.reading}</td>
+                                            <td>{row.meaningVi || row.meaningEn || "-"}</td>
+                                          </tr>
+                                        ))}
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                )}
+                              </div>
+                            </article>
+                          </div>
+                        </td>
+                      </tr>
+                    ) : null}
+                  </React.Fragment>
+                );
+              })}
             </tbody>
           </table>
         </div>
       )}
-      {expandedVerb ? (
-        <article className="verbCard isExpanded lookupExpandedCard">
-          <div className="verbCardTop">
-            <div className="verbCardMain">
-              <div className="verbHeadRow">
-                <h3 className="verbHeadWord">{expandedVerb.dictionary}</h3>
-                <p className="verbKanaLine">{expandedVerb.kana}</p>
-              </div>
-              <p className="verbMeaningLine">{expandedVerb.meaningVi}</p>
-              <button
-                type="button"
-                className={expandedVerbLearned ? "jlptLearnedOn" : "jlptLearnedOff"}
-                onClick={() => {
-                  const next = { ...verbLearnedMap };
-                  if (next[expandedVerb.id]) {
-                    delete next[expandedVerb.id];
-                  } else {
-                    next[expandedVerb.id] = true;
-                  }
-                  setVerbLearnedMap(next);
-                  setJSON(STORAGE_KEYS.verb.learnedMap, next);
-                }}
-              >
-                {expandedVerbLearned ? "Đã học" : "Đánh dấu học"}
-              </button>
-            </div>
-            {expandedVerb.image ? <img className="verbThumb verbThumbInline" src={expandedVerb.image} alt={expandedVerb.dictionary} /> : null}
-          </div>
-          <div className="verbExpandedMain">
-            <p className="muted">
-              {expandedVerb.jlpt} - {verbTypeToLabel(expandedVerb.type)}
-            </p>
-          </div>
-          <div className="tableWrap">
-            <table className="verbTable">
-              <thead>
-                <tr>
-                  <th>Thể</th>
-                  <th>Dạng chia</th>
-                </tr>
-              </thead>
-              <tbody>
-                {(expandedVerb.conjugations?.length ? expandedVerb.conjugations : conjugateVerb(expandedVerb)).map((row) => (
-                  <tr key={`${expandedVerb.id}-${row.label}`}>
-                    <td>{row.label}</td>
-                    <td>{row.form}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </article>
-      ) : null}
-      {expandedKanji ? (
-        <article className="verbCard lookupExpandedCard">
-          <div className="flashTopRow">
-            <div className="kanjiPanel">
-              <p className="resultLabel">Kanji</p>
-              <p className="flashKanji">{expandedKanji.kanji}</p>
-              <p className="resultLabel">Âm Hán Việt</p>
-              <button type="button" className="blurRevealButton revealed">{expandedKanji.hanViet || "-"}</button>
-            </div>
-            <div className="imagePanel">
-              {expandedKanji.image ? (
-                <img className="kanjiImage" src={expandedKanji.image} alt={expandedKanji.kanji} />
-              ) : (
-                <p className="muted">Chưa có ảnh minh họa.</p>
-              )}
-            </div>
-          </div>
-          <div className="vocabPanel">
-            <p className="resultLabel">Từ vựng liên quan</p>
-            {relatedVocab.length === 0 ? (
-              <p className="muted">Chưa có từ liên quan trong dữ liệu hiện tại.</p>
-            ) : (
-              <div className="tableWrap">
-                <table className="vocabTable">
-                  <thead>
-                    <tr>
-                      <th>Từ vựng</th>
-                      <th>Hiragana</th>
-                      <th>Nghĩa</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {relatedVocab.map((row) => (
-                      <tr key={`kv-${expandedKanji.id}-${row.id}`}>
-                        <td>{row.word}</td>
-                        <td>{row.reading}</td>
-                        <td>{row.meaningVi || row.meaningEn || "-"}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-        </article>
-      ) : null}
     </section>
   );
 }

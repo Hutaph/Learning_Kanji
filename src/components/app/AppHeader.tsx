@@ -129,7 +129,7 @@ export function AppHeader({
           />
           <div>
             <h1>Kulukulu Nihongo</h1>
-            <p className="heroSubtitle">Nền tảng học Kanji và JLPT tập trung, tối giản, hiệu quả.</p>
+            <p className="heroSubtitle">Tăng tốc ôn luyện, tự tin đỗ JLPT!</p>
           </div>
         </div>
         <div className="headerControls">
