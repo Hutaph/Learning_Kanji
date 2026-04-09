@@ -1,10 +1,10 @@
-# Kulukulu Nihongo
+# Kanji Learning
 
-Focused Japanese learning web app for **Kanji + JLPT Vocabulary + Verb practice**.
+**Kanji Learning** is a web app for Japanese study: **Kanji**, **JLPT vocabulary**, and **verb** practice.
 
 ## Live Demo
 
-- [nihongo-benkyo.vercel.app](https://nihongo-benkyo.vercel.app/)
+- [Kanji Learning (Vercel)](https://nihongo-benkyo.vercel.app/)
 
 ## Tech Stack
 

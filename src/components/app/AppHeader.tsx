@@ -123,12 +123,12 @@ export function AppHeader({
           <img
             className={`brandLogo ${logoTapCount > 0 ? "isTapHint" : ""}`}
             src="/logo.png"
-            alt="Nihongo Studio"
+            alt="Kanji Learning"
             onClick={onTapLogo}
             title="Try tapping the logo..."
           />
           <div>
-            <h1>Kulukulu Nihongo</h1>
+            <h1>Kanji Learning</h1>
             <p className="heroSubtitle">Tăng tốc ôn luyện, tự tin đỗ JLPT!</p>
           </div>
         </div>
@@ -172,17 +172,6 @@ export function AppHeader({
         </div>
       </div>
       <div className={`headerFunCells ${compactOnStudy ? "compactPanel compactKpiPanel" : ""}`} aria-label="Quick insights">
-        <div className="headerPets" aria-hidden="true">
-          <span className="headerPet petA">🐶</span>
-          <span className="headerPet petB">🐱</span>
-          <span className="headerPet petC">🐹</span>
-          <span className="headerPet petD">🐸</span>
-          <span className="headerPet petE">🦈</span>
-          <span className="headerPet petF">🐰</span>
-          <span className="headerPet petG">🦊</span>
-          <span className="headerPet petH">🐼</span>
-          <span className="headerPet petI">🐥</span>
-        </div>
         <button type="button" className="headerFunCell isAction" onClick={onGoVocabulary}>
           <div className="kpiTopLine">
             <span className="kpiIcon"><BookOpen size={15} /></span>

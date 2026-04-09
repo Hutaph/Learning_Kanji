@@ -25,13 +25,22 @@ export function AppFooter() {
         <section className="appFooterBlock">
           <h3>Liên hệ hỗ trợ</h3>
           <ul className="appFooterContacts">
-            <li><MapPin size={16} />Số 69, Đường Skibidi Sigma, Phường Ohio Rizz, Quận Gyatt, Thành phố NPC Core, Quốc gia Internetverse</li>
-            <li><Mail size={16} />skibidi.rizzlord42069@ohio-gyatt-sigma.brainrot</li>
-            <li><Phone size={16} />+999 (404) 6967-363-4444</li>
+            <li>
+              <MapPin size={16} />
+              TP. Hồ Chí Minh, Việt Nam
+            </li>
+            <li>
+              <Mail size={16} />
+              <a href="mailto:huynhtanphuoc164@gmail.com">huynhtanphuoc164@gmail.com</a>
+            </li>
+            <li>
+              <Phone size={16} />
+              <a href="tel:+84364979216">0364 979 216</a>
+            </li>
           </ul>
         </section>
       </div>
-      <p className="appFooterLegal">© {new Date().getFullYear()} Kulukulu Nihongo. Learn daily, skibidi daily.</p>
+      <p className="appFooterLegal">© {new Date().getFullYear()} Kanji Learning.</p>
     </footer>
   );
 }
