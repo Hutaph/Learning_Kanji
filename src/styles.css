@@ -1123,16 +1123,29 @@ option {
   background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
 }
 
-.authBadge {
-  margin: 0 0 8px;
-  display: inline-flex;
-  padding: 4px 10px;
+.authBrand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 16px;
+}
+
+.authBrandLogo {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.72rem;
+  flex-shrink: 0;
+  object-fit: contain;
+  background: var(--surface-2);
+}
+
+.authBrandTitle {
+  margin: 0;
+  font-size: 1.35rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--text);
+  letter-spacing: -0.02em;
 }
 
 .authTitle {

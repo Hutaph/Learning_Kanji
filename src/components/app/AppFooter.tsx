@@ -40,7 +40,7 @@ export function AppFooter() {
           </ul>
         </section>
       </div>
-      <p className="appFooterLegal">© {new Date().getFullYear()} Kanji Learning.</p>
+      <p className="appFooterLegal">© {new Date().getFullYear()} Learning Kanji.</p>
     </footer>
   );
 }

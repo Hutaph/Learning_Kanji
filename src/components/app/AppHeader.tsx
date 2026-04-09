@@ -123,12 +123,12 @@ export function AppHeader({
           <img
             className={`brandLogo ${logoTapCount > 0 ? "isTapHint" : ""}`}
             src="/logo.png"
-            alt="Kanji Learning"
+            alt="Learning Kanji"
             onClick={onTapLogo}
             title="Try tapping the logo..."
           />
           <div>
-            <h1>Kanji Learning</h1>
+            <h1>Learning Kanji</h1>
             <p className="heroSubtitle">Tăng tốc ôn luyện, tự tin đỗ JLPT!</p>
           </div>
         </div>

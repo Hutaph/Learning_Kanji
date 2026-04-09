@@ -143,7 +143,10 @@ export function AuthGate() {
     <main className="appShell layoutCompact">
       <div className="container">
         <section className="card authCard">
-          <p className="authBadge">KULUKULU NIHONGO</p>
+          <div className="authBrand">
+            <img className="authBrandLogo" src="/logo.png" alt="" width={52} height={52} decoding="async" />
+            <p className="authBrandTitle">Learning Kanji</p>
+          </div>
           <h2 className="authTitle">Đăng nhập tài khoản học tập</h2>
           <p className="muted authSubtitle">Lưu toàn bộ tiến độ và tiếp tục học trên mọi thiết bị của bạn.</p>
           {!hasSupabaseEnv ? (

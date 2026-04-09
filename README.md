@@ -1,10 +1,10 @@
-# Kanji Learning
+# Learning Kanji
 
-**Kanji Learning** is a web app for Japanese study: **Kanji**, **JLPT vocabulary**, and **verb** practice.
+**Learning Kanji** is a web app for Japanese study: **Kanji**, **JLPT vocabulary**, and **verb** practice.
 
 ## Live Demo
 
-- [Kanji Learning (Vercel)](https://nihongo-benkyo.vercel.app/)
+- [Learning Kanji (Vercel)](https://nihongo-benkyo.vercel.app/)
 
 ## Tech Stack
 
