@@ -56,8 +56,10 @@ const BRAINROT_LINES = [
   "🐶📈 Động lực điên cuồng, điểm nhớ từ đang pump không phanh."
 ] as const;
 
+const AUTH_ENABLED = false;
+
 function App() {
-  const [authReady, setAuthReady] = useState(false);
+  const [authReady, setAuthReady] = useState(!AUTH_ENABLED);
   const [session, setSession] = useState<Session | null>(null);
   const [syncReady, setSyncReady] = useState(false);
   const [syncError, setSyncError] = useState("");
@@ -292,6 +294,10 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (!AUTH_ENABLED) {
+      setAuthReady(true);
+      return;
+    }
     let mounted = true;
     const init = async () => {
       if (!hasSupabaseEnv || !supabase) {
@@ -328,6 +334,9 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (!AUTH_ENABLED) {
+      return;
+    }
     let cancelled = false;
     const hydrate = async () => {
       if (!session?.user?.id) {
@@ -376,7 +385,7 @@ function App() {
   }, [session?.user?.id, applyCloudPayload, buildCloudPayloadFromStorage, buildEmptyCloudPayload]);
 
   useEffect(() => {
-    if (!session?.user?.id || !syncReady) {
+    if (!AUTH_ENABLED || !session?.user?.id || !syncReady) {
       return;
     }
     const payload = buildCloudPayload();
@@ -421,6 +430,10 @@ function App() {
   }, [profileMenuOpen]);
 
   useEffect(() => {
+    if (!AUTH_ENABLED) {
+      setProfile(null);
+      return;
+    }
     let cancelled = false;
     const loadProfileData = async () => {
       if (!session?.user?.id) {
@@ -858,7 +871,7 @@ function App() {
     setProfileDraft((prev) => (prev ? { ...prev, avatar_url: dataUrl } : prev));
   };
 
-  if (!authReady) {
+  if (AUTH_ENABLED && !authReady) {
     return (
       <main className="appShell layoutCompact">
         <div className="container">
@@ -868,7 +881,7 @@ function App() {
     );
   }
 
-  if (!session) {
+  if (AUTH_ENABLED && !session) {
     return <AuthGate />;
   }
 
@@ -898,6 +911,7 @@ function App() {
         onCloseProfileMenu={() => setProfileMenuOpen(false)}
         onOpenProfile={openProfileModal}
         onSignOut={handleSignOut}
+        showAccount={AUTH_ENABLED}
         jlptCurrentLevel={jlptCurrentLevel}
         studyGroupLabel={formatKanjiLessonLabel(studyGroup)}
         learningStreakDays={learningStreakDays}
@@ -951,7 +965,7 @@ function App() {
           <strong>CHẾ ĐỘ BRAINROT TỐI THƯỢNG</strong> - {brainrotLine}
         </div>
       )}
-      {profileModalOpen && profileDraft ? (
+      {AUTH_ENABLED && profileModalOpen && profileDraft ? (
         <div className="profileModalBackdrop" role="dialog" aria-modal="true">
           <section className="card profileModalCard">
             <h2>Thông tin tài khoản</h2>

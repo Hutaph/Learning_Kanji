@@ -20,6 +20,7 @@ type AppHeaderProps = {
   onCloseProfileMenu: () => void;
   onOpenProfile: () => void;
   onSignOut: () => void;
+  showAccount?: boolean;
   jlptCurrentLevel: string;
   studyGroupLabel: string;
   learningStreakDays: number;
@@ -49,6 +50,7 @@ export function AppHeader({
   onCloseProfileMenu,
   onOpenProfile,
   onSignOut,
+  showAccount = true,
   jlptCurrentLevel,
   studyGroupLabel,
   learningStreakDays,
@@ -142,33 +144,35 @@ export function AppHeader({
             {theme === "light" ? <MoonStar size={16} /> : <SunMedium size={16} />}
             {theme === "light" ? "Giao diện tối" : "Giao diện sáng"}
           </button>
-          <div
-            className="profileMenuWrap"
-            ref={profileMenuRef}
-            onMouseEnter={cancelProfileClose}
-            onMouseLeave={queueProfileClose}
-          >
-            <button type="button" className="profileChip" onClick={onToggleProfileMenu}>
-              {profile?.avatar_url ? (
-                <img src={profile.avatar_url} alt="Avatar" className="profileAvatar" />
-              ) : (
-                <span className="profileAvatarFallback">{getAvatarFallback(profile)}</span>
-              )}
-              <span className="profileName">{profile?.full_name?.trim() || profile?.username || "Tài khoản"}</span>
-            </button>
-            {profileMenuOpen ? (
-              <div className="profilePopover">
-                <button type="button" className="profilePopoverBtn" onClick={onOpenProfile}>
-                  <UserRound size={15} />
-                  Thông tin
-                </button>
-                <button type="button" className="profilePopoverBtn danger" onClick={onSignOut}>
-                  <LogOut size={15} />
-                  Đăng xuất
-                </button>
-              </div>
-            ) : null}
-          </div>
+          {showAccount ? (
+            <div
+              className="profileMenuWrap"
+              ref={profileMenuRef}
+              onMouseEnter={cancelProfileClose}
+              onMouseLeave={queueProfileClose}
+            >
+              <button type="button" className="profileChip" onClick={onToggleProfileMenu}>
+                {profile?.avatar_url ? (
+                  <img src={profile.avatar_url} alt="Avatar" className="profileAvatar" />
+                ) : (
+                  <span className="profileAvatarFallback">{getAvatarFallback(profile)}</span>
+                )}
+                <span className="profileName">{profile?.full_name?.trim() || profile?.username || "Tài khoản"}</span>
+              </button>
+              {profileMenuOpen ? (
+                <div className="profilePopover">
+                  <button type="button" className="profilePopoverBtn" onClick={onOpenProfile}>
+                    <UserRound size={15} />
+                    Thông tin
+                  </button>
+                  <button type="button" className="profilePopoverBtn danger" onClick={onSignOut}>
+                    <LogOut size={15} />
+                    Đăng xuất
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
         </div>
       </div>
       <div className={`headerFunCells ${compactOnStudy ? "compactPanel compactKpiPanel" : ""}`} aria-label="Quick insights">
